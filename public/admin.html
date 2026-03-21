@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Admin Panel — Maa Baglamukhi Peeth Parishad</title>
+<link rel="icon"             type="image/jpeg" href="ma.jpeg"/>
+  <link rel="shortcut icon"    type="image/jpeg" href="ma.jpeg"/>
+  <link rel="apple-touch-icon"                   href="ma.jpeg"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --gold:#C9A84C;--gold-light:#F0D080;--gold-dark:#8B6914;
+  --maroon:#5C0A0A;--saffron:#E8611A;--cream:#FDF5E6;--ink:#1A0A00;
+  --panel:#160800;--card:#1E0A02;--border:rgba(201,168,76,0.22);
+  --success:#2D6A2D;--danger:#8B1A1A;--warn:#7A5A00;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Cormorant Garamond',serif;background:var(--ink);color:var(--cream);min-height:100vh;}
+
+/* ── LOGIN SCREEN ── */
+.login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;
+  background:radial-gradient(ellipse at 50% 40%,#2A0808,#0D0200);}
+.login-box{background:var(--card);border:1px solid var(--border);padding:3rem 2.5rem;
+  width:380px;text-align:center;}
+.login-om{font-size:3rem;color:var(--gold);display:block;margin-bottom:0.5rem;
+  filter:drop-shadow(0 0 20px rgba(201,168,76,0.7));}
+.login-title{font-family:'Cinzel',serif;font-size:1.1rem;font-weight:700;
+  color:var(--gold-light);margin-bottom:0.3rem;}
+.login-sub{font-size:0.8rem;color:rgba(253,245,230,0.45);margin-bottom:2rem;letter-spacing:0.1em;}
+.form-group{margin-bottom:1.1rem;text-align:left;}
+.form-group label{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.25em;
+  text-transform:uppercase;color:var(--gold);display:block;margin-bottom:5px;}
+.form-group input{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);
+  color:var(--cream);padding:10px 14px;font-family:'Cormorant Garamond',serif;
+  font-size:1rem;outline:none;transition:border-color 0.2s;}
+.form-group input:focus{border-color:rgba(201,168,76,0.6);}
+.login-btn{width:100%;background:linear-gradient(135deg,var(--gold-dark),var(--gold));
+  color:var(--ink);border:none;padding:13px;font-family:'Cinzel',serif;
+  font-size:0.78rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;
+  transition:box-shadow 0.3s;}
+.login-btn:hover{box-shadow:0 4px 24px rgba(201,168,76,0.5);}
+.login-err{color:#FF6060;font-size:0.85rem;margin-top:0.8rem;}
+
+/* ── ADMIN LAYOUT ── */
+.admin-wrap{display:none;}
+.admin-wrap.visible{display:flex;}
+.sidebar{width:240px;flex-shrink:0;background:var(--panel);
+  border-right:1px solid var(--border);min-height:100vh;
+  display:flex;flex-direction:column;}
+.sidebar-brand{padding:1.4rem 1.2rem;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:10px;}
+.sidebar-brand .om{font-size:1.6rem;color:var(--gold);}
+.sidebar-name{font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--gold-light);}
+.sidebar-sub{font-size:0.6rem;color:rgba(240,208,128,0.45);letter-spacing:0.1em;text-transform:uppercase;}
+.sidebar-nav{flex:1;padding:1rem 0;}
+.nav-section{font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.3em;
+  text-transform:uppercase;color:rgba(201,168,76,0.4);padding:1rem 1.2rem 0.4rem;}
+.sidebar-link{display:flex;align-items:center;gap:10px;padding:0.7rem 1.2rem;
+  color:rgba(240,208,128,0.65);text-decoration:none;font-family:'Cinzel',serif;
+  font-size:0.72rem;letter-spacing:0.08em;cursor:pointer;transition:all 0.2s;border:none;
+  background:none;width:100%;text-align:left;}
+.sidebar-link:hover,.sidebar-link.active{background:rgba(201,168,76,0.1);color:var(--gold-light);}
+.sidebar-link .icon{font-size:1rem;width:20px;text-align:center;}
+.sidebar-bottom{padding:1.2rem;border-top:1px solid var(--border);}
+.logout-btn{width:100%;background:rgba(139,26,26,0.3);border:1px solid rgba(139,26,26,0.4);
+  color:#FF8080;padding:8px;font-family:'Cinzel',serif;font-size:0.68rem;
+  letter-spacing:0.15em;cursor:pointer;transition:background 0.2s;}
+.logout-btn:hover{background:rgba(139,26,26,0.5);}
+
+.main-content{flex:1;padding:2rem;overflow-y:auto;min-height:100vh;}
+.page-header{margin-bottom:2rem;}
+.page-title{font-family:'Cinzel',serif;font-size:1.4rem;font-weight:700;color:var(--gold-light);}
+.page-sub{font-size:0.9rem;color:rgba(253,245,230,0.45);margin-top:0.3rem;}
+
+/* Tabs */
+.tab-content{display:none;}
+.tab-content.active{display:block;}
+
+/* ── STATS ── */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:2rem;}
+@media(max-width:900px){.stats-row{grid-template-columns:1fr 1fr;}}
+.stat-card{background:var(--card);border:1px solid var(--border);padding:1.4rem 1.5rem;}
+.stat-num{font-family:'Cinzel',serif;font-size:2rem;font-weight:700;color:var(--gold-light);display:block;}
+.stat-lbl{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:rgba(253,245,230,0.4);margin-top:4px;}
+.stat-card.new .stat-num{color:var(--saffron);}
+
+/* ── BLOG EDITOR ── */
+.editor-toolbar{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.6rem;}
+.toolbar-btn{font-size:0.8rem;padding:5px 10px;background:rgba(255,255,255,0.05);
+  border:1px solid var(--border);color:var(--cream);cursor:pointer;
+  transition:background 0.2s;}
+.toolbar-btn:hover{background:rgba(201,168,76,0.15);}
+.editor-area{width:100%;min-height:320px;background:rgba(255,255,255,0.03);
+  border:1px solid var(--border);color:var(--cream);padding:1rem;
+  font-family:'Cormorant Garamond',serif;font-size:1rem;
+  outline:none;resize:vertical;line-height:1.7;}
+.editor-area:focus{border-color:rgba(201,168,76,0.5);}
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+@media(max-width:600px){.form-row-2{grid-template-columns:1fr;}}
+
+.input-field{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);
+  color:var(--cream);padding:10px 14px;font-family:'Cormorant Garamond',serif;
+  font-size:1rem;outline:none;transition:border-color 0.2s;}
+.input-field:focus{border-color:rgba(201,168,76,0.5);}
+select.input-field option{background:#1A0500;}
+.fld-label{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--gold);display:block;margin-bottom:5px;}
+.fld-wrap{margin-bottom:1.1rem;}
+.btn-primary{background:linear-gradient(135deg,var(--gold-dark),var(--gold));
+  color:var(--ink);border:none;padding:11px 28px;font-family:'Cinzel',serif;
+  font-size:0.75rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
+  cursor:pointer;transition:box-shadow 0.3s;}
+.btn-primary:hover{box-shadow:0 4px 20px rgba(201,168,76,0.45);}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--cream);
+  padding:10px 22px;font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.15em;
+  cursor:pointer;transition:all 0.2s;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold-light);}
+.btn-danger{background:rgba(139,26,26,0.4);border:1px solid rgba(139,26,26,0.5);
+  color:#FF8080;padding:6px 14px;font-family:'Cinzel',serif;font-size:0.65rem;
+  cursor:pointer;transition:background 0.2s;}
+.btn-danger:hover{background:rgba(139,26,26,0.65);}
+.btn-sm{padding:5px 12px;font-size:0.6rem;}
+.action-bar{display:flex;gap:0.8rem;align-items:center;margin-top:1.2rem;flex-wrap:wrap;}
+
+/* ── POSTS TABLE ── */
+.table-wrap{background:var(--card);border:1px solid var(--border);overflow-x:auto;}
+table{width:100%;border-collapse:collapse;}
+th{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--gold);padding:0.9rem 1rem;
+  border-bottom:1px solid var(--border);background:rgba(201,168,76,0.05);
+  text-align:left;white-space:nowrap;}
+td{padding:0.85rem 1rem;border-bottom:1px solid rgba(201,168,76,0.08);
+  font-size:0.92rem;color:rgba(253,245,230,0.75);vertical-align:middle;}
+tr:hover td{background:rgba(201,168,76,0.03);}
+.badge{font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.1em;
+  text-transform:uppercase;padding:3px 9px;border-radius:1px;border:1px solid;}
+.badge-pub{color:#4CA84C;border-color:#4CA84C;}
+.badge-draft{color:rgba(201,168,76,0.7);border-color:rgba(201,168,76,0.35);}
+.badge-new{color:var(--saffron);border-color:var(--saffron);}
+.badge-replied{color:#4CA84C;border-color:#4CA84C;}
+.badge-closed{color:rgba(253,245,230,0.3);border-color:rgba(253,245,230,0.15);}
+.td-actions{display:flex;gap:0.5rem;flex-wrap:wrap;}
+
+/* ── NOTIFICATION ── */
+.notif{position:fixed;top:1.2rem;right:1.5rem;z-index:9000;
+  padding:0.8rem 1.4rem;border:1px solid;font-family:'Cinzel',serif;
+  font-size:0.72rem;letter-spacing:0.1em;max-width:320px;
+  animation:notif-in 0.3s ease forwards;
+  transition:opacity 0.4s;}
+.notif.success{background:rgba(45,106,45,0.9);border-color:#4CA84C;color:#A0FFB0;}
+.notif.error{background:rgba(139,26,26,0.9);border-color:#FF6060;color:#FFB0B0;}
+@keyframes notif-in{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+
+/* ── CONTACT EXPAND ── */
+.contact-detail{background:rgba(255,255,255,0.03);padding:1rem;
+  border:1px solid var(--border);margin-top:0.5rem;font-size:0.9rem;
+  line-height:1.8;}
+.detail-row{display:flex;gap:0.5rem;}
+.detail-key{font-family:'Cinzel',serif;font-size:0.65rem;
+  letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);
+  min-width:90px;flex-shrink:0;}
+
+/* ── IMAGE UPLOADER ── */
+.img-upload-wrap{position:relative;}
+.img-drop-zone{
+  width:100%;min-height:140px;
+  border:2px dashed rgba(201,168,76,0.35);
+  background:rgba(255,255,255,0.03);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:0.6rem;cursor:pointer;transition:border-color 0.25s,background 0.25s;
+  position:relative;overflow:hidden;}
+.img-drop-zone:hover,.img-drop-zone.drag-over{border-color:var(--gold);background:rgba(201,168,76,0.07);}
+.img-drop-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;font-size:0;}
+.img-drop-icon{font-size:2.2rem;opacity:0.5;}
+.img-drop-text{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.18em;color:rgba(201,168,76,0.65);}
+.img-drop-hint{font-size:0.75rem;color:rgba(253,245,230,0.35);}
+.img-preview-wrap{display:none;position:relative;margin-top:0.8rem;}
+.img-preview-wrap.visible{display:block;}
+.img-preview{
+  width:100%;max-height:260px;
+  object-fit:cover;object-position:center;
+  border:1px solid rgba(201,168,76,0.25);
+  display:block;}
+.img-remove-btn{
+  position:absolute;top:6px;right:6px;
+  background:rgba(139,26,26,0.88);border:1px solid rgba(255,100,100,0.4);
+  color:#FFB0B0;font-size:0.7rem;padding:4px 10px;cursor:pointer;
+  font-family:'Cinzel',serif;letter-spacing:0.1em;transition:background 0.2s;}
+.img-remove-btn:hover{background:rgba(180,30,30,0.95);}
+.img-filename{font-size:0.78rem;color:rgba(253,245,230,0.4);margin-top:0.4rem;}
+
+/* ── WYSIWYG RICH TEXT EDITOR ── */
+.rte-wrap{border:1px solid var(--border);background:rgba(255,255,255,0.03);}
+.rte-toolbar{
+  display:flex;flex-wrap:wrap;gap:2px;padding:0.5rem 0.6rem;
+  background:rgba(201,168,76,0.06);
+  border-bottom:1px solid var(--border);}
+.rte-btn{
+  min-width:32px;height:30px;padding:0 6px;
+  background:transparent;border:1px solid transparent;
+  color:rgba(240,208,128,0.75);cursor:pointer;
+  font-size:0.82rem;border-radius:2px;
+  transition:background 0.15s,border-color 0.15s;
+  display:flex;align-items:center;justify-content:center;
+  font-family:inherit;}
+.rte-btn:hover{background:rgba(201,168,76,0.18);border-color:rgba(201,168,76,0.35);color:var(--gold-light);}
+.rte-btn.active{background:rgba(201,168,76,0.25);border-color:rgba(201,168,76,0.5);color:var(--gold-light);}
+.rte-sep{width:1px;height:22px;background:rgba(201,168,76,0.2);margin:4px 3px;align-self:center;}
+.rte-select{
+  background:rgba(255,255,255,0.05);border:1px solid rgba(201,168,76,0.25);
+  color:rgba(240,208,128,0.8);padding:3px 6px;font-size:0.75rem;
+  font-family:'Cinzel',serif;cursor:pointer;height:30px;outline:none;}
+.rte-select option{background:#1A0500;}
+.rte-body{
+  min-height:340px;max-height:600px;overflow-y:auto;
+  padding:1.4rem 1.6rem;outline:none;
+  font-family:'Cormorant Garamond',serif;font-size:1.05rem;
+  line-height:1.85;color:rgba(253,245,230,0.88);}
+.rte-body:empty:before{
+  content:attr(data-placeholder);
+  color:rgba(253,245,230,0.25);pointer-events:none;}
+/* Styles inside the editor that mirror the blog */
+.rte-body h2{font-family:'Cinzel',serif;font-size:1.3rem;color:var(--gold-light);margin:1.8rem 0 0.6rem;border-bottom:1px solid rgba(201,168,76,0.2);padding-bottom:0.4rem;}
+.rte-body h3{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold);margin:1.4rem 0 0.5rem;}
+.rte-body blockquote{border-left:3px solid var(--gold);padding:0.7rem 1.2rem;margin:1.2rem 0;background:rgba(201,168,76,0.05);font-style:italic;color:var(--gold-light);}
+.rte-body ul,.rte-body ol{padding-left:2rem;margin:0.8rem 0;}
+.rte-body li{margin-bottom:0.3rem;}
+.rte-body a{color:var(--saffron);}
+.rte-body hr{border:none;border-top:1px solid rgba(201,168,76,0.25);margin:1.5rem 0;}
+.rte-body img{max-width:100%;height:auto;border:1px solid rgba(201,168,76,0.2);margin:0.8rem 0;}
+.rte-body p{margin-bottom:0.9rem;}
+.rte-footer{
+  padding:0.5rem 0.8rem;border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(201,168,76,0.04);}
+.rte-word-count{font-size:0.72rem;color:rgba(253,245,230,0.3);font-family:'Cinzel',serif;letter-spacing:0.1em;}
+.rte-html-toggle{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:rgba(201,168,76,0.45);background:none;border:1px solid rgba(201,168,76,0.2);
+  padding:4px 10px;cursor:pointer;transition:all 0.2s;}
+.rte-html-toggle:hover{color:var(--gold);border-color:rgba(201,168,76,0.5);}
+/* Link dialog */
+.rte-link-dialog{
+  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+  z-index:9999;background:var(--card);border:1px solid var(--border);
+  padding:1.5rem 2rem;min-width:320px;display:none;}
+.rte-link-dialog.open{display:block;}
+.rte-link-overlay{position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,0.6);display:none;}
+.rte-link-overlay.open{display:block;}
+
+</style>
+</head>
+<body>
+
+<!-- ═══ LOGIN ═══ -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-box">
+    <span class="login-om">ॐ</span>
+    <div class="login-title">Admin Panel</div>
+    <div class="login-sub">Maa Baglamukhi Peeth Parishad</div>
+    <div class="fld-wrap">
+      <label class="fld-label">Username</label>
+      <input class="input-field" type="text" id="loginUser" value="admin" autocomplete="username"/>
+    </div>
+    <div class="fld-wrap">
+      <label class="fld-label">Password</label>
+      <input class="input-field" type="password" id="loginPass" autocomplete="current-password"
+             onkeydown="if(event.key==='Enter')doLogin()"/>
+    </div>
+    <button class="login-btn" onclick="doLogin()">🔐 Sign In</button>
+    <div class="login-err" id="loginErr"></div>
+  </div>
+</div>
+
+<!-- ═══ ADMIN WRAP ═══ -->
+<div class="admin-wrap" id="adminWrap">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="om">🔱</div>
+      <div>
+        <div class="sidebar-name">Admin Panel</div>
+        <div class="sidebar-sub">Baglamukhi Peeth</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section">Dashboard</div>
+      <button class="sidebar-link active" onclick="showTab('dashboard')">
+        <span class="icon">📊</span> Dashboard
+      </button>
+      <div class="nav-section">Blog</div>
+      <button class="sidebar-link" onclick="showTab('new-post')">
+        <span class="icon">✍</span> New Post
+      </button>
+      <button class="sidebar-link" onclick="showTab('all-posts')">
+        <span class="icon">📝</span> All Posts
+      </button>
+      <div class="nav-section">Enquiries</div>
+      <button class="sidebar-link" onclick="showTab('contacts')">
+        <span class="icon">📩</span> Contact Forms
+        <span id="newBadge" style="margin-left:auto;background:var(--saffron);color:var(--ink);font-size:0.6rem;padding:2px 7px;border-radius:10px;display:none;"></span>
+      </button>
+      <div class="nav-section">Settings</div>
+      <button class="sidebar-link" onclick="showTab('settings')">
+        <span class="icon">⚙</span> Settings
+      </button>
+      <a class="sidebar-link" href="/blog" target="_blank">
+        <span class="icon">🌐</span> View Blog
+      </a>
+      <a class="sidebar-link" href="/" target="_blank">
+        <span class="icon">🏛</span> View Site
+      </a>
+    </nav>
+    <div class="sidebar-bottom">
+      <button class="logout-btn" onclick="doLogout()">↩ Logout</button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main-content">
+
+    <!-- DASHBOARD -->
+    <div class="tab-content active" id="tab-dashboard">
+      <div class="page-header">
+        <div class="page-title">🔱 Dashboard</div>
+        <div class="page-sub">Welcome back, Admin. Jai Maa Baglamukhi!</div>
+      </div>
+      <div class="stats-row" id="statsRow">
+        <div class="stat-card"><span class="stat-num" id="st-blogs">—</span><span class="stat-lbl">Total Blogs</span></div>
+        <div class="stat-card"><span class="stat-num" id="st-pub">—</span><span class="stat-lbl">Published</span></div>
+        <div class="stat-card"><span class="stat-num" id="st-views">—</span><span class="stat-lbl">Total Views</span></div>
+        <div class="stat-card new"><span class="stat-num" id="st-new">—</span><span class="stat-lbl">New Enquiries</span></div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);padding:2rem;text-align:center;opacity:0.6;">
+        <p style="font-size:1.1rem;font-style:italic;color:var(--gold-light);">
+          "ह्रीं बगलामुखी सर्वदुष्टानां वाचं मुखं पदं स्तम्भय"
+        </p>
+        <p style="font-size:0.8rem;margin-top:0.5rem;">Manage your sacred knowledge blog and devotee enquiries from this panel.</p>
+      </div>
+    </div>
+
+    <!-- NEW POST -->
+    <div class="tab-content" id="tab-new-post">
+      <div class="page-header">
+        <div class="page-title">✍ Write New Post</div>
+        <div class="page-sub" id="editingLabel">Compose a new sacred knowledge article</div>
+      </div>
+      <input type="hidden" id="editPostId"/>
+
+      <div class="fld-wrap">
+        <label class="fld-label">Post Title *</label>
+        <input class="input-field" type="text" id="postTitle" placeholder="e.g. Understanding Baglamukhi Yantra"/>
+      </div>
+      <div class="fld-wrap">
+        <label class="fld-label">Excerpt / Summary</label>
+        <input class="input-field" type="text" id="postExcerpt" placeholder="Short description shown in blog listing…"/>
+      </div>
+      <div class="form-row-2">
+        <div class="fld-wrap">
+          <label class="fld-label">Category</label>
+          <select class="input-field" id="postCategory">
+            <option>Astrology</option><option>Tantra</option>
+            <option>Mantra</option><option>Yantra</option>
+            <option>Gemstone</option><option>Panchang</option>
+            <option>General</option>
+          </select>
+        </div>
+        <div class="fld-wrap">
+          <label class="fld-label">Tags (comma separated)</label>
+          <input class="input-field" type="text" id="postTags" placeholder="jyotish, mantra, remedy"/>
+        </div>
+      </div>
+      <div class="form-row-2">
+        <div class="fld-wrap">
+          <label class="fld-label">Author Name</label>
+          <input class="input-field" type="text" id="postAuthor" placeholder="Pt. Shiva Shankar Sharma"/>
+        </div>
+        <div class="fld-wrap">
+          <label class="fld-label">Status</label>
+          <select class="input-field" id="postStatus">
+            <option value="draft">Draft</option>
+            <option value="published">Published</option>
+          </select>
+        </div>
+      </div>
+      <!-- Featured Image Upload -->
+      <div class="fld-wrap">
+        <label class="fld-label">Featured Image</label>
+        <input type="hidden" id="postImg"/>
+        <div class="img-drop-zone" id="imgDropZone"
+             ondragover="imgDragOver(event)" ondragleave="imgDragLeave(event)" ondrop="imgDrop(event)">
+          <input type="file" id="imgFileInput" accept="image/*" onchange="imgFileChosen(event)"/>
+          <span class="img-drop-icon">🖼</span>
+          <span class="img-drop-text">Click to Browse or Drag & Drop Image</span>
+          <span class="img-drop-hint">JPG, PNG, WebP, GIF — any size, auto-adjusted</span>
+        </div>
+        <div class="img-preview-wrap" id="imgPreviewWrap">
+          <img id="imgPreview" class="img-preview" src="" alt="Preview"/>
+          <button class="img-remove-btn" onclick="imgRemove()">✕ Remove Image</button>
+          <div class="img-filename" id="imgFilename"></div>
+        </div>
+      </div>
+
+      <!-- WYSIWYG Rich Text Editor -->
+      <div class="fld-wrap">
+        <label class="fld-label">Article Content</label>
+        <div class="rte-wrap" id="rteWrap">
+
+          <!-- Toolbar Row 1: Format -->
+          <div class="rte-toolbar">
+            <!-- Text style -->
+            <button class="rte-btn" title="Bold (Ctrl+B)"        onclick="rte('bold')"><b>B</b></button>
+            <button class="rte-btn" title="Italic (Ctrl+I)"      onclick="rte('italic')"><i>I</i></button>
+            <button class="rte-btn" title="Underline (Ctrl+U)"   onclick="rte('underline')"><u>U</u></button>
+            <button class="rte-btn" title="Strikethrough"        onclick="rte('strikeThrough')"><s>S</s></button>
+            <div class="rte-sep"></div>
+            <!-- Headings -->
+            <select class="rte-select" title="Heading style" onchange="rteBlock(this.value); this.value=''">
+              <option value="">Paragraph</option>
+              <option value="h2">Heading 2</option>
+              <option value="h3">Heading 3</option>
+              <option value="h4">Heading 4</option>
+              <option value="blockquote">❝ Blockquote</option>
+              <option value="pre">Code Block</option>
+            </select>
+            <div class="rte-sep"></div>
+            <!-- Lists -->
+            <button class="rte-btn" title="Bullet List"    onclick="rte('insertUnorderedList')">• List</button>
+            <button class="rte-btn" title="Numbered List"  onclick="rte('insertOrderedList')">1. List</button>
+            <div class="rte-sep"></div>
+            <!-- Align -->
+            <button class="rte-btn" title="Align Left"    onclick="rte('justifyLeft')">⬅</button>
+            <button class="rte-btn" title="Align Center"  onclick="rte('justifyCenter')">↔</button>
+            <button class="rte-btn" title="Align Right"   onclick="rte('justifyRight')">➡</button>
+            <div class="rte-sep"></div>
+            <!-- Links & HR -->
+            <button class="rte-btn" title="Insert Link"   onclick="rteLink()">🔗 Link</button>
+            <button class="rte-btn" title="Horizontal Rule" onclick="rteHR()">─ Line</button>
+            <div class="rte-sep"></div>
+            <!-- Undo/Redo -->
+            <button class="rte-btn" title="Undo (Ctrl+Z)" onclick="rte('undo')">↩</button>
+            <button class="rte-btn" title="Redo (Ctrl+Y)" onclick="rte('redo')">↪</button>
+            <div class="rte-sep"></div>
+            <!-- Clear format -->
+            <button class="rte-btn" title="Remove Formatting" onclick="rte('removeFormat')" style="font-size:0.7rem;">✕ Format</button>
+          </div>
+
+          <!-- Editable body -->
+          <div class="rte-body" id="rteBody" contenteditable="true"
+               data-placeholder="Start writing your article here...&#10;&#10;• Use the toolbar above to format text — Bold, Italic, Headings, Lists, Quotes&#10;• Just type naturally, like writing in Word or Google Docs&#10;• No HTML knowledge needed!"
+               oninput="rteUpdate()" onkeydown="rteKeydown(event)">
+          </div>
+
+          <!-- Footer: word count + HTML toggle -->
+          <div class="rte-footer">
+            <span class="rte-word-count" id="rteWordCount">0 words</span>
+            <button class="rte-html-toggle" onclick="rteToggleHTML()" title="View/Edit raw HTML">‹/› HTML</button>
+          </div>
+        </div>
+        <!-- Hidden textarea for HTML view mode -->
+        <textarea id="rteHTMLArea" class="editor-area"
+          style="display:none;min-height:200px;margin-top:4px;font-size:0.82rem;font-family:monospace;"
+          oninput="rteHTMLChanged()" placeholder="Raw HTML…"></textarea>
+      </div>
+
+      <!-- Link dialog -->
+      <div class="rte-link-overlay" id="rteLinkOverlay" onclick="rteLinkClose()"></div>
+      <div class="rte-link-dialog" id="rteLinkDialog">
+        <div style="font-family:'Cinzel',serif;font-size:0.85rem;color:var(--gold-light);margin-bottom:1rem;">🔗 Insert Link</div>
+        <div class="fld-wrap">
+          <label class="fld-label">URL</label>
+          <input class="input-field" type="url" id="rteLinkUrl" placeholder="https://example.com"/>
+        </div>
+        <div class="fld-wrap">
+          <label class="fld-label">Link Text (optional)</label>
+          <input class="input-field" type="text" id="rteLinkText" placeholder="Leave blank to use selected text"/>
+        </div>
+        <div style="display:flex;gap:0.8rem;margin-top:1rem;">
+          <button class="btn-primary" style="flex:1;" onclick="rteLinkInsert()">Insert Link</button>
+          <button class="btn-outline" onclick="rteLinkClose()">Cancel</button>
+        </div>
+      </div>
+
+      <div class="action-bar">
+        <button class="btn-primary" onclick="savePost()">💾 Save Post</button>
+        <button class="btn-outline" onclick="clearEditor()">✕ Clear</button>
+        <span id="saveMsg" style="color:#4CA84C;font-size:0.85rem;"></span>
+      </div>
+    </div>
+
+    <!-- ALL POSTS -->
+    <div class="tab-content" id="tab-all-posts">
+      <div class="page-header" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <div class="page-title">📝 All Posts</div>
+          <div class="page-sub">Manage published and draft articles</div>
+        </div>
+        <button class="btn-primary" onclick="showTab('new-post')">+ New Post</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th><th>Category</th><th>Status</th>
+              <th>Views</th><th>Date</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="postsBody">
+            <tr><td colspan="6" style="text-align:center;padding:2rem;opacity:0.5;">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- CONTACTS -->
+    <div class="tab-content" id="tab-contacts">
+      <div class="page-header">
+        <div class="page-title">📩 Contact Enquiries</div>
+        <div class="page-sub">Devotee consultation requests</div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th><th>Service</th><th>Phone</th>
+              <th>Email</th><th>Date</th><th>Status</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="contactsBody">
+            <tr><td colspan="7" style="text-align:center;padding:2rem;opacity:0.5;">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div class="tab-content" id="tab-settings">
+      <div class="page-header">
+        <div class="page-title">⚙ Settings</div>
+      </div>
+      <div style="max-width:480px;">
+        <div style="background:var(--card);border:1px solid var(--border);padding:2rem;margin-bottom:1.5rem;">
+          <div style="font-family:'Cinzel',serif;font-size:0.9rem;color:var(--gold-light);margin-bottom:1.2rem;">🔐 Change Password</div>
+          <div class="fld-wrap">
+            <label class="fld-label">Current Password</label>
+            <input class="input-field" type="password" id="oldPass"/>
+          </div>
+          <div class="fld-wrap">
+            <label class="fld-label">New Password</label>
+            <input class="input-field" type="password" id="newPass"/>
+          </div>
+          <div class="fld-wrap">
+            <label class="fld-label">Confirm New Password</label>
+            <input class="input-field" type="password" id="confPass"/>
+          </div>
+          <button class="btn-primary" onclick="changePassword()">Update Password</button>
+          <span id="pwMsg" style="display:block;margin-top:0.8rem;font-size:0.85rem;"></span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div id="notifContainer"></div>
+
+<script>
+const API = '/api';
+let token = localStorage.getItem('admin_token') || '';
+
+// ── Auth ────────────────────────────────────────────────
+async function doLogin() {
+  const u = document.getElementById('loginUser').value.trim();
+  const p = document.getElementById('loginPass').value;
+  try {
+    const r = await fetch(`${API}/auth/login`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ username:u, password:p })
+    });
+    const d = await r.json();
+    if (d.success) {
+      token = d.token;
+      localStorage.setItem('admin_token', token);
+      // Also set cookie for server-side auth
+      document.cookie = `admin_token=${encodeURIComponent(token)};path=/;max-age=604800`;
+      showAdmin();
+    } else {
+      document.getElementById('loginErr').textContent = d.message || 'Login failed';
+    }
+  } catch { document.getElementById('loginErr').textContent = 'Server error. Is server running?'; }
+}
+
+function doLogout() {
+  localStorage.removeItem('admin_token');
+  document.cookie = 'admin_token=;path=/;max-age=0';
+  token = '';
+  document.getElementById('loginScreen').style.display = 'flex';
+  document.getElementById('adminWrap').classList.remove('visible');
+}
+
+function authH() { return { 'Content-Type':'application/json', 'Authorization':'Bearer '+token }; }
+
+function showAdmin() {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('adminWrap').classList.add('visible');
+  loadStats(); loadPosts(); loadContacts();
+}
+
+// Auto-login if token exists
+if (token) {
+  // Quick check — just show admin, the API will 401 if expired
+  showAdmin();
+}
+
+// ── Tab switch ──────────────────────────────────────────
+function showTab(name) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+  document.getElementById(`tab-${name}`).classList.add('active');
+  event.currentTarget && event.currentTarget.classList && event.currentTarget.classList.add('active');
+  if (name==='all-posts') loadPosts();
+  if (name==='contacts')  loadContacts();
+  if (name==='dashboard') loadStats();
+}
+
+// ── Notification ─────────────────────────────────────────
+function notify(msg, type='success') {
+  const el = document.createElement('div');
+  el.className = `notif ${type}`;
+  el.textContent = msg;
+  document.getElementById('notifContainer').appendChild(el);
+  setTimeout(() => { el.style.opacity='0'; setTimeout(()=>el.remove(),400); }, 3500);
+}
+
+// ── Stats ────────────────────────────────────────────────
+async function loadStats() {
+  try {
+    const r = await fetch(`${API}/stats`, { headers: authH() });
+    const d = await r.json();
+    document.getElementById('st-blogs').textContent = d.totalBlogs || 0;
+    document.getElementById('st-pub').textContent   = d.publishedBlogs || 0;
+    document.getElementById('st-views').textContent = d.totalViews || 0;
+    document.getElementById('st-new').textContent   = d.newContacts || 0;
+    const badge = document.getElementById('newBadge');
+    if (d.newContacts > 0) { badge.textContent = d.newContacts; badge.style.display='inline'; }
+    else badge.style.display = 'none';
+  } catch {}
+}
+
+// ── Posts ────────────────────────────────────────────────
+async function loadPosts() {
+  try {
+    const r = await fetch(`${API}/blogs/all`, { headers: authH() });
+    const d = await r.json();
+    renderPosts(d.blogs || []);
+  } catch { document.getElementById('postsBody').innerHTML = '<tr><td colspan="6" style="text-align:center;opacity:0.5;">Error loading posts</td></tr>'; }
+}
+
+function renderPosts(posts) {
+  const tbody = document.getElementById('postsBody');
+  if (!posts.length) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:2rem;opacity:0.4;">No posts yet. Write your first article!</td></tr>';
+    return;
+  }
+  tbody.innerHTML = posts.map(p => `
+    <tr>
+      <td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${p.title}</td>
+      <td>${p.category||'—'}</td>
+      <td><span class="badge badge-${p.status==='published'?'pub':'draft'}">${p.status}</span></td>
+      <td>👁 ${p.views||0}</td>
+      <td style="font-size:0.8rem;opacity:0.6;">${new Date(p.createdAt).toLocaleDateString('en-IN')}</td>
+      <td class="td-actions">
+        <button class="btn-outline btn-sm" onclick="editPost('${p.id}')">✏ Edit</button>
+        <button class="btn-outline btn-sm" onclick="toggleStatus('${p.id}','${p.status}')">${p.status==='published'?'Unpublish':'Publish'}</button>
+        <button class="btn-danger btn-sm" onclick="deletePost('${p.id}')">🗑</button>
+      </td>
+    </tr>`).join('');
+}
+
+async function editPost(id) {
+  try {
+    const r = await fetch(`${API}/blogs/${id}`, { headers: authH() });
+    const p = await r.json();
+    document.getElementById('editPostId').value     = p.id;
+    document.getElementById('postTitle').value      = p.title;
+    document.getElementById('postExcerpt').value    = p.excerpt||'';
+    document.getElementById('postCategory').value   = p.category||'General';
+    document.getElementById('postTags').value       = (p.tags||[]).join(', ');
+    document.getElementById('postAuthor').value     = p.author||'';
+    document.getElementById('postStatus').value     = p.status;
+    document.getElementById('postImg').value        = p.featuredImg||'';
+    const rteB = document.getElementById('rteBody'); if(rteB) rteB.innerHTML = p.content||'';
+    const rteH = document.getElementById('rteHTMLArea'); if(rteH){ rteH.value=p.content||''; rteH.style.display='none'; rteB.style.display=''; }
+    rteUpdate();
+    // Image preview
+    if(p.featuredImg){ document.getElementById('postImg').value=p.featuredImg; const pr=document.getElementById('imgPreview'); if(pr){ pr.src=p.featuredImg; document.getElementById('imgPreviewWrap').classList.add('visible'); document.getElementById('imgDropZone').style.display='none'; } }
+    document.getElementById('editingLabel').textContent = `Editing: "${p.title}"`;
+    showTab('new-post');
+  } catch { notify('Could not load post', 'error'); }
+}
+
+async function savePost() {
+  const id      = document.getElementById('editPostId').value;
+  const title   = document.getElementById('postTitle').value.trim();
+  if (!title) { notify('Title is required', 'error'); return; }
+  const body = {
+    title,
+    excerpt:     document.getElementById('postExcerpt').value.trim(),
+    category:    document.getElementById('postCategory').value,
+    tags:        document.getElementById('postTags').value.split(',').map(t=>t.trim()).filter(Boolean),
+    author:      document.getElementById('postAuthor').value.trim() || 'Admin',
+    status:      document.getElementById('postStatus').value,
+    featuredImg: document.getElementById('postImg').value.trim(),
+    content:     (function(){ const b=document.getElementById('rteBody'), h=document.getElementById('rteHTMLArea'); return (h && h.style.display!=='none') ? h.value : (b ? b.innerHTML : ''); })(),
+  };
+  try {
+    const url    = id ? `${API}/blogs/${id}` : `${API}/blogs`;
+    const method = id ? 'PUT' : 'POST';
+    const r = await fetch(url, { method, headers: authH(), body: JSON.stringify(body) });
+    const d = await r.json();
+    if (r.ok) {
+      notify(id ? '✓ Post updated!' : '✓ Post created!');
+      clearEditor();
+      loadPosts();
+      loadStats();
+    } else notify(d.message || 'Save failed', 'error');
+  } catch { notify('Server error', 'error'); }
+}
+
+async function toggleStatus(id, current) {
+  const newStatus = current === 'published' ? 'draft' : 'published';
+  try {
+    const r = await fetch(`${API}/blogs/${id}`, {
+      method:'PUT', headers: authH(),
+      body: JSON.stringify({ status: newStatus })
+    });
+    if (r.ok) { notify(`Post ${newStatus}`); loadPosts(); loadStats(); }
+  } catch {}
+}
+
+async function deletePost(id) {
+  if (!confirm('Delete this post permanently?')) return;
+  try {
+    const r = await fetch(`${API}/blogs/${id}`, { method:'DELETE', headers: authH() });
+    if (r.ok) { notify('Post deleted'); loadPosts(); loadStats(); }
+  } catch {}
+}
+
+function clearEditor() {
+  ['editPostId','postTitle','postExcerpt','postTags','postAuthor','postImg']
+    .forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
+  const rteB = document.getElementById('rteBody');
+  if(rteB) rteB.innerHTML = '';
+  const rteH = document.getElementById('rteHTMLArea');
+  if(rteH){ rteH.value=''; rteH.style.display='none'; rteB.style.display=''; }
+  imgRemove();
+  document.getElementById('postStatus').value = 'draft';
+  document.getElementById('editingLabel').textContent = 'Compose a new sacred knowledge article';
+  rteUpdate();
+}
+
+// ── Contacts ─────────────────────────────────────────────
+async function loadContacts() {
+  try {
+    const r = await fetch(`${API}/contacts`, { headers: authH() });
+    const d = await r.json();
+    renderContacts(d.contacts || []);
+    loadStats();
+  } catch {}
+}
+
+function renderContacts(contacts) {
+  const tbody = document.getElementById('contactsBody');
+  if (!contacts.length) {
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:2rem;opacity:0.4;">No enquiries yet.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = contacts.map(c => `
+    <tr id="crow-${c.id}">
+      <td>${c.name}</td>
+      <td style="font-size:0.82rem;opacity:0.75;">${c.service||'—'}</td>
+      <td><a href="tel:${c.phone}" style="color:var(--saffron);">${c.phone||'—'}</a></td>
+      <td style="font-size:0.82rem;">${c.email||'—'}</td>
+      <td style="font-size:0.78rem;opacity:0.55;">${new Date(c.createdAt).toLocaleDateString('en-IN')}</td>
+      <td><span class="badge badge-${c.status||'new'}">${c.status||'new'}</span></td>
+      <td class="td-actions">
+        <button class="btn-outline btn-sm" onclick="expandContact('${c.id}')">👁 View</button>
+        <button class="btn-outline btn-sm" onclick="markContact('${c.id}','replied')">✓ Reply</button>
+        <button class="btn-danger btn-sm" onclick="deleteContact('${c.id}')">🗑</button>
+      </td>
+    </tr>
+    <tr id="cexp-${c.id}" style="display:none;">
+      <td colspan="7">
+        <div class="contact-detail">
+          <div class="detail-row"><span class="detail-key">DOB</span><span>${c.dob||'—'}</span></div>
+          <div class="detail-row"><span class="detail-key">Time</span><span>${c.tob||'—'}</span></div>
+          <div class="detail-row"><span class="detail-key">Place</span><span>${c.pob||'—'}</span></div>
+          <div class="detail-row"><span class="detail-key">Query</span><span>${c.query||'—'}</span></div>
+        </div>
+      </td>
+    </tr>`).join('');
+}
+
+function expandContact(id) {
+  const row = document.getElementById(`cexp-${id}`);
+  row.style.display = row.style.display === 'none' ? 'table-row' : 'none';
+}
+
+async function markContact(id, status) {
+  try {
+    const r = await fetch(`${API}/contacts/${id}`, {
+      method:'PUT', headers: authH(), body: JSON.stringify({ status })
+    });
+    if (r.ok) { notify(`Marked as ${status}`); loadContacts(); }
+  } catch {}
+}
+
+async function deleteContact(id) {
+  if (!confirm('Delete this enquiry?')) return;
+  try {
+    await fetch(`${API}/contacts/${id}`, { method:'DELETE', headers: authH() });
+    notify('Deleted'); loadContacts(); loadStats();
+  } catch {}
+}
+
+// ── Change password ──────────────────────────────────────
+async function changePassword() {
+  const op = document.getElementById('oldPass').value;
+  const np = document.getElementById('newPass').value;
+  const cp = document.getElementById('confPass').value;
+  const msg = document.getElementById('pwMsg');
+  if (np !== cp) { msg.style.color='#FF8080'; msg.textContent='Passwords do not match'; return; }
+  if (np.length < 8) { msg.style.color='#FF8080'; msg.textContent='Minimum 8 characters'; return; }
+  try {
+    const r = await fetch(`${API}/auth/change-password`, {
+      method:'POST', headers: authH(),
+      body: JSON.stringify({ oldPassword:op, newPassword:np })
+    });
+    const d = await r.json();
+    if (r.ok) { msg.style.color='#4CA84C'; msg.textContent='✓ Password updated successfully'; }
+    else { msg.style.color='#FF8080'; msg.textContent = d.message; }
+  } catch { msg.style.color='#FF8080'; msg.textContent = 'Server error'; }
+}
+
+// ══════════════════════════════════════════════════
+//  IMAGE UPLOADER
+// ══════════════════════════════════════════════════
+function imgFileChosen(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  if (!file.type.startsWith('image/')) { notify('Please select an image file.','error'); return; }
+  const reader = new FileReader();
+  reader.onload = ev => imgSetPreview(ev.target.result, file.name);
+  reader.readAsDataURL(file);
+}
+function imgSetPreview(dataUrl, name) {
+  document.getElementById('postImg').value = dataUrl;
+  const pr = document.getElementById('imgPreview');
+  pr.src = dataUrl;
+  document.getElementById('imgPreviewWrap').classList.add('visible');
+  document.getElementById('imgDropZone').style.display = 'none';
+  document.getElementById('imgFilename').textContent = name || '';
+  // Try to upload to server (non-blocking)
+  const tok = token;
+  if (tok) {
+    fetch('/api/upload', { method:'POST', headers:{ 'Content-Type':'application/json', 'Authorization':'Bearer '+tok },
+      body: JSON.stringify({ base64: dataUrl }) })
+      .then(r => r.ok ? r.json() : null)
+      .then(d => { if(d && d.url){ document.getElementById('postImg').value = d.url; } })
+      .catch(() => {}); // keep base64 if server upload fails
+  }
+}
+function imgRemove() {
+  document.getElementById('postImg').value = '';
+  document.getElementById('imgPreview').src = '';
+  document.getElementById('imgPreviewWrap').classList.remove('visible');
+  document.getElementById('imgDropZone').style.display = '';
+  document.getElementById('imgFilename').textContent = '';
+  document.getElementById('imgFileInput').value = '';
+}
+function imgDragOver(e) { e.preventDefault(); document.getElementById('imgDropZone').classList.add('drag-over'); }
+function imgDragLeave(e) { document.getElementById('imgDropZone').classList.remove('drag-over'); }
+function imgDrop(e) {
+  e.preventDefault();
+  document.getElementById('imgDropZone').classList.remove('drag-over');
+  const file = e.dataTransfer.files[0];
+  if (!file || !file.type.startsWith('image/')) return;
+  const reader = new FileReader();
+  reader.onload = ev => imgSetPreview(ev.target.result, file.name);
+  reader.readAsDataURL(file);
+}
+
+// ══════════════════════════════════════════════════
+//  WYSIWYG RICH TEXT EDITOR
+// ══════════════════════════════════════════════════
+let _rteSavedRange = null;
+
+function rteFocus() {
+  document.getElementById('rteBody').focus();
+}
+
+// Core execCommand wrapper
+function rte(cmd, val) {
+  document.getElementById('rteBody').focus();
+  document.execCommand(cmd, false, val || null);
+  rteUpdate();
+}
+
+// Block-level formatting (headings, blockquote, pre)
+function rteBlock(tag) {
+  if (!tag) return;
+  const body = document.getElementById('rteBody');
+  body.focus();
+  if (tag === 'blockquote' || tag === 'pre') {
+    document.execCommand('formatBlock', false, tag);
+  } else {
+    document.execCommand('formatBlock', false, tag);
+  }
+  rteUpdate();
+}
+
+// Horizontal rule
+function rteHR() {
+  document.getElementById('rteBody').focus();
+  document.execCommand('insertHorizontalRule', false, null);
+  rteUpdate();
+}
+
+// Link dialog
+function rteLink() {
+  const sel = window.getSelection();
+  if (sel && sel.rangeCount > 0) _rteSavedRange = sel.getRangeAt(0).cloneRange();
+  document.getElementById('rteLinkUrl').value  = '';
+  document.getElementById('rteLinkText').value = sel ? sel.toString() : '';
+  document.getElementById('rteLinkDialog').classList.add('open');
+  document.getElementById('rteLinkOverlay').classList.add('open');
+  setTimeout(() => document.getElementById('rteLinkUrl').focus(), 50);
+}
+function rteLinkClose() {
+  document.getElementById('rteLinkDialog').classList.remove('open');
+  document.getElementById('rteLinkOverlay').classList.remove('open');
+}
+function rteLinkInsert() {
+  const url  = document.getElementById('rteLinkUrl').value.trim();
+  const text = document.getElementById('rteLinkText').value.trim();
+  if (!url) { alert('Please enter a URL'); return; }
+  const body = document.getElementById('rteBody');
+  body.focus();
+  if (_rteSavedRange) {
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(_rteSavedRange);
+  }
+  if (text) {
+    document.execCommand('insertHTML', false, `<a href="${url}" target="_blank">${text}</a>`);
+  } else {
+    document.execCommand('createLink', false, url);
+    // Make it open in new tab
+    const links = body.querySelectorAll(`a[href="${url}"]`);
+    links.forEach(l => l.setAttribute('target','_blank'));
+  }
+  rteLinkClose();
+  rteUpdate();
+}
+
+// Word count + toolbar state update
+function rteUpdate() {
+  const body = document.getElementById('rteBody');
+  const text = body.innerText || '';
+  const words = text.trim() ? text.trim().split(/\s+/).filter(w=>w.length>0).length : 0;
+  const el = document.getElementById('rteWordCount');
+  if (el) el.textContent = words + (words===1?' word':' words');
+}
+
+// Keyboard shortcuts
+function rteKeydown(e) {
+  if (e.key === 'Tab') {
+    e.preventDefault();
+    document.execCommand('insertHTML', false, '&nbsp;&nbsp;&nbsp;&nbsp;');
+  }
+  // Paste: strip external styles, keep text+basic HTML
+  if (e.ctrlKey && e.key === 'v') {
+    setTimeout(() => {
+      const body = document.getElementById('rteBody');
+      // Clean up pasted content: remove spans with style, keep structure
+      body.querySelectorAll('span[style],font,div[style]').forEach(el => {
+        const txt = document.createTextNode(el.innerText);
+        el.parentNode.replaceChild(txt, el);
+      });
+      rteUpdate();
+    }, 10);
+  }
+}
+
+// Toggle HTML source view
+let _rteHTMLMode = false;
+function rteToggleHTML() {
+  const body = document.getElementById('rteBody');
+  const area = document.getElementById('rteHTMLArea');
+  _rteHTMLMode = !_rteHTMLMode;
+  if (_rteHTMLMode) {
+    area.value = body.innerHTML;
+    body.style.display = 'none';
+    area.style.display = 'block';
+    area.style.minHeight = '340px';
+  } else {
+    body.innerHTML = area.value;
+    area.style.display = 'none';
+    body.style.display = '';
+    rteUpdate();
+  }
+}
+function rteHTMLChanged() {
+  // live sync from HTML textarea back to body is done on toggle back
+}
+</script>
+</body>
+</html>

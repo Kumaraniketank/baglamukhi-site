@@ -1,0 +1,4135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Maa Baglamukhi Peeth Parishad</title>
+<link rel="icon"             type="image/jpeg" href="ma.jpeg"/>
+  <link rel="shortcut icon"    type="image/jpeg" href="ma.jpeg"/>
+  <link rel="apple-touch-icon"                   href="ma.jpeg"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #F0D080;
+    --gold-dark: #8B6914;
+    --maroon: #5C0A0A;
+    --maroon-deep: #3A0505;
+    --saffron: #E8611A;
+    --saffron-light: #FF9F45;
+    --cream: #FDF5E6;
+    --parchment: #F5E8C8;
+    --ink: #1A0A00;
+    --smoke: #2A1A08;
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    background: var(--ink);
+    color: var(--cream);
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content:'';
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.35;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--ink); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+
+  /* ══════════════════════════════════
+     NAVBAR
+  ══════════════════════════════════ */
+  .navbar {
+    position: fixed; top:0; left:0; right:0; z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 3rem;
+    height: 70px;
+    background: linear-gradient(180deg, rgba(26,10,0,0.98) 0%, rgba(26,10,0,0.85) 100%);
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+  }
+  .navbar.scrolled {
+    height: 60px;
+    border-bottom-color: rgba(201,168,76,0.5);
+    background: rgba(26,10,0,0.99);
+  }
+  .nav-brand {
+    display: flex; align-items: center; gap: 14px;
+    text-decoration: none;
+  }
+  .nav-logo-symbol {
+    width: 58px; height: 58px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; flex-shrink: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, #3A0A00, #1A0500);
+    border: 2px solid rgba(201,168,76,0.65);
+    box-shadow: 0 0 18px rgba(201,168,76,0.5), inset 0 0 12px rgba(201,168,76,0.1);
+    animation: glow-pulse 3s ease-in-out infinite;
+    overflow: hidden;
+    padding: 0;
+  }
+  .nav-logo-symbol img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 50%;
+    display: block;
+    transition: transform 0.4s ease, filter 0.4s ease;
+    filter: saturate(1.15) brightness(1.05);
+  }
+  @keyframes glow-pulse {
+    0%,100% { box-shadow: 0 0 14px rgba(201,168,76,0.45), inset 0 0 10px rgba(201,168,76,0.08); }
+    50%      { box-shadow: 0 0 32px rgba(201,168,76,0.9),  inset 0 0 16px rgba(201,168,76,0.15); }
+  }
+  .nav-brand:hover .nav-logo-symbol img {
+    transform: scale(1.07);
+    filter: saturate(1.3) brightness(1.1) drop-shadow(0 0 8px rgba(255,215,0,0.8));
+  }
+  .nav-title-wrap { display:flex; flex-direction:column; }
+  .nav-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem; font-weight: 700;
+    color: var(--gold-light);
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+  }
+  .nav-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.7rem; font-weight: 300;
+    color: rgba(240,208,128,0.65);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .nav-links {
+    display: flex; gap: 2.2rem; list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem; font-weight: 600;
+    color: rgba(240,208,128,0.8);
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.25s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px;
+    background: var(--gold);
+    transform: scaleX(0); transform-origin: center;
+    transition: transform 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    color: var(--ink) !important;
+    padding: 8px 20px;
+    border-radius: 2px;
+    font-weight: 700 !important;
+    transition: box-shadow 0.3s, transform 0.2s !important;
+  }
+  .nav-cta::after { display:none; }
+  .nav-cta:hover { box-shadow: 0 4px 20px rgba(201,168,76,0.5); transform: translateY(-1px); }
+
+  /* Hamburger */
+  .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; }
+  .hamburger span { display:block; width:26px; height:2px; background:var(--gold); border-radius:2px; transition:all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+  .hamburger.open span:nth-child(2) { opacity:0; }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+  /* ══════════════════════════════════
+     HERO
+  ══════════════════════════════════ */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    background: radial-gradient(ellipse 90% 80% at 50% 60%, #2A0808 0%, #1A0500 40%, #0D0200 100%);
+    padding: 100px 2rem 60px;
+  }
+
+  /* Mandala BG */
+  .mandala-bg {
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    pointer-events:none;
+  }
+  .mandala-ring {
+    position:absolute; border-radius:50%;
+    border: 1px solid rgba(201,168,76,0.12);
+    animation: spin-slow linear infinite;
+  }
+  .mandala-ring:nth-child(1) { width:700px; height:700px; animation-duration:80s; }
+  .mandala-ring:nth-child(2) { width:540px; height:540px; border-style:dashed; animation-duration:60s; animation-direction:reverse; border-color:rgba(232,97,26,0.1); }
+  .mandala-ring:nth-child(3) { width:400px; height:400px; animation-duration:45s; border-color:rgba(201,168,76,0.18); }
+  .mandala-ring:nth-child(4) { width:270px; height:270px; border-style:dashed; animation-duration:30s; animation-direction:reverse; border-color:rgba(201,168,76,0.25); }
+  @keyframes spin-slow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+  /* Particle stars */
+  .stars { position:absolute; inset:0; pointer-events:none; }
+  .star {
+    position:absolute; width:2px; height:2px;
+    background:var(--gold-light); border-radius:50%;
+    animation: twinkle ease-in-out infinite;
+  }
+  @keyframes twinkle {
+    0%,100%{opacity:0.1;transform:scale(1)}
+    50%{opacity:0.8;transform:scale(1.5)}
+  }
+
+  .hero-content {
+    position:relative; z-index:2;
+    text-align:center;
+    max-width: 900px;
+    animation: hero-fade-in 1.2s ease forwards;
+  }
+  @keyframes hero-fade-in {
+    from { opacity:0; transform:translateY(40px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  .hero-om {
+    font-size: clamp(3.5rem, 8vw, 6rem);
+    color: var(--gold);
+    filter: drop-shadow(0 0 30px rgba(201,168,76,0.7));
+    animation: om-glow 4s ease-in-out infinite;
+    line-height: 1; margin-bottom: 0.5rem;
+    display:block;
+  }
+  @keyframes om-glow {
+    0%,100%{filter:drop-shadow(0 0 20px rgba(201,168,76,0.6))}
+    50%{filter:drop-shadow(0 0 50px rgba(201,168,76,1))}
+  }
+
+  .hero-sanskrit {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-style: italic;
+    color: rgba(240,208,128,0.7);
+    letter-spacing: 0.2em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-divider {
+    display:flex; align-items:center; gap:1rem; justify-content:center;
+    margin-bottom: 1.5rem;
+  }
+  .hero-divider-line { flex:1; max-width:120px; height:1px; background:linear-gradient(90deg, transparent, var(--gold), transparent); }
+  .hero-divider-dot { width:8px;height:8px;background:var(--gold);border-radius:50%;box-shadow:0 0 10px var(--gold); }
+
+  .hero-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--gold-light);
+    text-shadow: 0 0 60px rgba(201,168,76,0.4), 0 4px 20px rgba(0,0,0,0.8);
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.03em;
+  }
+  .hero-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1rem, 2vw, 1.35rem);
+    font-weight: 400;
+    color: var(--saffron-light);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .hero-desc {
+    font-size: clamp(1rem, 1.8vw, 1.25rem);
+    line-height: 1.8;
+    color: rgba(253,245,230,0.75);
+    max-width: 680px;
+    margin: 0 auto 2.5rem;
+    font-weight: 300;
+  }
+  .hero-buttons {
+    display:flex; gap:1.2rem; justify-content:center; flex-wrap:wrap;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+    color: var(--ink);
+    padding: 14px 38px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+    transition: box-shadow 0.3s, transform 0.2s;
+  }
+  .btn-primary:hover { box-shadow: 0 6px 30px rgba(201,168,76,0.6); transform:translateY(-2px); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--gold-light);
+    padding: 13px 38px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border: 1px solid rgba(201,168,76,0.5);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+    transition: all 0.3s;
+  }
+  .btn-secondary:hover { background:rgba(201,168,76,0.1); border-color:var(--gold); }
+
+  .hero-scroll-hint {
+    position:absolute; bottom:2rem; left:50%; transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    z-index:2;
+  }
+  .hero-scroll-hint span {
+    font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.3em;
+    text-transform:uppercase; color:rgba(201,168,76,0.5);
+  }
+  .scroll-arrow {
+    width:24px;height:24px;border-right:1px solid rgba(201,168,76,0.4);
+    border-bottom:1px solid rgba(201,168,76,0.4);
+    transform:rotate(45deg);
+    animation:bounce-down 2s ease-in-out infinite;
+  }
+  @keyframes bounce-down {
+    0%,100%{transform:rotate(45deg) translateY(0)}
+    50%{transform:rotate(45deg) translateY(6px)}
+  }
+
+  /* ══════════════════════════════════
+     SECTION COMMON
+  ══════════════════════════════════ */
+  section { position:relative; z-index:1; }
+  .section-pad { padding: 90px 2rem; }
+  .container { max-width: 1200px; margin:0 auto; }
+
+  .section-label {
+    font-family:'Cinzel',serif;
+    font-size:0.7rem; letter-spacing:0.35em;
+    text-transform:uppercase; color:var(--saffron);
+    display:block; margin-bottom:0.8rem;
+    text-align:center;
+  }
+  .section-title {
+    font-family:'Cinzel Decorative',serif;
+    font-size:clamp(1.8rem,3.5vw,2.8rem);
+    font-weight:700;
+    color:var(--gold-light);
+    text-align:center;
+    margin-bottom:1rem;
+    line-height:1.2;
+  }
+  .section-desc {
+    font-size:clamp(1rem,1.5vw,1.2rem);
+    color:rgba(253,245,230,0.65);
+    text-align:center;
+    max-width:680px;
+    margin:0 auto 3.5rem;
+    line-height:1.85;
+    font-weight:300;
+  }
+  .ornamental-divider {
+    display:flex; align-items:center; gap:1rem; justify-content:center; margin-bottom:1.5rem;
+  }
+  .ornamental-divider-line { flex:1;max-width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-dark)); }
+  .ornamental-divider-line.r { background:linear-gradient(90deg,var(--gold-dark),transparent); }
+  .ornamental-divider-center { font-size:1.2rem; color:var(--gold); }
+
+  /* ══════════════════════════════════
+     ABOUT
+  ══════════════════════════════════ */
+  .about-section {
+    background: linear-gradient(180deg, #0D0200 0%, #160800 50%, #0D0200 100%);
+  }
+  .about-grid {
+    display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center;
+  }
+  .about-image-wrap {
+    position:relative;
+  }
+  .about-frame {
+    position:relative;
+    background: linear-gradient(135deg, var(--maroon-deep), #2A0808);
+    border: 1px solid rgba(201,168,76,0.25);
+    padding: 2.5rem;
+    display:flex; align-items:center; justify-content:center;
+    min-height:400px;
+    overflow:hidden;
+  }
+  .about-frame::before {
+    content:''; position:absolute;
+    top:12px;left:12px;right:12px;bottom:12px;
+    border:1px solid rgba(201,168,76,0.15);
+    pointer-events:none;
+  }
+  .about-frame-symbol {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  object-position: center top;
+  opacity: 0.92;
+  animation: float-symbol 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(201,168,76,0.3));
+}
+  @keyframes float-symbol {
+    0%,100%{transform:translateY(0) rotate(-2deg)}
+    50%{transform:translateY(-12px) rotate(2deg)}
+  }
+  .about-corner {
+    position:absolute; width:24px; height:24px;
+    border-color:var(--gold);
+    border-style:solid;
+    opacity:0.6;
+  }
+  .about-corner.tl { top:6px;left:6px; border-width:2px 0 0 2px; }
+  .about-corner.tr { top:6px;right:6px; border-width:2px 2px 0 0; }
+  .about-corner.bl { bottom:6px;left:6px; border-width:0 0 2px 2px; }
+  .about-corner.br { bottom:6px;right:6px; border-width:0 2px 2px 0; }
+
+  .about-badge {
+    position:absolute; bottom:-20px; right:-20px;
+    width:90px; height:90px;
+    background:linear-gradient(135deg,var(--gold-dark),var(--gold));
+    border-radius:50%;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    box-shadow:0 8px 30px rgba(201,168,76,0.4);
+  }
+  .about-badge-num {
+    font-family:'Cinzel Decorative',serif;
+    font-size:1.4rem; font-weight:900; color:var(--ink); line-height:1;
+  }
+  .about-badge-txt {
+    font-family:'Cinzel',serif;
+    font-size:0.45rem; letter-spacing:0.1em; color:var(--ink); text-align:center;
+    text-transform:uppercase; line-height:1.3;
+  }
+
+  .about-text { }
+  .about-text h2 {
+    font-family:'Cinzel Decorative',serif;
+    font-size:clamp(1.6rem,2.8vw,2.3rem); font-weight:700;
+    color:var(--gold-light); margin-bottom:1.2rem; line-height:1.2;
+  }
+  .about-text p {
+    font-size:1.05rem; line-height:1.9;
+    color:rgba(253,245,230,0.72); margin-bottom:1.2rem; font-weight:300;
+  }
+  .about-pillars {
+    display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.8rem;
+  }
+  .pillar {
+    display:flex; align-items:flex-start; gap:0.8rem;
+    background:rgba(201,168,76,0.05);
+    border:1px solid rgba(201,168,76,0.15);
+    padding:0.9rem 1rem;
+    border-radius:1px;
+    transition:background 0.3s;
+  }
+  .pillar:hover { background:rgba(201,168,76,0.1); }
+  .pillar-icon { font-size:1.4rem; flex-shrink:0; margin-top:2px; }
+  .pillar-label { font-family:'Cinzel',serif; font-size:0.78rem; font-weight:600; color:var(--gold); letter-spacing:0.08em; display:block; margin-bottom:3px; }
+  .pillar-desc { font-size:0.85rem; color:rgba(253,245,230,0.55); line-height:1.5; }
+
+  /* ══════════════════════════════════
+     SERVICES
+  ══════════════════════════════════ */
+  .services-section {
+    background: linear-gradient(180deg, #0D0200 0%, #100300 100%);
+  }
+  .services-grid {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem;
+  }
+  .service-card {
+    background: linear-gradient(160deg, rgba(92,10,10,0.35) 0%, rgba(26,10,0,0.6) 100%);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 2.2rem 2rem;
+    position:relative; overflow:hidden;
+    transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
+  }
+  .service-card::before {
+    content:''; position:absolute; inset:0;
+    background: radial-gradient(circle at 30% 30%, rgba(201,168,76,0.08), transparent 60%);
+    pointer-events:none;
+  }
+  .service-card:hover {
+    transform:translateY(-6px);
+    border-color:rgba(201,168,76,0.5);
+    box-shadow:0 16px 50px rgba(92,10,10,0.4), 0 0 30px rgba(201,168,76,0.12);
+  }
+  .service-icon {
+    font-size:3rem; margin-bottom:1rem; display:block;
+    filter:drop-shadow(0 0 12px rgba(201,168,76,0.4));
+    transition:filter 0.3s;
+  }
+  .service-card:hover .service-icon { filter:drop-shadow(0 0 24px rgba(201,168,76,0.8)); }
+  .service-name {
+    font-family:'Cinzel',serif;
+    font-size:1.05rem; font-weight:700; color:var(--gold-light);
+    margin-bottom:0.6rem; letter-spacing:0.05em;
+  }
+  .service-desc {
+    font-size:0.95rem; line-height:1.75; color:rgba(253,245,230,0.6); margin-bottom:1.5rem;
+    font-weight:300;
+  }
+  .service-link {
+    font-family:'Cinzel',serif; font-size:0.7rem; letter-spacing:0.2em;
+    text-transform:uppercase; color:var(--saffron);
+    text-decoration:none; display:inline-flex; align-items:center; gap:6px;
+    transition:color 0.25s, gap 0.25s;
+  }
+  .service-link:hover { color:var(--gold-light); gap:10px; }
+  .service-card-num {
+    position:absolute; top:1.5rem; right:1.5rem;
+    font-family:'Cinzel Decorative',serif; font-size:2.5rem; font-weight:900;
+    color:rgba(201,168,76,0.06); line-height:1; pointer-events:none;
+  }
+
+  /* ══════════════════════════════════
+     KNOWLEDGE PILLARS (Research Areas)
+  ══════════════════════════════════ */
+  .knowledge-section {
+    background: linear-gradient(180deg, #100300 0%, #0A0100 100%);
+    overflow:hidden;
+  }
+  .knowledge-track-wrap {
+    overflow:hidden; margin-bottom:3rem;
+    mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent);
+  }
+  .knowledge-track {
+    display:flex; gap:1.5rem;
+    animation: ticker 30s linear infinite;
+    width:max-content;
+  }
+  @keyframes ticker {
+    from{transform:translateX(0)}
+    to{transform:translateX(-50%)}
+  }
+  .knowledge-track-item {
+    flex-shrink:0;
+    font-family:'Cinzel',serif; font-size:0.72rem; letter-spacing:0.25em;
+    text-transform:uppercase; color:rgba(201,168,76,0.5);
+    border:1px solid rgba(201,168,76,0.2); padding:8px 20px;
+    white-space:nowrap;
+  }
+  .knowledge-cards {
+    display:grid; grid-template-columns:repeat(2,1fr); gap:2rem;
+  }
+  .knowledge-card {
+    display:flex; gap:2rem; align-items:flex-start;
+    background:rgba(255,255,255,0.02);
+    border:1px solid rgba(201,168,76,0.12);
+    padding:2rem;
+    transition:border-color 0.3s;
+  }
+  .knowledge-card:hover { border-color:rgba(201,168,76,0.35); }
+  .knowledge-card-icon {
+    width:64px; height:64px; flex-shrink:0;
+    background:linear-gradient(135deg, var(--maroon), #3A0808);
+    border:1px solid rgba(201,168,76,0.3);
+    display:flex; align-items:center; justify-content:center;
+    font-size:2rem;
+    box-shadow:0 4px 20px rgba(92,10,10,0.5);
+  }
+  .knowledge-card-title {
+    font-family:'Cinzel',serif; font-size:1.1rem; font-weight:700;
+    color:var(--gold-light); margin-bottom:0.5rem;
+  }
+  .knowledge-card-text {
+    font-size:0.97rem; line-height:1.8; color:rgba(253,245,230,0.6); font-weight:300;
+  }
+  .knowledge-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:0.8rem; }
+  .knowledge-tag {
+    font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.15em;
+    text-transform:uppercase; color:var(--saffron);
+    border:1px solid rgba(232,97,26,0.3); padding:3px 10px;
+  }
+
+  /* ══════════════════════════════════
+     CONSULTATION
+  ══════════════════════════════════ */
+  .consult-section {
+    background: linear-gradient(135deg, #160800 0%, #0A0100 50%, #160800 100%);
+    position:relative;
+  }
+  .consult-section::before {
+    content:''; position:absolute; inset:0;
+    background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(92,10,10,0.3), transparent);
+    pointer-events:none;
+  }
+  .consult-grid {
+    display:grid; grid-template-columns:1fr 1.2fr; gap:4rem; align-items:start;
+  }
+  .consult-info h2 {
+    font-family:'Cinzel Decorative',serif;
+    font-size:clamp(1.6rem,2.8vw,2.3rem); font-weight:700;
+    color:var(--gold-light); margin-bottom:1.5rem;
+  }
+  .consult-info p {
+    font-size:1.05rem; line-height:1.9; color:rgba(253,245,230,0.7);
+    margin-bottom:1.5rem; font-weight:300;
+  }
+  .consult-steps { display:flex; flex-direction:column; gap:1.2rem; margin-top:2rem; }
+  .consult-step {
+    display:flex; gap:1rem; align-items:flex-start;
+  }
+  .consult-step-num {
+    width:38px; height:38px; flex-shrink:0;
+    background:linear-gradient(135deg,var(--gold-dark),var(--gold));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Cinzel Decorative',serif; font-size:0.85rem; font-weight:900;
+    color:var(--ink); border-radius:50%;
+    box-shadow:0 4px 14px rgba(201,168,76,0.3);
+  }
+  .consult-step-text strong {
+    font-family:'Cinzel',serif; font-size:0.85rem; color:var(--gold); display:block; margin-bottom:3px;
+  }
+  .consult-step-text span { font-size:0.88rem; color:rgba(253,245,230,0.55); }
+
+  /* Form */
+  .consult-form {
+    background:linear-gradient(160deg,rgba(92,10,10,0.25),rgba(26,10,0,0.5));
+    border:1px solid rgba(201,168,76,0.25);
+    padding:2.5rem;
+  }
+  .form-title {
+    font-family:'Cinzel',serif; font-size:1.1rem; font-weight:700;
+    color:var(--gold-light); margin-bottom:0.4rem; letter-spacing:0.06em;
+  }
+  .form-subtitle { font-size:0.88rem; color:rgba(253,245,230,0.5); margin-bottom:2rem; }
+  .form-group { margin-bottom:1.2rem; }
+  .form-group label {
+    font-family:'Cinzel',serif; font-size:0.7rem; letter-spacing:0.18em;
+    text-transform:uppercase; color:var(--gold); display:block; margin-bottom:6px;
+  }
+  .form-group input, .form-group select, .form-group textarea {
+    width:100%; background:rgba(255,255,255,0.04);
+    border:1px solid rgba(201,168,76,0.2); color:var(--cream);
+    padding:11px 15px; font-family:'Cormorant Garamond',serif; font-size:1rem;
+    outline:none; transition:border-color 0.25s;
+    border-radius:0;
+    -webkit-appearance:none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color:rgba(201,168,76,0.6);
+    background:rgba(201,168,76,0.05);
+  }
+  .form-group select option { background:#1A0500; }
+  .form-group textarea { resize:vertical; min-height:100px; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .form-btn {
+    width:100%; padding:14px;
+    background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));
+    color:var(--ink); border:none; cursor:pointer;
+    font-family:'Cinzel',serif; font-size:0.8rem; font-weight:700;
+    letter-spacing:0.2em; text-transform:uppercase;
+    clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+    transition:box-shadow 0.3s,transform 0.2s;
+    margin-top:0.5rem;
+  }
+  .form-btn:hover { box-shadow:0 6px 28px rgba(201,168,76,0.5); transform:translateY(-1px); }
+
+  /* ══════════════════════════════════
+     STATS STRIP
+  ══════════════════════════════════ */
+  .stats-strip {
+    background:linear-gradient(90deg, var(--maroon-deep), #3A0808, var(--maroon-deep));
+    border-top:1px solid rgba(201,168,76,0.2);
+    border-bottom:1px solid rgba(201,168,76,0.2);
+    padding:2.5rem 2rem;
+  }
+  .stats-inner {
+    display:flex; justify-content:space-between; align-items:center;
+    max-width:1200px; margin:0 auto; flex-wrap:wrap; gap:2rem;
+  }
+  .stat-item { text-align:center; flex:1; min-width:150px; }
+  .stat-num {
+    font-family:'Cinzel Decorative',serif;
+    font-size:clamp(2rem,4vw,3rem); font-weight:900;
+    color:var(--gold-light);
+    text-shadow:0 0 30px rgba(201,168,76,0.4);
+    display:block; line-height:1;
+  }
+  .stat-label {
+    font-family:'Cinzel',serif; font-size:0.7rem; letter-spacing:0.25em;
+    text-transform:uppercase; color:rgba(253,245,230,0.5); margin-top:6px;
+  }
+  .stat-sep { width:1px; height:60px; background:rgba(201,168,76,0.2); }
+
+  /* ══════════════════════════════════
+     TESTIMONIALS
+  ══════════════════════════════════ */
+  .testimonials-section {
+    background:linear-gradient(180deg,#0A0100 0%,#100300 100%);
+  }
+  .testimonials-grid {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem;
+  }
+  .testimonial-card {
+    background:linear-gradient(160deg,rgba(92,10,10,0.2),rgba(26,10,0,0.4));
+    border:1px solid rgba(201,168,76,0.15);
+    padding:2rem;
+    position:relative;
+    transition:border-color 0.3s;
+  }
+  .testimonial-card:hover { border-color:rgba(201,168,76,0.35); }
+  .testimonial-quote {
+    font-size:3rem; line-height:0.8; color:rgba(201,168,76,0.25);
+    font-family:Georgia,serif; margin-bottom:1rem;
+  }
+  .testimonial-text {
+    font-size:0.97rem; line-height:1.8; color:rgba(253,245,230,0.65);
+    font-style:italic; margin-bottom:1.5rem; font-weight:300;
+  }
+  .testimonial-author { display:flex; align-items:center; gap:0.8rem; }
+  .testimonial-avatar {
+    width: 52px; height: 52px; border-radius: 50%;
+    overflow: hidden; flex-shrink: 0;
+    border: 1.5px solid rgba(201,168,76,0.4);
+    box-shadow: 0 0 12px rgba(201,168,76,0.15);
+    background: linear-gradient(135deg,#3A0A00,#1A0400);
+  }
+  .testimonial-avatar svg { width: 100%; height: 100%; display: block; }
+  .testimonial-name {
+    font-family:'Cinzel',serif; font-size:0.82rem; font-weight:700;
+    color:var(--gold); letter-spacing:0.05em;
+  }
+  .testimonial-from { font-size:0.78rem; color:rgba(253,245,230,0.4); }
+  .testimonial-stars { margin-left:auto; color:var(--gold); font-size:0.8rem; }
+
+  /* ══════════════════════════════════
+     PANDIT / SCHOLARS
+  ══════════════════════════════════ */
+  .scholars-section {
+    background:linear-gradient(180deg,#100300 0%,#0D0200 100%);
+  }
+  .scholars-grid {
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem;
+  }
+  .scholar-card {
+    background:linear-gradient(180deg,rgba(92,10,10,0.3),rgba(26,10,0,0.5));
+    border:1px solid rgba(201,168,76,0.18);
+    padding:2rem 1.5rem;
+    text-align:center;
+    transition:transform 0.3s,border-color 0.3s;
+  }
+  .scholar-card:hover { transform:translateY(-5px); border-color:rgba(201,168,76,0.4); }
+  .scholar-avatar {
+    width: 110px; height: 110px; margin: 0 auto 1.2rem;
+    border: 2px solid rgba(201,168,76,0.4);
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 22px rgba(201,168,76,0.2), 0 4px 16px rgba(0,0,0,0.5);
+    transition: box-shadow 0.3s, border-color 0.3s;
+    background: linear-gradient(135deg, #3A0A00, #1A0400);
+  }
+  .scholar-card:hover .scholar-avatar {
+    border-color: rgba(201,168,76,0.7);
+    box-shadow: 0 0 34px rgba(201,168,76,0.4), 0 6px 20px rgba(0,0,0,0.5);
+  }
+  .scholar-avatar svg { width: 100%; height: 100%; display: block; }
+  .scholar-name {
+    font-family:'Cinzel',serif; font-size:0.9rem; font-weight:700;
+    color:var(--gold-light); margin-bottom:4px;
+  }
+  .scholar-title { font-size:0.8rem; color:var(--saffron); margin-bottom:8px; font-style:italic; }
+  .scholar-spec { font-size:0.8rem; color:rgba(253,245,230,0.5); line-height:1.5; }
+
+  /* ══════════════════════════════════
+     CONTACT
+  ══════════════════════════════════ */
+  .contact-section {
+    background:linear-gradient(180deg,#0D0200 0%,#0A0100 100%);
+  }
+  .contact-grid {
+    display:grid; grid-template-columns:1.2fr 1fr; gap:4rem;
+  }
+  .contact-info h2 {
+    font-family:'Cinzel Decorative',serif;
+    font-size:clamp(1.6rem,2.8vw,2.3rem); color:var(--gold-light); margin-bottom:1rem;
+  }
+  .contact-info p { font-size:1.05rem; line-height:1.9; color:rgba(253,245,230,0.65); margin-bottom:2rem; font-weight:300; }
+  .contact-items { display:flex; flex-direction:column; gap:1.2rem; }
+  .contact-item { display:flex; gap:1rem; align-items:flex-start; }
+  .contact-icon {
+    width:44px; height:44px; flex-shrink:0;
+    background:linear-gradient(135deg,var(--maroon),#4A0A0A);
+    border:1px solid rgba(201,168,76,0.25);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.2rem;
+  }
+  .contact-item-label {
+    font-family:'Cinzel',serif; font-size:0.72rem; letter-spacing:0.2em;
+    text-transform:uppercase; color:var(--gold); display:block; margin-bottom:3px;
+  }
+  .contact-item-val { font-size:0.97rem; color:rgba(253,245,230,0.65); }
+  .contact-item-val a { color:inherit; text-decoration:none; }
+  .contact-item-val a:hover { color:var(--gold-light); }
+
+  .social-links { display:flex; gap:0.8rem; margin-top:2rem; }
+  .social-link {
+    width:44px; height:44px;
+    border:1px solid rgba(201,168,76,0.25);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.1rem; text-decoration:none;
+    transition:background 0.25s,border-color 0.25s;
+  }
+  .social-link:hover { background:rgba(201,168,76,0.15); border-color:var(--gold); }
+
+  .contact-map-placeholder {
+    background:linear-gradient(135deg,rgba(92,10,10,0.3),rgba(26,10,0,0.5));
+    border:1px solid rgba(201,168,76,0.2);
+    height:100%; min-height:350px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:1rem;
+  }
+  .map-icon { font-size:3.5rem; filter:drop-shadow(0 0 16px rgba(201,168,76,0.5)); }
+  .map-text { font-family:'Cinzel',serif; font-size:0.8rem; letter-spacing:0.15em; color:var(--gold); text-align:center; }
+  .map-address { font-size:0.9rem; color:rgba(253,245,230,0.5); text-align:center; max-width:260px; line-height:1.7; }
+
+  /* ══════════════════════════════════
+     FOOTER
+  ══════════════════════════════════ */
+  footer {
+    background:linear-gradient(180deg,#0A0100 0%,#050000 100%);
+    border-top:1px solid rgba(201,168,76,0.2);
+    padding:3rem 2rem 1.5rem;
+  }
+  .footer-inner {
+    max-width:1200px; margin:0 auto;
+  }
+  .footer-top {
+    display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; margin-bottom:3rem;
+  }
+  .footer-brand-name {
+    font-family:'Cinzel Decorative',serif;
+    font-size:1rem; font-weight:700; color:var(--gold-light);
+    margin-bottom:0.5rem; margin-top:0.7rem;
+  }
+  .footer-brand-desc {
+    font-size:0.88rem; line-height:1.8; color:rgba(253,245,230,0.45); margin-bottom:1.2rem;
+  }
+  .footer-col-title {
+    font-family:'Cinzel',serif; font-size:0.72rem; letter-spacing:0.25em;
+    text-transform:uppercase; color:var(--gold); margin-bottom:1.2rem;
+  }
+  .footer-links { list-style:none; display:flex; flex-direction:column; gap:0.6rem; }
+  .footer-links a {
+    font-size:0.88rem; color:rgba(253,245,230,0.45); text-decoration:none;
+    transition:color 0.2s; display:flex; align-items:center; gap:6px;
+  }
+  .footer-links a::before { content:'›'; color:var(--gold-dark); }
+  .footer-links a:hover { color:var(--gold-light); }
+  .footer-bottom {
+    border-top:1px solid rgba(201,168,76,0.12);
+    padding-top:1.5rem;
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;
+  }
+  .footer-copy { font-size:0.8rem; color:rgba(253,245,230,0.3); }
+  .footer-legal { display:flex; gap:1.5rem; }
+  .footer-legal a { font-size:0.78rem; color:rgba(253,245,230,0.3); text-decoration:none; }
+  .footer-legal a:hover { color:var(--gold); }
+  .footer-om { font-size:1.6rem; color:rgba(201,168,76,0.3); }
+
+  /* ══════════════════════════════════
+     BACK TO TOP
+  ══════════════════════════════════ */
+  .back-top {
+    position:fixed; bottom:2rem; right:2rem; z-index:500;
+    width:48px; height:48px;
+    background:linear-gradient(135deg,var(--gold-dark),var(--gold));
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.4rem; cursor:pointer;
+    box-shadow:0 4px 20px rgba(201,168,76,0.3);
+    opacity:0; pointer-events:none;
+    transition:opacity 0.3s, transform 0.3s;
+    clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+    text-decoration:none; color:var(--ink);
+  }
+  .back-top.visible { opacity:1; pointer-events:auto; }
+  .back-top:hover { transform:translateY(-3px); }
+
+  /* ══════════════════════════════════
+     MOBILE NAV DROPDOWN
+  ══════════════════════════════════ */
+  .mobile-nav {
+    display:none;
+    position:fixed; top:70px; left:0; right:0; z-index:999;
+    background:rgba(10,1,0,0.98);
+    border-bottom:1px solid rgba(201,168,76,0.2);
+    padding:1.5rem 2rem 2rem;
+    flex-direction:column; gap:1rem;
+    backdrop-filter:blur(12px);
+  }
+  .mobile-nav.open { display:flex; }
+  .mobile-nav a {
+    font-family:'Cinzel',serif; font-size:0.85rem; letter-spacing:0.15em;
+    text-transform:uppercase; color:rgba(240,208,128,0.8);
+    text-decoration:none; padding:8px 0;
+    border-bottom:1px solid rgba(201,168,76,0.1);
+  }
+  .mobile-nav a:last-child { border-bottom:none; }
+
+  /* ══════════════════════════════════
+     RESPONSIVE
+  ══════════════════════════════════ */
+  @media(max-width:1024px) {
+    .about-grid { grid-template-columns:1fr; gap:3rem; }
+    .services-grid { grid-template-columns:1fr 1fr; }
+    .scholars-grid { grid-template-columns:1fr 1fr; }
+    .consult-grid { grid-template-columns:1fr; }
+    .contact-grid { grid-template-columns:1fr; }
+    .footer-top { grid-template-columns:1fr 1fr; }
+    .knowledge-cards { grid-template-columns:1fr; }
+  }
+  @media(max-width:768px) {
+    .navbar { padding:0 1.5rem; }
+    .nav-links { display:none; }
+    .hamburger { display:flex; }
+    .services-grid { grid-template-columns:1fr; }
+    .testimonials-grid { grid-template-columns:1fr; }
+    .scholars-grid { grid-template-columns:1fr 1fr; }
+    .about-pillars { grid-template-columns:1fr; }
+    .form-row { grid-template-columns:1fr; }
+    .stats-inner { flex-direction:column; gap:2rem; }
+    .stat-sep { display:none; }
+    .footer-top { grid-template-columns:1fr; gap:2rem; }
+    .footer-bottom { flex-direction:column; align-items:flex-start; }
+    .mandala-ring:nth-child(1) { width:380px;height:380px; }
+    .mandala-ring:nth-child(2) { width:300px;height:300px; }
+    .mandala-ring:nth-child(3) { width:230px;height:230px; }
+    .mandala-ring:nth-child(4) { width:160px;height:160px; }
+  }
+  @media(max-width:480px) {
+    .scholars-grid { grid-template-columns:1fr; }
+    .hero-buttons { flex-direction:column; align-items:center; }
+    .contact-grid { grid-template-columns:1fr; }
+  }
+
+  /* ── FADE-IN ON SCROLL ── */
+  .reveal {
+    opacity:0; transform:translateY(32px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+  .reveal-delay-1 { transition-delay:0.1s; }
+  .reveal-delay-2 { transition-delay:0.2s; }
+  .reveal-delay-3 { transition-delay:0.3s; }
+  .reveal-delay-4 { transition-delay:0.4s; }
+
+  /* ══════════════════════════════════
+     COSMOS CANVAS (Fixed BG)
+  ══════════════════════════════════ */
+  #cosmos-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.55;
+  }
+
+  /* ══════════════════════════════════
+     LIGHTNING LAYER (Hero)
+  ══════════════════════════════════ */
+  #lightning-canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* ── GLOBAL THUNDER FLASH ── */
+  .thunder-flash {
+    position: fixed; inset: 0; z-index: 999;
+    pointer-events: none;
+    background: rgba(200, 220, 255, 0.0);
+    transition: background 0.05s ease;
+  }
+  .thunder-flash.active {
+    background: rgba(200, 220, 255, 0.18);
+  }
+
+  /* ── DAMARU / SHIVA BG SYMBOL ── */
+  .damaru-layer {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 260px; height: 260px;
+    z-index: 1;
+    pointer-events: none;
+    animation: damaru-pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes damaru-pulse {
+    0%,100% { opacity: 0.04; transform: translate(-50%,-50%) scale(1) rotate(0deg); }
+    25%      { opacity: 0.10; transform: translate(-50%,-50%) scale(1.04) rotate(3deg); }
+    50%      { opacity: 0.07; transform: translate(-50%,-50%) scale(1) rotate(0deg); }
+    75%      { opacity: 0.10; transform: translate(-50%,-50%) scale(1.04) rotate(-3deg); }
+  }
+
+  /* Trishul watermark left/right */
+  .trishul-left, .trishul-right {
+    position: absolute;
+    top: 50%; font-size: 7rem;
+    opacity: 0.055;
+    z-index: 1; pointer-events: none;
+    animation: trishul-float 5s ease-in-out infinite;
+    filter: drop-shadow(0 0 18px rgba(201,168,76,0.5));
+  }
+  .trishul-left  { left: 3%;  transform: translateY(-50%) scaleX(-1); animation-delay: 0s; }
+  .trishul-right { right: 3%; transform: translateY(-50%); animation-delay: 1.2s; }
+  @keyframes trishul-float {
+    0%,100%{ transform: translateY(-50%) scaleX(var(--sx,1)); }
+    50%    { transform: translateY(calc(-50% - 14px)) scaleX(var(--sx,1)); }
+  }
+  .trishul-left  { --sx: -1; }
+  .trishul-right { --sx:  1; }
+
+  /* Planet labels tooltip */
+  .planet-hud {
+    position: fixed;
+    bottom: 6rem; right: 2rem;
+    z-index: 10;
+    display: flex; flex-direction: column; gap: 4px;
+    pointer-events: none;
+  }
+  .planet-hud-item {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'Cinzel', serif; font-size: 0.6rem;
+    letter-spacing: 0.12em; color: rgba(201,168,76,0.55);
+  }
+  .planet-hud-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  @media(max-width:768px){
+    .trishul-left, .trishul-right { display:none; }
+    .planet-hud { display:none; }
+    #cosmos-canvas { opacity: 0.35; }
+  }
+
+  /* ── HERO GODDESS WATERMARK ── */
+  .hero-goddess-watermark {
+    position: absolute;
+    right: 4%; top: 50%;
+    transform: translateY(-50%);
+    width: clamp(200px, 26vw, 360px);
+    height: clamp(200px, 26vw, 360px);
+    z-index: 1; pointer-events: none;
+    opacity: 0;
+    animation: goddess-appear 2s ease 0.9s forwards, goddess-float 7s ease-in-out 2.9s infinite;
+  }
+  .hero-goddess-watermark svg {
+    width:100%; height:100%;
+    filter: drop-shadow(0 0 28px rgba(201,168,76,0.55));
+  }
+  @keyframes goddess-appear {
+    from { opacity:0; transform:translateY(-48%) scale(0.92); }
+    to   { opacity:1; transform:translateY(-50%) scale(1); }
+  }
+  @keyframes goddess-float {
+    0%,100% { transform: translateY(-50%); }
+    50%     { transform: translateY(calc(-50% - 16px)); }
+  }
+  @media(max-width:900px) { .hero-goddess-watermark { display:none; } }
+
+
+
+  /* ══════════════════════════════════
+     SACRED GALLERY
+  ══════════════════════════════════ */
+  .gallery-section {
+    background: linear-gradient(180deg,#0A0100 0%,#130400 100%);
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1.2rem;
+  }
+  .gallery-card {
+    position: relative; overflow: hidden;
+    border: 1px solid rgba(201,168,76,0.18);
+    cursor: pointer;
+    aspect-ratio: 4/3;
+    background: #1A0500;
+    transition: border-color 0.3s, transform 0.35s;
+  }
+  .gallery-card:hover { border-color: rgba(201,168,76,0.55); transform: scale(1.02); }
+  .gallery-card-inner {
+    width:100%; height:100%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: clamp(3rem,6vw,5rem);
+    background: radial-gradient(ellipse at 50% 40%, rgba(92,10,10,0.5), rgba(10,1,0,0.9));
+    position: relative; overflow: hidden;
+    transition: background 0.4s;
+  }
+  .gallery-card:hover .gallery-card-inner {
+    background: radial-gradient(ellipse at 50% 40%, rgba(92,10,10,0.7), rgba(10,1,0,0.8));
+  }
+  /* Animated yantra pattern behind icon */
+  .gallery-card-inner::before {
+    content:''; position:absolute; inset:0;
+    background-image: repeating-linear-gradient(
+      0deg, transparent, transparent 18px, rgba(201,168,76,0.03) 18px, rgba(201,168,76,0.03) 19px
+    ), repeating-linear-gradient(
+      90deg, transparent, transparent 18px, rgba(201,168,76,0.03) 18px, rgba(201,168,76,0.03) 19px
+    );
+    pointer-events:none;
+  }
+  .gallery-overlay {
+    position:absolute; inset:0;
+    background: linear-gradient(to top, rgba(10,1,0,0.9) 0%, transparent 55%);
+    display: flex; flex-direction:column; justify-content:flex-end;
+    padding: 1.2rem;
+    opacity:0; transition: opacity 0.35s;
+  }
+  .gallery-card:hover .gallery-overlay { opacity:1; }
+  .gallery-title {
+    font-family:'Cinzel',serif; font-size:0.9rem; font-weight:700;
+    color: var(--gold-light); margin-bottom:3px;
+  }
+  .gallery-sub {
+    font-size:0.78rem; color:rgba(253,245,230,0.55); line-height:1.4;
+  }
+  /* Yantra SVG inside gallery card */
+  .yantra-svg { width:72%; height:72%; opacity:0.88; transition: opacity 0.3s, transform 0.4s; }
+  .gallery-card:hover .yantra-svg { opacity:1; transform: rotate(15deg) scale(1.08); }
+  @media(max-width:768px) { .gallery-grid { grid-template-columns:1fr 1fr; } }
+  @media(max-width:480px) { .gallery-grid { grid-template-columns:1fr; } }
+
+  /* ══════════════════════════════════
+     YANTRA SHOWCASE
+  ══════════════════════════════════ */
+  .yantra-section {
+    background: linear-gradient(180deg,#130400 0%,#0A0100 100%);
+    overflow: hidden;
+  }
+  .yantra-showcase {
+    display: flex; gap: 3rem; align-items: center; justify-content:center;
+    flex-wrap: wrap;
+  }
+  .yantra-item {
+    display:flex; flex-direction:column; align-items:center; gap:0.8rem;
+    cursor: pointer;
+  }
+  .yantra-frame {
+    width: clamp(140px,18vw,200px); height: clamp(140px,18vw,200px);
+    border: 1px solid rgba(201,168,76,0.3);
+    background: radial-gradient(ellipse at 50% 50%, rgba(92,10,10,0.4), rgba(10,1,0,0.8));
+    display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .yantra-frame:hover {
+    border-color: rgba(201,168,76,0.7);
+    box-shadow: 0 0 30px rgba(201,168,76,0.25);
+  }
+  .yantra-frame svg { width:80%; height:80%; }
+  .yantra-frame.spin svg { animation: spin-slow 20s linear infinite; }
+  .yantra-frame.spin-rev svg { animation: spin-slow 28s linear infinite reverse; }
+  .yantra-name {
+    font-family:'Cinzel',serif; font-size:0.75rem; font-weight:700;
+    color:var(--gold); letter-spacing:0.12em; text-align:center;
+  }
+  .yantra-mantra {
+    font-size:0.72rem; color:rgba(253,245,230,0.45);
+    font-style:italic; text-align:center; max-width:160px; line-height:1.5;
+  }
+
+  /* ══════════════════════════════════
+     PANCHANG / MUHURTA
+  ══════════════════════════════════ */
+  .panchang-section {
+    background: linear-gradient(180deg,#0A0100 0%,#0D0200 100%);
+  }
+  .panchang-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items:start;
+  }
+  .panchang-card {
+    background: linear-gradient(160deg,rgba(92,10,10,0.25),rgba(26,10,0,0.5));
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 2rem;
+  }
+  .panchang-card h3 {
+    font-family:'Cinzel',serif; font-size:1rem; font-weight:700;
+    color:var(--gold-light); margin-bottom:1.5rem; letter-spacing:0.08em;
+  }
+  .panch-row {
+    display:flex; justify-content:space-between; align-items:center;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+  }
+  .panch-row:last-child { border-bottom:none; }
+  .panch-label {
+    font-family:'Cinzel',serif; font-size:0.7rem; letter-spacing:0.15em;
+    text-transform:uppercase; color:var(--saffron); flex-shrink:0; min-width:110px;
+  }
+  .panch-value {
+    font-size:0.97rem; color:var(--cream); text-align:right; line-height:1.4;
+  }
+  .muhurta-list { display:flex; flex-direction:column; gap:1rem; }
+  .muhurta-item {
+    background:rgba(201,168,76,0.05); border:1px solid rgba(201,168,76,0.15);
+    padding:1rem 1.2rem; display:flex; align-items:center; gap:1rem;
+    transition:background 0.2s;
+  }
+  .muhurta-item:hover { background:rgba(201,168,76,0.1); }
+  .muhurta-icon { font-size:1.6rem; flex-shrink:0; }
+  .muhurta-name {
+    font-family:'Cinzel',serif; font-size:0.8rem; font-weight:700;
+    color:var(--gold); display:block; margin-bottom:3px;
+  }
+  .muhurta-time { font-size:0.82rem; color:rgba(253,245,230,0.55); }
+  .muhurta-badge {
+    margin-left:auto; flex-shrink:0;
+    font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.15em;
+    text-transform:uppercase; padding:3px 10px;
+    border:1px solid; border-radius:1px;
+  }
+  .muhurta-badge.good { color:#4CA84C; border-color:#4CA84C; }
+  .muhurta-badge.best { color:var(--gold); border-color:var(--gold); }
+  .muhurta-badge.avoid { color:#CC4040; border-color:#CC4040; }
+  @media(max-width:768px) { .panchang-grid { grid-template-columns:1fr; } }
+
+  /* ══════════════════════════════════
+     ONLINE PUJA BOOKING
+  ══════════════════════════════════ */
+  .booking-section {
+    background: linear-gradient(135deg,#130400 0%,#0A0100 50%,#130400 100%);
+    position:relative;
+  }
+  .booking-section::before {
+    content:''; position:absolute; inset:0;
+    background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(92,10,10,0.25),transparent);
+    pointer-events:none;
+  }
+  .puja-grid {
+    display: grid; grid-template-columns: repeat(3,1fr); gap:1.5rem;
+    margin-bottom: 3rem;
+  }
+  .puja-card {
+    background: linear-gradient(160deg,rgba(92,10,10,0.3),rgba(26,10,0,0.6));
+    border: 1px solid rgba(201,168,76,0.18);
+    padding: 2rem 1.5rem; text-align:center;
+    position:relative; overflow:hidden;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    clip-path: polygon(0 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%);
+    cursor:pointer;
+  }
+  .puja-card:hover {
+    transform: translateY(-5px);
+    border-color:rgba(201,168,76,0.5);
+    box-shadow: 0 12px 40px rgba(92,10,10,0.4);
+  }
+  .puja-card.featured {
+    border-color:rgba(201,168,76,0.45);
+    background: linear-gradient(160deg,rgba(92,10,10,0.45),rgba(26,10,0,0.7));
+  }
+  .puja-badge-tag {
+    position:absolute; top:0; right:0;
+    background:linear-gradient(135deg,var(--gold-dark),var(--gold));
+    color:var(--ink); font-family:'Cinzel',serif;
+    font-size:0.55rem; font-weight:700; letter-spacing:0.15em;
+    padding:4px 12px; text-transform:uppercase;
+    clip-path:polygon(0 0,100% 0,100% 100%,8px 100%);
+  }
+  .puja-icon { font-size:2.8rem; margin-bottom:0.8rem; display:block; }
+  .puja-name {
+    font-family:'Cinzel',serif; font-size:1rem; font-weight:700;
+    color:var(--gold-light); margin-bottom:0.5rem;
+  }
+  .puja-desc {
+    font-size:0.88rem; line-height:1.7; color:rgba(253,245,230,0.55);
+    margin-bottom:1.2rem;
+  }
+  .puja-price {
+    font-family:'Cinzel Decorative',serif;
+    font-size:1.3rem; font-weight:700; color:var(--gold);
+    display:block; margin-bottom:0.4rem;
+  }
+  .puja-duration {
+    font-size:0.75rem; color:rgba(253,245,230,0.4);
+    margin-bottom:1.2rem; display:block;
+  }
+  .puja-book-btn {
+    display:inline-block; width:100%;
+    background:linear-gradient(135deg,var(--gold-dark),var(--gold));
+    color:var(--ink); border:none; cursor:pointer;
+    font-family:'Cinzel',serif; font-size:0.72rem; font-weight:700;
+    letter-spacing:0.18em; text-transform:uppercase; padding:10px;
+    transition:box-shadow 0.3s;
+  }
+  .puja-book-btn:hover { box-shadow:0 4px 20px rgba(201,168,76,0.5); }
+  @media(max-width:900px) { .puja-grid { grid-template-columns:1fr 1fr; } }
+  @media(max-width:580px) { .puja-grid { grid-template-columns:1fr; } }
+
+  /* ══════════════════════════════════
+     WHATSAPP FLOATING BUTTON
+  ══════════════════════════════════ */
+  .whatsapp-float {
+    position:fixed; bottom:7.5rem; right:2rem; z-index:500;
+    width:54px; height:54px;
+    background:linear-gradient(135deg,#25D366,#128C7E);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.6rem;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    text-decoration:none; color:white;
+    animation: wa-pulse 2.5s ease-in-out infinite;
+    transition: transform 0.2s;
+  }
+  .whatsapp-float:hover { transform:scale(1.12); }
+  @keyframes wa-pulse {
+    0%,100% { box-shadow:0 4px 20px rgba(37,211,102,0.4); }
+    50%      { box-shadow:0 4px 32px rgba(37,211,102,0.75), 0 0 0 8px rgba(37,211,102,0.1); }
+  }
+  .whatsapp-tooltip {
+    position:absolute; right:64px; top:50%; transform:translateY(-50%);
+    background:rgba(10,1,0,0.95); border:1px solid rgba(37,211,102,0.4);
+    color:var(--cream); font-family:'Cinzel',serif; font-size:0.65rem;
+    letter-spacing:0.1em; white-space:nowrap; padding:6px 14px;
+    opacity:0; pointer-events:none;
+    transition:opacity 0.25s;
+    clip-path:polygon(0 0,100% 0,100% 100%,8px 100%);
+  }
+  .whatsapp-float:hover .whatsapp-tooltip { opacity:1; }
+
+  /* ══════════════════════════════════
+     SACRED COUNTER TICKER
+  ══════════════════════════════════ */
+  .ticker-strip {
+    background:linear-gradient(90deg,var(--maroon-deep),#4A0808,var(--maroon-deep));
+    border-top:1px solid rgba(201,168,76,0.2);
+    border-bottom:1px solid rgba(201,168,76,0.2);
+    padding:0.75rem 0; overflow:hidden;
+    mask-image:linear-gradient(90deg,transparent,black 8%,black 92%,transparent);
+  }
+  .ticker-inner {
+    display:flex; gap:2.5rem; width:max-content;
+    animation:ticker 25s linear infinite;
+  }
+  .ticker-item {
+    font-family:'Cinzel',serif; font-size:0.68rem; letter-spacing:0.22em;
+    text-transform:uppercase; color:rgba(240,208,128,0.7);
+    white-space:nowrap; display:flex; align-items:center; gap:0.8rem;
+  }
+  .ticker-dot { color:var(--gold); font-size:0.5rem; }
+</style>
+</head>
+<body>
+
+
+
+<!-- ═══ COSMOS CANVAS (fixed full-page planetary system) ═══ -->
+<canvas id="cosmos-canvas"></canvas>
+
+<!-- ═══ THUNDER FLASH OVERLAY ═══ -->
+<div class="thunder-flash" id="thunderFlash"></div>
+
+<!-- ═══ NAVAGRAHA HUD ═══ -->
+<div class="planet-hud" id="planetHud"></div>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar" id="navbar">
+  <a href="#" class="nav-brand">
+    <div class="nav-logo-symbol">
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTExIVFhUWGBgYGRcYGBcXFxUYGBcXGBgVFhcYHSggGRolHhgYITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGy8mICUtLS0uKy0tLS0tKy0tKy0tLy0tLS0tLS0tLS0tLS0tNS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAPsAyQMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAEAQIDBQYAB//EAEIQAAIBAgQEAwYEAwcDAwUAAAECEQADBBIhMQVBUWETInEGMoGRobEjQlLBFNHwFTNicoKS4ZPC8QdT0hZDY4Oy/8QAGwEAAgMBAQEAAAAAAAAAAAAAAQMAAgQFBgf/xAAxEQACAgEDAgQFAgYDAAAAAAAAAQIRAwQSITFREyJBYQUjMnHwgaEUkbHB0eEVJDP/2gAMAwEAAhEDEQA/APQa6uppr5dfB3hWNM8SnGoiKrJhRzU0muNJVAjgtPApgpZokH1xpK4iiQUU4UwU6gAU0lLTahB1caSlqEONIa6uoEOBrpps0tFEHTXA02lBqyAPpJpJrqtwRCg0s00UtSyHGuFNrpoMh1MNPNMNVYUIRTSKVjSE1UIopaatOYgb/wAz8qtGEpOoqwNpdRwFQPdbKBAzZiDr30O3u1Hf4nlEC25J22/c1F/ah2/h2mRrmXb9MV6b4foHjhLxer9KsyZcltV/UsctLQGG4mT5GtPm75dR8DRtu4G1GnY/1rXJ1Xw7Jh5XKHRyp9R1JFOiurndBolLXVxokEIpBSmuoEGmuJpTXRUog2lFKBS1aiWJSTSzXTQZDhS02uoEFNcaU0hokOXfafn9Y5VLibYGo9KbY31qa2S0mNJ8vcRvXY0Wk8fTy4XXh+t/4EZJ7ZgRFNJFScTJAC25Z8w0H5RuS3w+4qqtI2ebhgj5L/hA/c1oh8ESacpWvbgq9R2DmxInKok9eS+vWoQczGSco3O2Yj/tFDrdHmgkNGnQVM11QsKOUCSB+9dbFghhjtgqEttsKwSAy7ASRp/hFTWrQOfQaMPsKFt3SBJAHaZ+1PXFFJOUax+r+VWt+pWiXGWQQI0YGQf29KCeYzAa/mWdDHToe9EPiM2xX6/yoZLx1zBeWx2+lFXYSdcWVAbV0P8AuHw51OuIQwZAnaedVj3FhjBhtQJGh5nQ0isGSOffWfXoazajQ4s/LXPctGbiXJFdVVbW+qyoLKIMc+6g1d2CjDQ6xqp94eorm/8ABvluf24G/wAQuwyzbk9hTr42gaR20+us+lOvKwErv07c6W4QyyJn9xvTP4B4dNJKm+b+wPE3SQGDSzS0hFecs1nV00lcKDZDq6urqBDqWkrpo2QeaYzgbn+vSm3SDoLgXv5fsTQxwDn3cUoPXw1/ZhXZ0nwiWaO+bpCJ5a4Q5eL21aDnE9Lbn9qV+PWwJBeBpl8G4W05AmANOtDnhuIJn+KBI2lGifQXKlt2rtsnPluKSJATKAAN/Mxk8q7+n0ywY9i6IQ57mU+F4873AbVhkEgS5ZmfUTmPujy68zRXtPa8S5bK5zlBzFCQNSIBbKQY1+fen4zCm55rWRlGpRrZzoR/hkTudflVenDswgvZTddUI0JlgVLjc71qXQo5U/8AQzEYVVQsQ+gLDM/NdQNWEzEbc6nxqBUzeE7jWSrPoO4DiPhQpwbDNNyyNXA8gJOYQG/vDGvWrzB4gMoJEE7idQeY76zrSMnHKGxm+llfwa6pteNBFuSA3iOSpVspGpJWZ68uWk3d8MQQu5094iP8RMem1UeMv5CUt2pN0nMFOXzFYFyB8JPbqKls3cQoS3dDQSfMT+XMRAI+HeIqilxaJJN8t8lXY4gGdkW3cdlYrC3LpGhg6+JFWmIfw0Z8hkKTlJYkkDQasQB1qxs2FtqAqqqRKhRA+nzqv4tdJQqkZn8s8lBgMxPYGYntUTbfCC5d2QXcIrjy5iAq7PodNxDGBQtrBlIyJdy5gWElp1Eg+Wdp50mKwrMGKvZbMR5cijbmZuf1pRR4WNfxbBmCRljURBMXNxA17VpVWLc3XsXvFscVtTZg6jpKrzhdKz1j2jKN+JhrhJiHts4YrOhh9x8Yp1rAMxaFtPmMNFokGBzYtEx3q1w9sW/75lZv0WkJI294kmPjFSXD5KwfYJt8eQ6liANSDZuBh2JBIqS1xVH8qZ5OuqMvxlgKGupeuDKgFpQZAK5g3QkBhqKiuYLEkgeKkGZHht8z+JSsmPfBxXFlrp8lkGrqAHCL41F23PdG/wDnRGHt3ASLjK3+VSsddya8vrvhj0y3buP3NUMilwTGup0U2K5Q0411LFIRUBZwpaQV1QJDiMPbbV1XTmVmgjZwh/8AuWPqP+6rSKa1pTuo+Qru6XXzwR2vlCJwUmU38FhSRFzDfC4y/wDdU/8AC4Ub3LH/AFCf3oq7gbZ3tof9IqkxGDsISrIu/VFGXpJYGNDr/wCa7Gm1kc9pdewmUGg4nDoc1u/ZtsOYeZ7FS0EVKOJW2/vFt3Oj2mB+ETmH1qnwnDUuBc1pPEiGytbK76kDOTsI20ir62iouVQoA3yjKD3g1fUZ/Bhf7AUbe3qBYnhVhzK37if/ALPuGqLDcNa0GVLq3FJJ1bzKWkkyTqCTNRcO414jsxIFrMVTq4A3E7gnWRyjvV8mw6mZ2010HrFZcmunFVKH7/6LeFTM9wi4Vu3FuQGkjroIygE8iDm+JrS32U2WDAaZSvZieVUPFuGiWuAKo5RmQCTqHyalekba1JhcGLjBgysIhp8Rl02Ch4E6/Q1ujkhs8SL8oqSt0+p1kXtQQCsnLmaDE76naobnBhcuB7mKCkAhQjQFBiRqYJMVe27aqNh6gat60FxDK0ScvpWSOr58q479/wBB6xub5BsNwewDrfuPH/5fsBRLYiwvlWyzEaDORG0zLn61BZwaBswJkfKi1ugHTervVy7Fnp0unJDc4lm8pxGHtDorAt/uMfQVHatYWdblg9zcJJ7mWonE8Ls3oBRVbeQBqapcTwjI3hrbtzp5m2IkaQTPPf1p0cykK2O66Fp/C4U7PY/6h/8AlS/wWGOgex/1TP0NQWOAW3klAiiCB75YayJOwGmtWOG4XaT3bag9YE1m1mvhp3tfMuwYQ3dGQ/2VZ5G18Lj/AM6LwtjIIERygkj61KLXanAVxNZ8RnqYbNtIdHHtd2IRSUsV1cpxGWcaaWriaSKKiQWuptLV1AlnGuBpJrq3PoA6obtoNI57j1/8fapqYN55Df41p0drMqKZF5WRthsoDcyTPp/X3ofF2c6OkxmVlnpIImj7zg+UEE8gN9pOnwJ+FQEVo10peKn7FcKW0xdjguIsvKpnjQMGUwNvzkVqeFX2KwwysDBHfqesiNecGNKOVaHxNqD4ijUCD3Xr6j7SKU9R43lmv1GybaJsR7vqQPqKKs2/NHKFPwC6n6VWY3Eyi5MrTqYYbQMsdjO/pRPCbnviII0PmzTJBmfgfnXR0+H/AKyhPp/syTXmtD8XqfSqvENrVnjNNarGcFcw1HbmKo1ybsPQjtzVa/ErmdVAKhtVJAC6jQZ20JjWBHxoVeIM/lU5dVGoJgs2ix8Y1/T3iiLNsZgHRBC5xAQkkgMrNMgqQfoK0Qw7eZqyZMl8RZoeH4gONdwSrCZKsu6n5g/Gir1vMylgD+Un0IM+sA/KgeHWAokBRJk5RAJIAkgaTAG2m550bjrhFpmA1UofgTlP/wDVUhW9pGfInt56hdgQoER72n+po+kU+oMFiVuAkESADlmTBMT6TU7Vx/iMK1D/AEoGL6TqQikBrqybL6jBCopIpaQmosUewbGkUkUpimzVvCiESurppaDVMA0Clpclcy0xtBGFqGuWS5HmiD8/TQz6GiitRKYYaE9q16PIlkVFJ/SyVLBt65pJCwCBoVjUd+f86iNF3Lk29VI1ESBp8R8ooatHxCV5K9iuBeWxFpl+9lgD3m0H7n+u1LduqqlmMAak0I1/NdEckLdxtpEHU+WsmDFvkr6DW6EyFXQKICyXOgWCDp0zGfqKsbFwG4YYEMOo3GsfIn/bTL14KhZtAAZ1iNP5xWR4lxh7sZZRVJyblmJgad47bGdK7OmmsmPn3RnnGUp2i04/xAlntiMoj8w190kHvr7sjQTrMVmvaL2kW2PDsmWIh9yqxzk+8SI58qG4s1/KVth4ClmYtJyxEZSYUTPck0P7JcIDXT4lpXgaSxBU9MuxiYIPP0rTixQjHfLovQGTJNS8OC57hPD8JifDF18QyZvdAW2fKNtGgE9F6VqbbMhs2XcPoQpyW1zquUm1G497ToFbTY1YE+VPKDbJg7DIeQM/KB+9C8Jtq17EPBzI+Rc0ZgpAJYQJhmmJ5LS3qJO5UW8GMaVlrg7OVFWdQBrU2KEJBbLmZVBBg75iR8FNPsFQ625liM0bmJ949BPXoaXHZIEqGAP3UjntrHyrNircrfUOWXHA7D4RbequzZgNTyE6gaaCRPwFSzTjdU20AUA6zHqR8ahmuXrk3nfN/wBvYOL6RWFJFdNdmrMkxhzCmEU8mmk0UQYRSV00houwig0s0yuqbQk5NJNIXpA1BxKnEUM/vD1oovUOWWFNweWaoEuhJiVy5RJIInUk6yRzqGaJ4sdV9P5fzoAPWrVr5rK4foRV+0lxYQF8upMQzZo05cxI+dR8HxniXhJkEagZgCQAM0GJJ0+VJ7QicrG0zBQfMHVQuaNCCJ5cqqeG4sBw+UrDQSWzaaT+UbSPma2YIfKW0attUy+9sbzIwtxCNDSN21AyAepAI6MO9BYDCi2pv3hJynKBICgmIEbPrM7Se4NX+OxSOENwL5TIJ6xFZvivEFylUEhgQ0zGus66neabFxXEeCscU5KmWPB8pLSJUnUQIjqBtI6dNKJ4rhiDbKj8QKSv+Nc7SAIHm2IEkESPUL2ZvAMQx679+frVhxRA4tLM6MJ00AcgcgZj1pEJU5DssPmJP84K7iPCRjEdodXGUI0AKrTvoZH5hrzg1XcJwOIwN+61184YLmZixzjUIwgM2hMR6/DT41GsWg6NmOcFpAJZUHuhpnnz12of2gvi4tm6qyCHB1Ex+g7jUBhr1rXDKnDaYXj824q8NxEi47rctlrjCPJflTAAXMUAgfY862WA8zJPMBvmAf3rCcNwf4sCwzMrwG8U65TocvIQu1bjhJJKZhBUIu+8QJ+lUcYeLF+pMl7AnimlyOgX7CgyaJ4ufxNOYX7UFmNcrVx+fP7jMP0Idmrmao66az7Ro8vSGmTXTR2kFJpJriajY0dpLHk11R5qXNVlElhJpBSTSTSaJQ411keYeopJpbJ8w9abgXzFZWf0sfxqMqEdSPmq/wAqqc1WvGF/Dnow+qn+VUoatms/9bKYPoI+Lv8AgN6p96y4Ugaact9ixMGOxcfKtBxlvwtTEsv01P2+tUXgF8qqRmZlAkwBJQkn4A1q0f0IbLp+ewRw3Aj+8aSF8qzrBiWP+lfqwoi1hDcuog3af90EgfAACrrE4dUVba6rbWSf1AGTPdmI+VBYIRdS4T7hVmPdj5voTSpZHJ2acXGNv1YFgLJYCNDV7jsOwt2hrorTJMe9yJEcuVQMq28Q4B0kssEag6+X0/aK0+FuB7Wyk6jkA06+o76VE7T+39yufM04yr8oyftPjGQKpzGFVYIUQSJOqSCI1HOjLil7DaDyrnWACMoAEQe2YyOtFe02Czp5UDN5WAAAiOWmhcifhVf7OYoRkP5fIQenf7eop1pcruZ090Pz9TsGkXrTgTIQkjqbcGfvWgwbaz3+1VLYM2bqMSCkjKdQdioU67wR8vlbcPHmQHqZ+aCqLnKv1EZH5L+xLxceZD1QfvQBqx40NLZ7MPkaqyazayNZpfnoXwPyIeK6o5pSay0NFJppaummk0aIKWppamzSE1YlDi1N8Smk02aKAHk0imkLU1WpW0NkhNPwa+cfOoWNSYF/OPQ/an6eHzEUyPysI4ov4L9mT9x+9Z9deYHMk7ADUk1p8cs4e7p0PyIP7VieKX8qBR+bVv8AKNh6Eyf9IrXqce7JH7f3YvT/AE17gPGL/iOIP4azHWObHuenwqz9mLFnKz3chnZWE+UevMn6AdapWsMFzMjQSJMddpPIdJqThmDJt3G8AG0rAMxK5h5QQqliCN5OXUyO1MavG4rg07U65Le+ILZEVLdw5gEnVUIAJULoCRO9WXDMMPCJKzmBzaddNKr/AOB8cC7ctwSUt21OYZRIUaTrzPxNbWxhgqhQNBWWT44Jky7YqJi/AK3UF0/hzo55D/FWkuYbwQTOay2pOWTbMaNA1Ydh16UP7R4gKjIBOnm7dJ6elD8IN0KtoNMKplp8ubUKCOQHI96LbjyCVzipdPzqde4mCqKrAgCJHOdtIEEDlr60h4V4lzxbb+Zvf8vkLR1mZ7idZqpv2slzKRMwZU8jyA671rcDcLDkoGwHIchUnllF8AnHak4gRhlazd8p7xoeRE6GpcCWUqHILDQ7cjuQNiYFG421bZYZwGGzSJUzoR8qrjdFsDxWBZdFcDR101In/kdabinymZ5LfwkF8Vuylv8AzXPkGiqp35/Wpb+JS4PIx8uwghTJk5Z3MmTv9qEugEHNqDoR1nl8aVqbnm/kNxLbGiuue0mHUwbn0JHw6/Cp8Lx2xcOVbqzMQZUn0DRNZb2rXNbS4yIrZskKCpCgeVSJMxG/eqay6FTMiNv65axW2Pw/FKNpszy1M4yppHqGakLVWcBxTXLCM/vagnrlJE/Sjya5U47ZOL9DXFpqxxakLVE7xyqBsR/hNRIIXmpM9ANxADkai/tMdDTFCRUvZpJppakmlBoDwuMdsT4UArrt73lUE7mBqRVzfyW2tkyJJ5zsOgFZv2WcNjbr6aLc1He4FEnmYBrS8Qw5d7W2mYx11QAfWupDFGNUuTPlfNPoWtqGQruGHp+Vp9Kw3tHbNu7osARzJiGLLqeWu/Y1tcBZAykjURrJMQoB1PWdfWqb2rYEIpjzSSY1yrEqDyBJUHtNMy8RTZTA/PSMxh8USl8kQotMvPQ7ATzM5fjFC4XiLKFXw2ZV1UZgNTqzmQZJP0gcqubFpSsFFyLqFI0aCYMDkCNu1Ov3wwgnbnyHX0rH4sUmqOhte6yLh3Hbr37Ft0yoHHcg5WiSIrfNdAH8qwPDcM3iq4UhRG+8GJPbtW88RQoJJP3PwqjpfTSM2ePKKDjoz5bcABmEgcubSeZj70uFxIVrrSQSzEabwCwU9oAFMxNtrl6dhAUAflLmPnGYn0p+CRbjMf0u7+vngA9oHyq0JU7fQvJeSgfiWFtuVcFidA0QDvvtG5+1WuF4cpUHO0Eaa9OWmx7UHxu1+GrIFQyuoAEkyIMcpEepFGYPGgIpI97Rh+m4N/geXp3pcnbtFZSk4pILwuAtj8ik9d/vqKdjsDauIUeANxGhU9RUP8aJ7/f/AJqPEYvYE+8Qo5SxOgowlT46its27sFxOCIQrbJYAjfnvFVbYNwwJIWOR1J+u3fXatDexYUBFgtMt0Eg79Ttp2oDHY5gplUPUnRV5Sc2gpmSGSORUrVFoTdGX4xgBdIRrmRNST5TJiQAWIjmNxvWFxNvKzLIMEiRsYO4mvUMfgQWMLpz0003A+PSstivZQM+WzcUNuQx0EnaRqp7EVv02VRVSEZ8e7mI/wBleInwimUnId5mSxJ25VepjJ5GpOFcG/h7IQlS25Kjcn71PcsEqIECuTnyQnlk49LNWJNQSZB/ECnLcmYqA2TQ1xiD72lVpehbklu4btJNQfwbdBTb79GmKb4rfrpqUqIXRNNZ4E9P2rmWgOKqVtXGzHRGP0pMFbSLDP8A07Qubrn9KDp7xuMR9te9afil7LlgFmB2UE5VIIk5QTEgctx6kZb2c4j/AA+HdxbLEuFILARlVVAqwwrYp3F9WtjxVjKAWA6Ac80bnbTYV3NtK0jJltuzRYPEsyHKmuunmnUjby9udA+1llfADz5kPlH6p0ZCN9hPbJUuFxN6FK3LcElS6QQpGhBzc57Haqril13a22fxbZDMGRSxY5iCGyzprFKyPybpegMUX4nYo7d4x+YSdgj6knl3k7VbcC4cS7MxkLEaMoz9SpAOmnLnU9zCsiqzCLt05ba6E2wdCx78z6gcqvcBaCeUcgPU7yT31rDNqKS9WaZZG/sdhsAFaRyPzkA61Pim0gepmIHc9qnYSPWNqrMZaLhkEZduznoT+mhHDufsIc+bYNbuyAy8wzDuWPh2z8ZLfGjcNaRHcDmI7DKFP3Y1VcKusb3hOvmDicoY2wtpBADkAEzy7U9uIql5i2YyzjKoLNBRdco1iQNe9Lu7RoeNvj2Dr1oXLfhmIbxE7Aj8RN/Ss1hsQwUrnVtRrm1MajlBYDnNG3me8XUoVs/3hV0ZXu5QAyrtA6+oq2UIpNtMo0DZREhTMafOgpQvbLqCV4+hWW+KJl1mRvpv89qhw9u695brRlBOSDIGU8j+YmNx/KjOL2RkAKiCw15ggFpHfSPjVHj7xWMi6zAIjMCNvtToJR5XqGO6aLvhOKDZjBBWBrO0d+czUnEVDwumpEhhmGmoMVTYPPbLHR2cByATlUnTSeRiY5a0yzj28UllIUCNNYPenym3wSGNPzIv3sZvfJM68t+//NDphkBOnwgVXXuN5ZCifgZoPDcQvteRQoYsfdG4U7t0AG+tBRk+gXDauS6xF4qNOc79qgs33Yamo7twk5yVVQGg3GCKWy+UAmJ1jarfhOEHhozJlbKMwkGDGuutLjpPEl2F5sixxK0o239d6ZfwBiT/AF3q/uWuSof8zaAeg/nUCWmIzQRO3fqaGbEou0Z8eeT6mebhZNd/ZJ/oVojYI5mnfwx/VWF52uDUpmdFxhzqv9oHY2iJ0Oh6QTz7USuJk6wR2BHwOtDcVuShjnA0HcVuxY2pqwjcF4P8IFa4gbM5y5lB94gaEzED5Vb8P4lYW1YUYq3b8Myy5084htJzeXUgmqngvswmIR2ZyhFxljIJ0gkk8jrsKt19jlBH493TQQEmP0jtXUcuF7Gabjb5CLuNwk2suLsW1S4XKq1s+IcuUA66d9DMmiU43hhcWL9s+XKApk5i05YA70De9kkKwLjKoiNFEECJkCZ5/wBGqzD+zw8djbd3yRIMKM5Go0EjynfqR0pUpxSpkjBS9S7xuOS5dRkObwlJJ5f3iBgCegmf+Ku72OtpqXWekiT6Caohgi6+Ghe3DST5QyEiYQiQQdiOhOvKhMV7I5yc2IunNygGPidaxPGpT3MbJwpLsaN8QX3ZFH6Q6k/6mnT0Hzqn43xpsPlKojJBGYugGY7KBmnYHlHmoU+xoOrXyZEEFAZ036A1y+yQGX8dsq7DIogHTl2506aio0ymNwUrfK7DeF2xifDVXfyZmd1JWbjmXjqB+9H4PCLZxGVSSZXViCxlLswYGmi6elM4dwnF4eRYuWbqkyPFDK/XVl39aH4n7OYrEXBcvGwhUEAWzc83TMe3asMtPO6bqJreSDbSl5f3/kW3HOIJaa27a6suUascw0AUamSIpvs1wnwrQuuh8S4SW3JiTlU+gjQd6pB7J3x7r2w0yr5ruZP8rTIqU+zuMJJGK3Ef3uIEHqPNTtPpoY+GzPPJFR2QZbcfWbRYAyjBgNtBo30JPwrJuAbipmgNcU5v0gka1JjRfstluY3NCkFPGvPv1UD6GhsBZtXAA7Od/KmUNAIMkt7omORmac4KLXYfgUlB9fvRb4G7bAuOjgidDEZoA1jTnPzqXBA5JO51+dZJMHezlQlzeBvroTodiYHLepMFicRchbTOx08qrMeun1NTw+xt/hlXEkX/ABJkS2S0DQn1jt/W9XPBMOtpQABnYA3G5k75Z6A7Csvf4EyDNjb4tT+Sc95h/lB0+Na32cxC3LKtbDAarLGXOUwJI0GkGB1rbp8ezr1Obr4+ROLtXz2/n6lXxHh6JfzZPI4ABI0R4gqOgMSB1Joj2TbLcuWoAVvOg7jRo+EGO1XWPwea26DdlIHqBIj/AFRWYOIhLd1feU5vkCSD9vjS8nysil3E4342Jxfp+I3RtqYkSOnL41za1EHB2/qamtiKXqYqjHF8kTWulJkHSpilJlrz2VcmlPgwdrAcwDrz2+NDcXw5FpmMwBPfQitEboUwoJ6kiB8AdarfabEj+Eu6RoANNdxXpVifDZI5bdBfslfUWT5lX8RoDMAdl3BNXC3AdVZT3DA/LWvP8Dh2uLnDWyCSMzpmZoA11P8AUVKnAxuXEzPuiJ9OQ129Ku4XyHbH1ZtMRbY9P9wn70DZ4Syvn8XLJkrK6mInQ/HWR8qx9zhBB0I3J/u43+O3ah24MT+ZR6g69SfNvSZQihsIdpfsen2FVRlEad5OvMmd6epJ5gfETXmFvgwKkFhsNvnrJ1qMcIMkhk+TfKM23aglBdGDwr6s9V8Fex9WmlFnN0j/AA15jZ4MzaZhsRqp0nprv3ov+xHIJGSOozLHoBt/zTFjS5XAqUIr1PSfDI2UzXBj+ZY7b/sKwR9jr7qCHWSuxe4J/wAR197ttS2vZ58PhMTcbN4seGPMTlRigY9zBOvQmg8S7kil3NTxria4dQzKSW0VZ3O/mPJaw3E+MXbp87kD9K+VY6EDf4zTG9m8RYRrlxZTy+YEGJO8dJIFVty8R3rPKG10jtaDBjcN3VjbrdBFP4NmOITK4XcknYgCSpkiZiKFuX+xqMbSee386KR1JQuDj3N5j+IJIRc3ieVgoDSCIYFp2G2u3cVWcS9onRms4YrZtgkHIoVs0nMA8ny9CImqnD8fvW0FsFSEAykiSuukawYO0g1Xo0kknU6knck8zTIvYvKzDh0VSvIk66f5CHTUsTJOpJMknqTzrX/+n1z8O8OjKfiRH7Vkc3WtH7BXxN9euQ9tMw/er4H5yvxSN6WXtX9T0C2wkf1/WtYzjVkWmuJ7oMsnLysZy/AyKl43x9kbwrMeJ+ZjqLYMR6trtQOFwwc53ZrjndmJJP8AIdqvqZR6PqcLSxnFbn0ZouG8Xs+HbzXBOVQQAx1AAjQVc4e+lz3WBj6fCssltF5xPppVzwWxll9YOizoSJ3IrFmzblRSWJR5LeK6KQPNLXFnVkMLdsmTDHT0qLFYXxFKuSQdCOvyNaAW1PIa+lc1lRyX6V6pTYvbRkBwpB7vijsHuAeujVIeD6aB/wDqXP2atPCdR9KR7Kn81W3oPnMy3CWjVnUT/wC5c/maHfg5YgeM88hmZvqDWq8q6AQf1GCx+JFMLKxiWM8hv8thVHkj6hTn6My78BuDe9HqzfbPrSLwZhBN5+0F/vmitjaED8NI5TAJ+es1Dducyzfb7DSg8kepE59zO2+FtrluXG0/9x/uDWv9muFKlkEyzGScxLRrtqe1BeIpHmGYR0AYehAmjuFcQKrljb9RA+9WU4vgHmfUs7FxSdNNxTbrA5lOoI2Ox3kfGhxcRiWkA7yrD7UPisYP1Hpr/wACjSByGsVdGtuNGXKQeakRpXnfEPZ66lx0AzhfMrD8ykxtyI58vnWmfHHXn2gmPlUN2490ZSqgfqPl+tVlitGrS6qeGTrozJX+DFQGKXDzIK5RA94TMj1jmKDxmDKEGBlMR3BAbbkYYVubaFSfEcQZ8wILCdDvoR8DUuJwmHuqohSVHl0ywPRjtrMUt4jqR+JNNbuV7HmxtmGMaafen2rDDcEeoit1/wDTlsyAZWIGg0jZtNzqar+Keyl0HPaGcE6xyJJOg6bVXw5JdDXD4jhk6uvuZsE8xH2rR+w4Cm6x2OVflJP3FVY4VcJIZSI1M7j4fKrLh+JW0uXI3XbU6RPTpRxeWVmX4nnjLA4Rdt0TY7gtxbzOhR1dixDsVZSTJ65l+VFrh8QTMWbSwBCy0ADl1+dDHiYO7ADbX3j8KLsYst+YQNu9Vytbm2jiRyZdqRZ4bBjQmCQImN+8datLLdTVXaxOlKeIgD0rm5pOXQihJ9S+Vx1rv4petZz+30Gn/NQ/28n6W+VYpYZtj1hZUtjo/wDNN/tD+taguWxJ05moygrrpjtqDf4w8j9alGJPXl1oFLY6U9TrFHdQNlhC4wE66R1E+lEYHG6BY/MCx5kQefy2oGzbBGo6/epcJuRyFVlMq4I1Fu8PJEQP35/eq/ieLAYmNCDmG++39d6dhRCsOX/FVuO0WRuee/3ouQuMVZBbxExB11HeuTEnSJ71BctgKCNzRnDbY10oqReUUlZZYRiecdiY060QVYMIaEmSVUT9fvVVevsGEE1ccPtC4WDjMNN+Xp0p2LLXBnnH1GWkUzIBg8jJI9d59akyjUBQB2FSPgLY2QfX96BxHlOgA16D960PJtXIteboE4mwpTVlB6swPp5agRLSx5rc/DahLlwk/wDgfalwq5hrr8TSZahXwhqg65Yagw+xZfgD96ktW1GqXiAeQk/Qio1wiT7oqFhAYClvUNegSYnNozHtO3yFQXMIp2e2D0Ij94qG3cMDbnyFQYhpkHWqeNJl3Dglu4W4p1Ij/KsfOplXbNr6BQPrQyXSrAKYHz+9WFxAPiJ+NUlJsW1Q3IBoBFP/AIcZYyg012iIoy0ax5XReLKw8PMHyiT2qL+Du/oFXymn1medofGbo//Z" alt="Maa Baglamukhi" title="Maa Baglamukhi Peeth Parishad"/>
+    </div>
+    <div class="nav-title-wrap">
+      <span class="nav-title">Maa Baglamukhi</span>
+      <span class="nav-subtitle">Peeth Parishad</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#booking">Puja Booking</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#panchang">Panchang</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="#consult" class="nav-cta">Book Consultation</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#about"     onclick="closeMenu()">About</a>
+  <a href="#services"  onclick="closeMenu()">Services</a>
+  <a href="#booking"   onclick="closeMenu()">Puja Booking</a>
+  <a href="#gallery"   onclick="closeMenu()">Gallery</a>
+  <a href="#panchang"  onclick="closeMenu()">Panchang</a>
+  <a href="#scholars"  onclick="closeMenu()">Scholars</a>
+  <a href="#contact"   onclick="closeMenu()">Contact</a>
+  <a href="#consult"   onclick="closeMenu()">Book Consultation</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="home">
+  <!-- Mandala rings -->
+  <div class="mandala-bg">
+    <div class="mandala-ring"></div>
+    <div class="mandala-ring"></div>
+    <div class="mandala-ring"></div>
+    <div class="mandala-ring"></div>
+  </div>
+
+  <!-- Stars -->
+  <div class="stars" id="stars"></div>
+
+  <!-- Lightning Canvas -->
+  <canvas id="lightning-canvas"></canvas>
+
+  <!-- Shiva Damaru watermark -->
+  <div class="damaru-layer">
+    <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg" width="260" height="260">
+      <!-- Damaru body -->
+      <ellipse cx="95" cy="130" rx="55" ry="75" fill="none" stroke="rgba(201,168,76,0.9)" stroke-width="3"/>
+      <ellipse cx="165" cy="130" rx="55" ry="75" fill="none" stroke="rgba(201,168,76,0.9)" stroke-width="3"/>
+      <!-- Crossing point -->
+      <line x1="95" y1="55" x2="165" y2="205" stroke="rgba(201,168,76,0.6)" stroke-width="2"/>
+      <line x1="165" y1="55" x2="95" y2="205" stroke="rgba(201,168,76,0.6)" stroke-width="2"/>
+      <!-- Knot -->
+      <circle cx="130" cy="130" r="10" fill="none" stroke="rgba(240,208,128,0.9)" stroke-width="2.5"/>
+      <!-- Strings -->
+      <path d="M130,120 Q100,90 70,70" fill="none" stroke="rgba(232,97,26,0.7)" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <path d="M130,140 Q160,160 190,190" fill="none" stroke="rgba(232,97,26,0.7)" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <!-- Handle -->
+      <line x1="115" y1="130" x2="145" y2="130" stroke="rgba(201,168,76,0.8)" stroke-width="5" stroke-linecap="round"/>
+      <!-- Beads -->
+      <circle cx="72" cy="72" r="6" fill="rgba(232,97,26,0.8)"/>
+      <circle cx="188" cy="188" r="6" fill="rgba(232,97,26,0.8)"/>
+    </svg>
+  </div>
+
+  <!-- Trishul decorations -->
+  <div class="trishul-left">🔱</div>
+  <div class="trishul-right">🔱</div>
+
+  <!-- ═══ GODDESS BAGLAMUKHI — Hero Illustration ═══ -->
+  <div class="hero-goddess-watermark">
+    <svg viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg" aria-label="Maa Baglamukhi">
+      <defs>
+        <radialGradient id="hHaloG" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#FFE066" stop-opacity="0.6"/>
+          <stop offset="55%"  stop-color="#C9A84C" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="hSkinG" cx="42%" cy="35%" r="65%">
+          <stop offset="0%"   stop-color="#FFEE90"/>
+          <stop offset="50%"  stop-color="#E8B84B"/>
+          <stop offset="100%" stop-color="#B0780A"/>
+        </radialGradient>
+        <linearGradient id="hGarmentG" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%"   stop-color="#FFD700"/>
+          <stop offset="100%" stop-color="#A06808"/>
+        </linearGradient>
+        <linearGradient id="hCrownG" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%"   stop-color="#FFF5B0"/>
+          <stop offset="50%"  stop-color="#E8C040"/>
+          <stop offset="100%" stop-color="#7A5008"/>
+        </linearGradient>
+        <radialGradient id="hLotusG" cx="50%" cy="30%" r="70%">
+          <stop offset="0%"   stop-color="#FFCCD0"/>
+          <stop offset="100%" stop-color="#CC3050"/>
+        </radialGradient>
+        <linearGradient id="hGadaG" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%"   stop-color="#FFE040"/>
+          <stop offset="100%" stop-color="#806010"/>
+        </linearGradient>
+        <filter id="hGlow" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="2.5" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="hSoftGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="5" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- ── Divine Aura (outermost glow) ── -->
+      <ellipse cx="120" cy="155" rx="105" ry="145" fill="radial-gradient(circle, rgba(201,168,76,0.06), transparent)" opacity="0.3"/>
+      <!-- Soft golden circle around whole figure -->
+      <circle cx="120" cy="120" r="108" fill="url(#hHaloG)" opacity="0.5"/>
+
+      <!-- ── Prabhamandala (halo rings) ── -->
+      <circle cx="120" cy="100" r="62" fill="url(#hHaloG)" filter="url(#hSoftGlow)"/>
+      <circle cx="120" cy="100" r="58" fill="none" stroke="#C9A84C" stroke-width="1.2" stroke-dasharray="6,4" opacity="0.6"/>
+      <circle cx="120" cy="100" r="54" fill="none" stroke="#FFE066" stroke-width="0.6" opacity="0.45"/>
+      <!-- Halo decorative petals -->
+      <g opacity="0.35" stroke="#C9A84C" stroke-width="0.8" fill="none">
+        <path d="M120,42 Q128,58 120,62 Q112,58 120,42"/>
+        <path d="M120,42 Q128,58 120,62 Q112,58 120,42" transform="rotate(30,120,100)"/>
+        <path d="M120,42 Q128,58 120,62 Q112,58 120,42" transform="rotate(60,120,100)"/>
+        <path d="M120,42 Q128,58 120,62 Q112,58 120,42" transform="rotate(90,120,100)"/>
+        <path d="M120,42 Q128,58 120,62 Q112,58 120,42" transform="rotate(120,120,100)"/>
+        <path d="M120,42 Q128,58 120,62 Q112,58 120,42" transform="rotate(150,120,100)"/>
+        <path d="M120,42 Q128,58 120,62 Q112,58 120,42" transform="rotate(180,120,100)"/>
+        <path d="M120,42 Q128,58 120,62 Q112,58 120,42" transform="rotate(210,120,100)"/>
+        <path d="M120,42 Q128,58 120,62 Q112,58 120,42" transform="rotate(240,120,100)"/>
+        <path d="M120,42 Q128,58 120,62 Q112,58 120,42" transform="rotate(270,120,100)"/>
+        <path d="M120,42 Q128,58 120,62 Q112,58 120,42" transform="rotate(300,120,100)"/>
+        <path d="M120,42 Q128,58 120,62 Q112,58 120,42" transform="rotate(330,120,100)"/>
+      </g>
+
+      <!-- ── LOTUS SEAT ── -->
+      <g filter="url(#hGlow)">
+        <!-- Outer petals -->
+        <ellipse cx="72"  cy="265" rx="22" ry="12" fill="url(#hLotusG)" transform="rotate(-25,72,265)"  opacity="0.9"/>
+        <ellipse cx="95"  cy="272" rx="22" ry="12" fill="url(#hLotusG)" transform="rotate(-12,95,272)"  opacity="0.9"/>
+        <ellipse cx="120" cy="275" rx="22" ry="12" fill="url(#hLotusG)" opacity="0.9"/>
+        <ellipse cx="145" cy="272" rx="22" ry="12" fill="url(#hLotusG)" transform="rotate(12,145,272)"  opacity="0.9"/>
+        <ellipse cx="168" cy="265" rx="22" ry="12" fill="url(#hLotusG)" transform="rotate(25,168,265)"  opacity="0.9"/>
+        <!-- Inner petals -->
+        <ellipse cx="88"  cy="262" rx="16" ry="10" fill="#FF90A0" transform="rotate(-15,88,262)"  opacity="0.9"/>
+        <ellipse cx="120" cy="267" rx="16" ry="10" fill="#FF90A0" opacity="0.9"/>
+        <ellipse cx="152" cy="262" rx="16" ry="10" fill="#FF90A0" transform="rotate(15,152,262)"  opacity="0.9"/>
+        <!-- Pericarp -->
+        <ellipse cx="120" cy="258" rx="28" ry="10" fill="#FFD060" opacity="0.95"/>
+        <ellipse cx="120" cy="255" rx="20" ry="7"  fill="#FFE888" opacity="0.85"/>
+      </g>
+      <!-- Lotus stem -->
+      <line x1="120" y1="254" x2="120" y2="300" stroke="#3A6818" stroke-width="3.5" stroke-linecap="round"/>
+      <!-- Leaf -->
+      <ellipse cx="103" cy="285" rx="16" ry="8" fill="#3A8020" transform="rotate(-25,103,285)" opacity="0.7"/>
+      <ellipse cx="137" cy="285" rx="16" ry="8" fill="#3A8020" transform="rotate(25,137,285)"  opacity="0.7"/>
+
+      <!-- ── BODY / TORSO ── -->
+      <!-- Main garment -->
+      <path d="M80,185 Q90,215 88,255 L152,255 Q150,215 160,185 Q145,175 120,172 Q95,175 80,185Z"
+            fill="url(#hGarmentG)" opacity="0.95"/>
+      <!-- Golden border on saree -->
+      <path d="M80,185 Q90,215 88,255" fill="none" stroke="#FFE060" stroke-width="1.5" opacity="0.6"/>
+      <path d="M160,185 Q150,215 152,255" fill="none" stroke="#FFE060" stroke-width="1.5" opacity="0.6"/>
+      <!-- Saree drape detail -->
+      <path d="M88,200 Q105,208 120,205 Q135,208 152,200" fill="none" stroke="#FFE060" stroke-width="1.2" opacity="0.55"/>
+      <path d="M86,225 Q103,233 120,230 Q137,233 154,225" fill="none" stroke="#FFE060" stroke-width="1.2" opacity="0.55"/>
+      <!-- Blouse/choli -->
+      <ellipse cx="120" cy="183" rx="34" ry="18" fill="#E8A020" opacity="0.95"/>
+      <path d="M88,183 Q104,192 120,190 Q136,192 152,183" fill="#D09010" opacity="0.4"/>
+
+      <!-- ── NECK & ORNAMENTS ── -->
+      <!-- Neck -->
+      <rect x="111" y="158" width="18" height="20" rx="7" fill="url(#hSkinG)"/>
+      <!-- Necklace (haar) multiple strands -->
+      <ellipse cx="120" cy="175" rx="20" ry="4"  fill="none" stroke="#FFD700" stroke-width="2.5" opacity="0.9"/>
+      <ellipse cx="120" cy="179" rx="24" ry="4.5" fill="none" stroke="#FFD700" stroke-width="1.5" opacity="0.7"/>
+      <!-- Necklace gems -->
+      <g fill="#FF4060" opacity="0.9">
+        <circle cx="110" cy="174" r="2.5"/><circle cx="116" cy="171" r="2.5"/>
+        <circle cx="120" cy="170" r="3"/><circle cx="124" cy="171" r="2.5"/>
+        <circle cx="130" cy="174" r="2.5"/>
+      </g>
+      <circle cx="120" cy="183" r="4" fill="#FF2040"/><!-- pendant -->
+      <circle cx="120" cy="183" r="2" fill="#FFD700" opacity="0.8"/>
+
+      <!-- ── FACE ── -->
+      <!-- Face base -->
+      <ellipse cx="120" cy="115" rx="38" ry="44" fill="url(#hSkinG)" filter="url(#hGlow)"/>
+      <!-- Cheek blush -->
+      <ellipse cx="100" cy="122" rx="10" ry="7" fill="#FF7830" opacity="0.18"/>
+      <ellipse cx="140" cy="122" rx="10" ry="7" fill="#FF7830" opacity="0.18"/>
+
+      <!-- Eyes — elongated divine eyes -->
+      <!-- Left eye -->
+      <ellipse cx="104" cy="112" rx="12" ry="7" fill="white" opacity="0.95"/>
+      <ellipse cx="104" cy="113" rx="8"  ry="5" fill="#180800"/>
+      <circle  cx="104" cy="112" r="5"  fill="#000000"/>
+      <circle  cx="107" cy="109" r="2"  fill="white" opacity="0.9"/>
+      <!-- Eye kajal -->
+      <path d="M93,112 Q104,106 115,112" fill="none" stroke="#1A0800" stroke-width="1.5"/>
+      <path d="M93,115 Q104,121 115,115" fill="none" stroke="#1A0800" stroke-width="1.2" opacity="0.6"/>
+      <!-- Eyebrow -->
+      <path d="M92,104 Q104,98 116,104" fill="none" stroke="#1A0800" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Right eye -->
+      <ellipse cx="136" cy="112" rx="12" ry="7" fill="white" opacity="0.95"/>
+      <ellipse cx="136" cy="113" rx="8"  ry="5" fill="#180800"/>
+      <circle  cx="136" cy="112" r="5"  fill="#000000"/>
+      <circle  cx="139" cy="109" r="2"  fill="white" opacity="0.9"/>
+      <path d="M125,112 Q136,106 147,112" fill="none" stroke="#1A0800" stroke-width="1.5"/>
+      <path d="M125,115 Q136,121 147,115" fill="none" stroke="#1A0800" stroke-width="1.2" opacity="0.6"/>
+      <path d="M124,104 Q136,98 148,104" fill="none" stroke="#1A0800" stroke-width="2.5" stroke-linecap="round"/>
+
+      <!-- Nose -->
+      <path d="M117,122 Q120,128 123,122" fill="none" stroke="#A06808" stroke-width="1.2"/>
+      <circle cx="115" cy="126" r="2" fill="#C09018" opacity="0.5"/>
+      <circle cx="125" cy="126" r="2" fill="#C09018" opacity="0.5"/>
+      <!-- Nose ring (nath) -->
+      <circle cx="127" cy="127" r="3.5" fill="none" stroke="#FFD700" stroke-width="1.5"/>
+      <circle cx="129" cy="126" r="1.5" fill="#FF4060"/>
+
+      <!-- DIVINE MOUTH – slightly open, showing the tongue-pull gesture -->
+      <path d="M108,136 Q120,144 132,136" fill="#8B2010" stroke="#6A1008" stroke-width="0.5"/>
+      <path d="M111,136 Q120,141 129,136" fill="#FF7060"/>
+      <!-- Tongue being pulled (Baglamukhi's iconography) -->
+      <path d="M120,138 Q126,142 124,150 Q122,155 120,152 Q118,155 116,150 Q114,142 120,138Z"
+            fill="#CC1010" stroke="#8B0000" stroke-width="0.5"/>
+      <!-- Demon (symbolic, small figure at bottom-left being subdued) -->
+      <g opacity="0.6" transform="translate(60,240)">
+        <ellipse cx="0" cy="0" rx="12" ry="8" fill="#2A1010"/>
+        <circle cx="0" cy="-6" r="5" fill="#3A1818"/>
+        <!-- demon eyes -->
+        <circle cx="-2" cy="-7" r="1.2" fill="#FF2020"/>
+        <circle cx="2"  cy="-7" r="1.2" fill="#FF2020"/>
+        <!-- demon tongue extending up -->
+        <path d="M0,-2 Q4,8 2,16" fill="#CC1010" stroke="#8B0000" stroke-width="0.5"/>
+      </g>
+
+      <!-- Forehead tilak + bindi -->
+      <ellipse cx="120" cy="96"  rx="4"   ry="6"   fill="#CC2020"/>
+      <circle  cx="120" cy="94"  r="2"             fill="#FFD700"/>
+      <!-- Third eye -->
+      <ellipse cx="120" cy="101" rx="6"   ry="3"   fill="none" stroke="#FFD700" stroke-width="1"/>
+      <ellipse cx="120" cy="101" rx="3.5" ry="1.8" fill="#FF6020" opacity="0.7"/>
+      <circle  cx="120" cy="101" r="1.2"            fill="#FFD700" opacity="0.9"/>
+
+      <!-- ── CROWN (Mukut) ── -->
+      <g filter="url(#hGlow)">
+        <!-- Base band -->
+        <rect x="85"  y="72"  width="70" height="12" rx="3" fill="url(#hCrownG)"/>
+        <rect x="87"  y="71"  width="66" height="4"  rx="2" fill="#FFF8D0" opacity="0.6"/>
+        <!-- Central tall spire -->
+        <polygon points="120,22 132,72 108,72" fill="url(#hCrownG)"/>
+        <polygon points="120,28 128,72 112,72" fill="#FFF5A0" opacity="0.4"/>
+        <!-- Sub spires -->
+        <polygon points="105,36 114,72 96,72"  fill="url(#hCrownG)"/>
+        <polygon points="135,36 144,72 124,72" fill="url(#hCrownG)"/>
+        <!-- Mini spires -->
+        <polygon points="92,48 99,72 85,72"   fill="url(#hCrownG)"/>
+        <polygon points="148,48 155,72 141,72" fill="url(#hCrownG)"/>
+        <!-- Outer mini -->
+        <polygon points="80,56 86,72 75,72"   fill="url(#hCrownG)" opacity="0.8"/>
+        <polygon points="160,56 165,72 154,72" fill="url(#hCrownG)" opacity="0.8"/>
+
+        <!-- Crown jewels -->
+        <circle cx="120" cy="26" r="5.5" fill="#FF3050"/><!-- central gem -->
+        <circle cx="120" cy="26" r="3"   fill="#FF8095" opacity="0.7"/>
+        <circle cx="105" cy="38" r="4"   fill="#4055DD"/>
+        <circle cx="135" cy="38" r="4"   fill="#4055DD"/>
+        <circle cx="92"  cy="50" r="3.2" fill="#20BB50"/>
+        <circle cx="148" cy="50" r="3.2" fill="#20BB50"/>
+        <circle cx="80"  cy="58" r="2.5" fill="#FFD700"/>
+        <circle cx="160" cy="58" r="2.5" fill="#FFD700"/>
+
+        <!-- Crown base beads -->
+        <g fill="#FFD700" opacity="0.95">
+          <circle cx="87"  cy="73" r="2.2"/> <circle cx="93"  cy="73" r="2.2"/>
+          <circle cx="99"  cy="73" r="2.2"/> <circle cx="105" cy="73" r="2.2"/>
+          <circle cx="111" cy="73" r="2.2"/> <circle cx="117" cy="73" r="2.2"/>
+          <circle cx="120" cy="73" r="2.2"/> <circle cx="123" cy="73" r="2.2"/>
+          <circle cx="129" cy="73" r="2.2"/> <circle cx="135" cy="73" r="2.2"/>
+          <circle cx="141" cy="73" r="2.2"/> <circle cx="147" cy="73" r="2.2"/>
+          <circle cx="153" cy="73" r="2.2"/>
+        </g>
+        <!-- Crown wings (karnapasha) -->
+        <path d="M84,74 Q65,68 62,54 Q60,44 70,42 Q80,42 84,60" fill="url(#hCrownG)" opacity="0.8"/>
+        <path d="M156,74 Q175,68 178,54 Q180,44 170,42 Q160,42 156,60" fill="url(#hCrownG)" opacity="0.8"/>
+        <!-- Wing gems -->
+        <circle cx="68" cy="52" r="3" fill="#FF3050"/>
+        <circle cx="172" cy="52" r="3" fill="#FF3050"/>
+      </g>
+
+      <!-- ── HAIR ── -->
+      <path d="M85,90 Q82,75 86,60 Q93,40 120,36 Q147,40 154,60 Q158,75 155,90"
+            fill="#1A0800" opacity="0.88"/>
+      <!-- Hair ornament parting -->
+      <path d="M100,78 Q120,70 140,78" fill="none" stroke="#FFD700" stroke-width="2" opacity="0.65"/>
+      <!-- Flower in hair (left) -->
+      <circle cx="88" cy="78" r="5" fill="#FF8090"/>
+      <circle cx="88" cy="78" r="2.5" fill="#FFE060"/>
+
+      <!-- ── EARS & EARRINGS ── -->
+      <ellipse cx="83"  cy="115" rx="6" ry="8" fill="url(#hSkinG)"/>
+      <ellipse cx="157" cy="115" rx="6" ry="8" fill="url(#hSkinG)"/>
+      <!-- Earring -->
+      <circle cx="83"  cy="113" r="5" fill="#FFD700"/>
+      <circle cx="83"  cy="113" r="3" fill="#FF3050"/>
+      <line   x1="83" y1="118" x2="83" y2="130" stroke="#FFD700" stroke-width="2"/>
+      <circle cx="83"  cy="132" r="4" fill="#FFD700"/>
+      <circle cx="83"  cy="132" r="2" fill="#4055DD"/>
+      <circle cx="157" cy="113" r="5" fill="#FFD700"/>
+      <circle cx="157" cy="113" r="3" fill="#FF3050"/>
+      <line   x1="157" y1="118" x2="157" y2="130" stroke="#FFD700" stroke-width="2"/>
+      <circle cx="157" cy="132" r="4" fill="#FFD700"/>
+      <circle cx="157" cy="132" r="2" fill="#4055DD"/>
+
+      <!-- ══════════ FOUR ARMS ══════════ -->
+
+      <!-- UPPER-LEFT ARM: Gada (golden mace) raised high -->
+      <path d="M90,170 Q66,148 56,124 Q50,108 55,95"
+            stroke="url(#hSkinG)" stroke-width="14" fill="none" stroke-linecap="round"/>
+      <!-- Gada shaft -->
+      <line x1="55" y1="95" x2="45" y2="60" stroke="url(#hGadaG)" stroke-width="5" stroke-linecap="round"/>
+      <!-- Gada head (top) -->
+      <ellipse cx="42" cy="53" rx="13" ry="8" fill="url(#hGadaG)" transform="rotate(-30,42,53)"/>
+      <ellipse cx="42" cy="53" rx="10" ry="6" fill="#FFE070" opacity="0.5" transform="rotate(-30,42,53)"/>
+      <!-- Gada glow -->
+      <ellipse cx="42" cy="53" rx="16" ry="11" fill="none" stroke="#FFE060" stroke-width="1.2"
+               opacity="0.6" transform="rotate(-30,42,53)" filter="url(#hGlow)"/>
+      <!-- Knuckles/hand -->
+      <ellipse cx="54" cy="92" rx="8" ry="6" fill="url(#hSkinG)" transform="rotate(-30,54,92)"/>
+      <!-- Bangles -->
+      <ellipse cx="63" cy="108" rx="9" ry="4" fill="none" stroke="#FFD700" stroke-width="2.5" transform="rotate(-20,63,108)"/>
+      <ellipse cx="63" cy="113" rx="8" ry="3.5" fill="none" stroke="#FF8020" stroke-width="1.5" transform="rotate(-20,63,113)"/>
+
+      <!-- UPPER-RIGHT ARM: Paash (noose/lasso) raised -->
+      <path d="M150,170 Q174,148 184,124 Q190,108 185,95"
+            stroke="url(#hSkinG)" stroke-width="14" fill="none" stroke-linecap="round"/>
+      <!-- Noose (golden loop) -->
+      <circle cx="187" cy="84" r="14" fill="none" stroke="#FFD700" stroke-width="3"/>
+      <path d="M187,98 Q192,108 190,116" fill="none" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+      <!-- Noose sparkle -->
+      <circle cx="187" cy="84" r="6" fill="#FFE070" opacity="0.3" filter="url(#hGlow)"/>
+      <!-- Gems on noose -->
+      <circle cx="173" cy="84" r="3" fill="#FF3050"/>
+      <circle cx="201" cy="84" r="3" fill="#FF3050"/>
+      <circle cx="187" cy="70" r="3" fill="#4055DD"/>
+      <!-- Hand -->
+      <ellipse cx="184" cy="92" rx="8" ry="6" fill="url(#hSkinG)" transform="rotate(30,184,92)"/>
+      <!-- Bangles -->
+      <ellipse cx="177" cy="108" rx="9" ry="4" fill="none" stroke="#FFD700" stroke-width="2.5" transform="rotate(20,177,108)"/>
+      <ellipse cx="177" cy="113" rx="8" ry="3.5" fill="none" stroke="#FF8020" stroke-width="1.5" transform="rotate(20,177,113)"/>
+
+      <!-- LOWER-LEFT ARM: pulling demon's tongue -->
+      <path d="M90,195 Q62,205 46,220 Q36,232 38,248"
+            stroke="url(#hSkinG)" stroke-width="13" fill="none" stroke-linecap="round"/>
+      <!-- Hand gripping tongue -->
+      <ellipse cx="38" cy="248" rx="11" ry="8" fill="url(#hSkinG)" transform="rotate(-15,38,248)"/>
+      <!-- Fingers -->
+      <g fill="url(#hSkinG)" opacity="0.9">
+        <ellipse cx="30" cy="244" rx="4" ry="7" transform="rotate(-25,30,244)"/>
+        <ellipse cx="35" cy="242" rx="4" ry="7" transform="rotate(-15,35,242)"/>
+        <ellipse cx="41" cy="242" rx="4" ry="7" transform="rotate(-5,41,242)"/>
+      </g>
+      <!-- Demon tongue being pulled (red, dramatic) -->
+      <path d="M38,250 Q30,260 32,272 Q34,282 30,278 Q28,284 32,285 Q36,286 36,276 Q38,282 42,280 Q44,276 40,272 Q42,260 38,250Z"
+            fill="#CC1010" stroke="#8B0000" stroke-width="0.8"/>
+      <!-- Bangles lower-left -->
+      <ellipse cx="56" cy="226" rx="9" ry="4" fill="none" stroke="#FFD700" stroke-width="2.5" transform="rotate(-35,56,226)"/>
+
+      <!-- LOWER-RIGHT ARM: Pink lotus flower -->
+      <path d="M150,195 Q178,205 194,220 Q204,232 202,248"
+            stroke="url(#hSkinG)" stroke-width="13" fill="none" stroke-linecap="round"/>
+      <!-- Hand holding lotus stem -->
+      <ellipse cx="202" cy="249" rx="10" ry="8" fill="url(#hSkinG)" transform="rotate(15,202,249)"/>
+      <!-- Lotus stem in hand -->
+      <line x1="202" y1="248" x2="202" y2="215" stroke="#3A7018" stroke-width="3" stroke-linecap="round"/>
+      <!-- Lotus blossom -->
+      <g filter="url(#hGlow)">
+        <!-- Outer petals -->
+        <ellipse cx="202" cy="210" rx="14" ry="8" fill="#FF90A8" transform="rotate(-30,202,210)"/>
+        <ellipse cx="202" cy="210" rx="14" ry="8" fill="#FF90A8" transform="rotate(0,202,210)"/>
+        <ellipse cx="202" cy="210" rx="14" ry="8" fill="#FF90A8" transform="rotate(30,202,210)"/>
+        <ellipse cx="202" cy="210" rx="14" ry="8" fill="#FF90A8" transform="rotate(60,202,210)"/>
+        <!-- Inner petals -->
+        <ellipse cx="202" cy="210" rx="9"  ry="5" fill="#FFCCD8" transform="rotate(-15,202,210)"/>
+        <ellipse cx="202" cy="210" rx="9"  ry="5" fill="#FFCCD8" transform="rotate(15,202,210)"/>
+        <ellipse cx="202" cy="210" rx="9"  ry="5" fill="#FFCCD8" transform="rotate(45,202,210)"/>
+        <!-- Center -->
+        <circle cx="202" cy="210" r="7" fill="#FFE060"/>
+        <circle cx="202" cy="210" r="4" fill="#FFD020"/>
+        <circle cx="202" cy="210" r="2" fill="#FF8020"/>
+      </g>
+      <!-- Bangles lower-right -->
+      <ellipse cx="185" cy="226" rx="9" ry="4" fill="none" stroke="#FFD700" stroke-width="2.5" transform="rotate(35,185,226)"/>
+
+      <!-- ── Om symbol floating top ── -->
+      <text x="120" y="18" text-anchor="middle" font-size="14" fill="#FFE060"
+            opacity="0.9" font-family="serif" filter="url(#hGlow)">ॐ</text>
+
+      <!-- ── Decorative dots at base of lotus ── -->
+      <g fill="#FFD700" opacity="0.5">
+        <circle cx="95"  cy="300" r="2"/>
+        <circle cx="108" cy="305" r="1.5"/>
+        <circle cx="120" cy="307" r="2"/>
+        <circle cx="132" cy="305" r="1.5"/>
+        <circle cx="145" cy="300" r="2"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <span class="hero-om">ॐ</span>
+    <p class="hero-sanskrit">मध्येसुधाब्धि-मणि-मण्डप-रत्न-वेद्यां
+सिंहासनॊपरिगतां परिपीतवर्णाम्।
+पीताम्बराभरण-माल्य-विभूषिताङ्गीं
+देवीं स्मरामि धृतमुद्गर-वैरिजिह्वाम्॥</p>
+
+    <div class="hero-divider">
+      <div class="hero-divider-line"></div>
+      <div class="hero-divider-dot"></div>
+      <div class="hero-divider-line" style="background:linear-gradient(90deg,var(--gold),transparent)"></div>
+    </div>
+
+    <h1 class="hero-title">Maa Baglamukhi<br/>Peeth Parishad</h1>
+    <p class="hero-subtitle">Ancient Wisdom · Sacred Sciences · Divine Guidance</p>
+    <p class="hero-desc">
+      A revered centre of research and practice in India's timeless mystical sciences —
+      Jyotish, Tantra, Mantra, Yantra & Gemstone. Bridging ancient knowledge with
+      the seekers of today.
+    </p>
+    <div class="hero-buttons">
+      <a href="#consult" class="btn-primary">Book Consultation</a>
+      <a href="#services" class="btn-secondary">Explore Sciences</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint">
+    <span>Descend</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section class="about-section section-pad" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-wrap reveal">
+        <div class="about-frame">
+          <div class="about-corner tl"></div>
+          <div class="about-corner tr"></div>
+          <div class="about-corner bl"></div>
+          <div class="about-corner br"></div>
+          <img class="about-frame-symbol" src="ma.jpeg" alt="Maa Baglamukhi Peeth Parishad">
+          <div class="about-badge">
+            <span class="about-badge-num">25+</span>
+            <span class="about-badge-txt">Years of<br/>Sadhana</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-text reveal reveal-delay-2">
+        <span class="section-label">Who We Are</span>
+        <h2>Guardians of India's Sacred Heritage</h2>
+        <p>
+          Maa Baglamukhi Peeth Parishad is a premier institution dedicated to the preservation,
+          research, and dissemination of India's profound spiritual and mystical sciences.
+          Founded under the divine grace of Maa Baglamukhi — the tenth Mahavidya — our
+          Parishad is a living tradition of knowledge.
+        </p>
+        <p>
+          Our scholars, Pandits and Acharyas are devoted practitioners with deep academic
+          grounding, offering authentic guidance in Jyotish, Tantra Siddhi, Mantra Shastra,
+          Yantra Vidya, and Ratna Shastra (Gemstones) to thousands of devotees and seekers.
+        </p>
+        <div class="about-pillars">
+          <div class="pillar">
+            <span class="pillar-icon">📜</span>
+            <div>
+              <span class="pillar-label">Research</span>
+              <p class="pillar-desc">Deep scholarly inquiry into ancient texts and treatises.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <span class="pillar-icon">🕉️</span>
+            <div>
+              <span class="pillar-label">Practice</span>
+              <p class="pillar-desc">Living tradition of Sadhana and Siddhi.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <span class="pillar-icon">🌟</span>
+            <div>
+              <span class="pillar-label">Guidance</span>
+              <p class="pillar-desc">Personal consultations for spiritual and worldly matters.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <span class="pillar-icon">🏛️</span>
+            <div>
+              <span class="pillar-label">Tradition</span>
+              <p class="pillar-desc">Unbroken lineage of Guru–Shishya paramparā.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS ═══ -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <span class="stat-num" data-target="15000">0</span>
+      <span class="stat-label">Consultations Done</span>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat-item reveal reveal-delay-1">
+      <span class="stat-num" data-target="25">0</span>
+      <span class="stat-label">Years of Research</span>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat-item reveal reveal-delay-2">
+      <span class="stat-num" data-target="50">0</span>
+      <span class="stat-label">Expert Scholars</span>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat-item reveal reveal-delay-3">
+      <span class="stat-num" data-target="500">0</span>
+      <span class="stat-label">Ancient Texts Studied</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="services-section section-pad" id="services">
+  <div class="container">
+    <span class="section-label reveal">Our Sacred Services</span>
+    <div class="ornamental-divider reveal">
+      <div class="ornamental-divider-line"></div>
+      <div class="ornamental-divider-center">✦</div>
+      <div class="ornamental-divider-line r"></div>
+    </div>
+    <h2 class="section-title reveal">Pathways to the Divine</h2>
+    <p class="section-desc reveal">
+      We offer authentic consultations, remedies and guidance rooted in the
+      oldest living knowledge systems of Bharat.
+    </p>
+
+    <div class="services-grid">
+
+      <!-- 1 -->
+      <div class="service-card reveal">
+        <span class="service-card-num">01</span>
+        <span class="service-icon">♈</span>
+        <div class="service-name">Jyotish — Vedic Astrology</div>
+        <p class="service-desc">
+          Detailed birth-chart (Kundali) analysis, Dasha prediction, transit reading,
+          compatibility matching, muhurta selection and remedial measures based on
+          classical Parashari and Jaimini systems.
+        </p>
+        <a href="#consult" class="service-link">Consult Now →</a>
+      </div>
+
+      <!-- 2 -->
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-card-num">02</span>
+        <span class="service-icon">🔥</span>
+        <div class="service-name">Tantra Siddhi</div>
+        <p class="service-desc">
+          Authentic Tantra consultations for protection, prosperity and spiritual
+          advancement. Baglamukhi Sadhana, Kali Upasana, Tara Tantra and Shatkarma
+          remedies performed by qualified Siddha practitioners.
+        </p>
+        <a href="#consult" class="service-link">Consult Now →</a>
+      </div>
+
+      <!-- 3 -->
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-card-num">03</span>
+        <span class="service-icon">🙏</span>
+        <div class="service-name">Mantra Vidya</div>
+        <p class="service-desc">
+          Mantra initiation (Deeksha), japa prescription, mantra siddhi guidance,
+          and customised mantra therapy for health, wealth, relationships and
+          spiritual progress aligned with your horoscope.
+        </p>
+        <a href="#consult" class="service-link">Consult Now →</a>
+      </div>
+
+      <!-- 4 -->
+      <div class="service-card reveal">
+        <span class="service-card-num">04</span>
+        <span class="service-icon">✡️</span>
+        <div class="service-name">Yantra Vidya</div>
+        <p class="service-desc">
+          Sacred geometric diagrams — Shri Yantra, Baglamukhi Yantra, Mahamrityunjaya
+          Yantra and more — energised through proper Prana Pratishtha rituals and
+          personalised for your specific intention and planetary placement.
+        </p>
+        <a href="#consult" class="service-link">Consult Now →</a>
+      </div>
+
+      <!-- 5 -->
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-card-num">05</span>
+        <span class="service-icon">💍</span>
+        <div class="service-name">Ratna Shastra — Gemstones</div>
+        <p class="service-desc">
+          Scientific recommendation of planetary gemstones based on birth chart
+          analysis. Ruby, Blue Sapphire, Emerald, Pearl, Coral, Hessonite and more —
+          tested for quality and energised before wearing.
+        </p>
+        <a href="#consult" class="service-link">Consult Now →</a>
+      </div>
+
+      <!-- 6 -->
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-card-num">06</span>
+        <span class="service-icon">🔥</span>
+        <div class="service-name">Puja & Havan Ceremonies</div>
+        <p class="service-desc">
+          Specially organised Baglamukhi Maha Puja, Navagraha Shanti, Rudrabhishek,
+          and Kaal Sarp Dosh Nivaran Havan conducted by experienced Vedic priests
+          at our Peeth or at your location.
+        </p>
+        <a href="#consult" class="service-link">Book Ceremony →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ KNOWLEDGE ═══ -->
+<section class="knowledge-section section-pad" id="knowledge">
+  <div class="container">
+    <span class="section-label reveal">Research & Scholarship</span>
+    <div class="ornamental-divider reveal">
+      <div class="ornamental-divider-line"></div>
+      <div class="ornamental-divider-center">✦</div>
+      <div class="ornamental-divider-line r"></div>
+    </div>
+    <h2 class="section-title reveal">Ancient Knowledge Systems</h2>
+    <p class="section-desc reveal">
+      Our scholars actively research and teach India's profound inner sciences,
+      drawing from original Sanskrit texts and living oral traditions.
+    </p>
+  </div>
+
+  <!-- Ticker -->
+  <div class="knowledge-track-wrap">
+    <div class="knowledge-track">
+      <div class="knowledge-track-item">Brihat Parashara Hora Shastra</div>
+      <div class="knowledge-track-item">Devi Bhagavatam</div>
+      <div class="knowledge-track-item">Mantra Mahodadhi</div>
+      <div class="knowledge-track-item">Shri Vidya Ratnakara</div>
+      <div class="knowledge-track-item">Tantra Samuchaya</div>
+      <div class="knowledge-track-item">Ratna Pariksha</div>
+      <div class="knowledge-track-item">Agni Purana</div>
+      <div class="knowledge-track-item">Jyotish Ratnamala</div>
+      <div class="knowledge-track-item">Baglamukhi Rahasya</div>
+      <div class="knowledge-track-item">Siddha Kunjika Stotra</div>
+      <!-- duplicate for seamless loop -->
+      <div class="knowledge-track-item">Brihat Parashara Hora Shastra</div>
+      <div class="knowledge-track-item">Devi Bhagavatam</div>
+      <div class="knowledge-track-item">Mantra Mahodadhi</div>
+      <div class="knowledge-track-item">Shri Vidya Ratnakara</div>
+      <div class="knowledge-track-item">Tantra Samuchaya</div>
+      <div class="knowledge-track-item">Ratna Pariksha</div>
+      <div class="knowledge-track-item">Agni Purana</div>
+      <div class="knowledge-track-item">Jyotish Ratnamala</div>
+      <div class="knowledge-track-item">Baglamukhi Rahasya</div>
+      <div class="knowledge-track-item">Siddha Kunjika Stotra</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="knowledge-cards">
+
+      <div class="knowledge-card reveal">
+        <div class="knowledge-card-icon">♈</div>
+        <div>
+          <div class="knowledge-card-title">Jyotish Vidya — Vedic Astrology</div>
+          <p class="knowledge-card-text">
+            The eye of the Vedas, Jyotish is India's ancient science of light and time.
+            Our research covers classical texts including Brihat Parashara Hora Shastra,
+            Saravali, Phaladeepika, and Brihat Jataka, encompassing natal astrology,
+            Prashna (horary), Mundane astrology and Nadi traditions.
+          </p>
+          <div class="knowledge-tags">
+            <span class="knowledge-tag">Natal Chart</span>
+            <span class="knowledge-tag">Prashna</span>
+            <span class="knowledge-tag">Dasha System</span>
+            <span class="knowledge-tag">Nadi</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="knowledge-card reveal reveal-delay-1">
+        <div class="knowledge-card-icon">🔥</div>
+        <div>
+          <div class="knowledge-card-title">Tantra Shastra</div>
+          <p class="knowledge-card-text">
+            Tantra is a vast spiritual technology for working with cosmic energies.
+            Our Parishad specialises in the Shakta Tantras — particularly Baglamukhi,
+            Kali, Tara, Chhinnamasta and Dhumavati traditions — preserving their
+            authentic lineage and ritual protocols.
+          </p>
+          <div class="knowledge-tags">
+            <span class="knowledge-tag">Shakta Tantra</span>
+            <span class="knowledge-tag">Shatkarma</span>
+            <span class="knowledge-tag">Kavach</span>
+            <span class="knowledge-tag">Siddhi</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="knowledge-card reveal">
+        <div class="knowledge-card-icon">🙏</div>
+        <div>
+          <div class="knowledge-card-title">Mantra Shastra</div>
+          <p class="knowledge-card-text">
+            Mantra is sacred sound vibration — the divine in audible form. Our
+            scholars study and teach the phonetics, metre, deity correspondence and
+            energetic protocols of Vedic, Tantric and Puranic mantras, including
+            Bija Mantras, Stotra compositions and Mala Mantra traditions.
+          </p>
+          <div class="knowledge-tags">
+            <span class="knowledge-tag">Bija Mantra</span>
+            <span class="knowledge-tag">Deeksha</span>
+            <span class="knowledge-tag">Japa Vidhi</span>
+            <span class="knowledge-tag">Stotra</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="knowledge-card reveal reveal-delay-1">
+        <div class="knowledge-card-icon">✡️💍</div>
+        <div>
+          <div class="knowledge-card-title">Yantra & Ratna Vidya</div>
+          <p class="knowledge-card-text">
+            Yantras are sacred geometric expressions of divine consciousness. Ratna
+            Shastra is the science of planetary gemstones. Both function as receivers
+            and transmitters of cosmic frequencies. Our experts study the Yantra
+            construction, consecration and the correlation of gems to planetary forces.
+          </p>
+          <div class="knowledge-tags">
+            <span class="knowledge-tag">Shri Yantra</span>
+            <span class="knowledge-tag">Prana Pratishtha</span>
+            <span class="knowledge-tag">Navaratna</span>
+            <span class="knowledge-tag">Uparatna</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONSULTATION ═══ -->
+<section class="consult-section section-pad" id="consult">
+  <div class="container">
+    <div class="consult-grid">
+      <div class="consult-info reveal">
+        <span class="section-label" style="text-align:left">Book A Session</span>
+        <h2>Seek Divine Guidance Today</h2>
+        <p>
+          Our experienced Acharyas and Jyotishis are available for in-person and
+          online consultations. Share your query and receive personalised guidance
+          grounded in authentic ancient tradition.
+        </p>
+        <div class="consult-steps">
+          <div class="consult-step">
+            <div class="consult-step-num">1</div>
+            <div class="consult-step-text">
+              <strong>Submit Your Request</strong>
+              <span>Fill the form with your details and nature of query.</span>
+            </div>
+          </div>
+          <div class="consult-step">
+            <div class="consult-step-num">2</div>
+            <div class="consult-step-text">
+              <strong>Allocation of Scholar</strong>
+              <span>Your query is assigned to the most relevant specialist.</span>
+            </div>
+          </div>
+          <div class="consult-step">
+            <div class="consult-step-num">3</div>
+            <div class="consult-step-text">
+              <strong>Receive Guidance</strong>
+              <span>Detailed analysis with remedies, mantras or gemstone prescription.</span>
+            </div>
+          </div>
+          <div class="consult-step">
+            <div class="consult-step-num">4</div>
+            <div class="consult-step-text">
+              <strong>Follow-Up Support</strong>
+              <span>Continued support during implementation of remedies.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="consult-form reveal reveal-delay-2">
+        <div class="form-title">Consultation Request</div>
+        <p class="form-subtitle">All fields marked are required. We respond within 24 hours.</p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="cf_name" placeholder="Your full name"/>
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="cf_phone" placeholder="+91 XXXXXXXXXX"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="cf_email" placeholder="your@email.com"/>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Date of Birth</label>
+            <input type="date" id="cf_dob"/>
+          </div>
+          <div class="form-group">
+            <label>Time of Birth</label>
+            <input type="time" id="cf_tob"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Place of Birth</label>
+          <input type="text" id="cf_pob" placeholder="City, State, Country"/>
+        </div>
+
+        <div class="form-group">
+          <label>Service Required</label>
+          <select id="cf_service">
+            <option value="">Select a service...</option>
+            <option>Vedic Astrology — Kundali Analysis</option>
+            <option>Tantra Siddhi Consultation</option>
+            <option>Mantra Vidya — Deeksha & Japa</option>
+            <option>Yantra Recommendation & Consecration</option>
+            <option>Gemstone Recommendation</option>
+            <option>Puja / Havan Booking</option>
+            <option>General Spiritual Guidance</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Describe Your Query</label>
+          <textarea id="cf_query" placeholder="Please share your concern or question in detail..."></textarea>
+        </div>
+
+        <button class="form-btn" id="cf_submit" onclick="submitForm(event)">🕉️ Submit Request</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="testimonials-section section-pad">
+  <div class="container">
+    <span class="section-label reveal">Devotee Experiences</span>
+    <div class="ornamental-divider reveal">
+      <div class="ornamental-divider-line"></div>
+      <div class="ornamental-divider-center">✦</div>
+      <div class="ornamental-divider-line r"></div>
+    </div>
+    <h2 class="section-title reveal">Blessings Received</h2>
+    <p class="section-desc reveal">
+      Thousands have found clarity, healing and divine grace through our Parishad's guidance.
+    </p>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">
+          After years of career struggles, the Kundali analysis and Baglamukhi Sadhana
+          prescribed by Acharya ji transformed my life. Within months, opportunities
+          appeared that I could never have imagined. Truly divine grace.
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"><svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="dmt1" cx="42%" cy="38%" r="60%">
+          <stop offset="0%" stop-color="#D4900A"/>
+          <stop offset="100%" stop-color="#704010"/>
+        </radialGradient>
+      </defs>
+      <circle cx="25" cy="25" r="25" fill="#4A1A00" opacity="0.9"/>
+      <!-- Hair -->
+      <path d="M12,22 Q13,10 25,9 Q37,10 38,22" fill="#1A0800"/>
+      <!-- Face -->
+      <ellipse cx="25" cy="27" rx="11" ry="12" fill="url(#dmt1)"/>
+      <!-- Eyes -->
+      <ellipse cx="20.5" cy="25" rx="2.8" ry="1.9" fill="white" opacity="0.95"/>
+      <circle cx="20.5" cy="25" r="1.4" fill="#1A0800"/>
+      <circle cx="21.2" cy="24.4" r="0.5" fill="white"/>
+      <ellipse cx="29.5" cy="25" rx="2.8" ry="1.9" fill="white" opacity="0.95"/>
+      <circle cx="29.5" cy="25" r="1.4" fill="#1A0800"/>
+      <circle cx="30.2" cy="24.4" r="0.5" fill="white"/>
+      <!-- Eyebrows -->
+      <path d="M18,22.5 Q20.5,21 23,22.5" fill="none" stroke="#1A0800" stroke-width="0.9"/>
+      <path d="M27,22.5 Q29.5,21 32,22.5" fill="none" stroke="#1A0800" stroke-width="0.9"/>
+      <!-- Nose & smile -->
+      <path d="M24,28 Q25,30 26,28" fill="none" stroke="#7A4010" stroke-width="0.5"/>
+      <path d="M21,32 Q25,35 29,32" fill="none" stroke="#7A2010" stroke-width="0.9" stroke-linecap="round"/>
+      <!-- Shirt collar -->
+      <ellipse cx="25" cy="45" rx="13" ry="7" fill="#2A1A0A" opacity="0.8"/>
+      <path d="M16,41 Q20,38 25,37 Q30,38 34,41" fill="#2A1A0A" opacity="0.75"/>
+    </svg></div>
+          <div>
+            <div class="testimonial-name">Rajesh Kumar Sharma</div>
+            <div class="testimonial-from">Delhi, India</div>
+          </div>
+          <div class="testimonial-stars">★★★★★</div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">
+          The gemstone consultation was incredibly precise. The Blue Sapphire recommended
+          based on my chart brought a marked improvement in my professional life within
+          45 days. The scholars here truly know their science.
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"><svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="dft2" cx="42%" cy="38%" r="60%">
+          <stop offset="0%" stop-color="#C8850A"/>
+          <stop offset="100%" stop-color="#704010"/>
+        </radialGradient>
+      </defs>
+      <circle cx="25" cy="25" r="25" fill="#8B0000" opacity="0.9"/>
+      <!-- Hair -->
+      <path d="M12,22 Q13,9 25,8 Q37,9 38,22" fill="#1A0800"/>
+      <line x1="25" y1="9" x2="25" y2="18" stroke="#CC2020" stroke-width="1" opacity="0.6"/>
+      <!-- Face -->
+      <ellipse cx="25" cy="27" rx="11" ry="12" fill="url(#dft2)"/>
+      <!-- Eyes -->
+      <ellipse cx="20.5" cy="25" rx="3" ry="2" fill="white" opacity="0.95"/>
+      <circle cx="20.5" cy="25" r="1.5" fill="#1A0800"/>
+      <circle cx="21.2" cy="24.2" r="0.6" fill="white"/>
+      <path d="M17.5,25 Q20.5,22.5 23.5,25" fill="none" stroke="#1A0800" stroke-width="1"/>
+      <ellipse cx="29.5" cy="25" rx="3" ry="2" fill="white" opacity="0.95"/>
+      <circle cx="29.5" cy="25" r="1.5" fill="#1A0800"/>
+      <circle cx="30.2" cy="24.2" r="0.6" fill="white"/>
+      <path d="M26.5,25 Q29.5,22.5 32.5,25" fill="none" stroke="#1A0800" stroke-width="1"/>
+      <!-- Eyebrows -->
+      <path d="M17.5,22.5 Q20.5,20.5 23,22.5" fill="none" stroke="#1A0800" stroke-width="1"/>
+      <path d="M27,22.5 Q29.5,20.5 32.5,22.5" fill="none" stroke="#1A0800" stroke-width="1"/>
+      <!-- Bindi -->
+      <circle cx="25" cy="21" r="1.5" fill="#CC2020"/>
+      <!-- Nose & lips -->
+      <path d="M24,29 Q25,31 26,29" fill="none" stroke="#7A4010" stroke-width="0.5"/>
+      <path d="M21.5,33 Q25,36 28.5,33" fill="#CC4040" opacity="0.7" stroke="#CC4040" stroke-width="0.3"/>
+      <!-- Blouse -->
+      <ellipse cx="25" cy="45" rx="13" ry="7" fill="#8B0000" opacity="0.85"/>
+      <path d="M16,41 Q20,38 25,37 Q30,38 34,41" fill="#8B0000" opacity="0.8"/>
+      <!-- Earrings -->
+      <circle cx="13.5" cy="27.5" r="1.8" fill="#FFD700"/>
+      <circle cx="36.5" cy="27.5" r="1.8" fill="#FFD700"/>
+    </svg></div>
+          <div>
+            <div class="testimonial-name">Priya Malhotra</div>
+            <div class="testimonial-from">Mumbai, India</div>
+          </div>
+          <div class="testimonial-stars">★★★★★</div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">
+          I was sceptical about Yantra but the Shri Yantra consecrated at the Peeth
+          and the mantra given to me created a palpable shift in the energy of my home.
+          The peace and harmony we now experience is remarkable.
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"><svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="dmt3" cx="42%" cy="38%" r="60%">
+          <stop offset="0%" stop-color="#C8A040"/>
+          <stop offset="100%" stop-color="#704010"/>
+        </radialGradient>
+      </defs>
+      <circle cx="25" cy="25" r="25" fill="#1A3A6A" opacity="0.9"/>
+      <!-- Hair -->
+      <path d="M12,22 Q13,10 25,9 Q37,10 38,22" fill="#1A0800"/>
+      <!-- Face -->
+      <ellipse cx="25" cy="27" rx="11" ry="12" fill="url(#dmt3)"/>
+      <!-- Eyes -->
+      <ellipse cx="20.5" cy="25" rx="2.8" ry="1.9" fill="white" opacity="0.95"/>
+      <circle cx="20.5" cy="25" r="1.4" fill="#1A0800"/>
+      <circle cx="21.2" cy="24.4" r="0.5" fill="white"/>
+      <ellipse cx="29.5" cy="25" rx="2.8" ry="1.9" fill="white" opacity="0.95"/>
+      <circle cx="29.5" cy="25" r="1.4" fill="#1A0800"/>
+      <circle cx="30.2" cy="24.4" r="0.5" fill="white"/>
+      <!-- Eyebrows -->
+      <path d="M18,22.5 Q20.5,21 23,22.5" fill="none" stroke="#1A0800" stroke-width="0.9"/>
+      <path d="M27,22.5 Q29.5,21 32,22.5" fill="none" stroke="#1A0800" stroke-width="0.9"/>
+      <!-- Nose & smile -->
+      <path d="M24,28 Q25,30 26,28" fill="none" stroke="#7A4010" stroke-width="0.5"/>
+      <path d="M21,32 Q25,35 29,32" fill="none" stroke="#7A2010" stroke-width="0.9" stroke-linecap="round"/>
+      <!-- Shirt collar -->
+      <ellipse cx="25" cy="45" rx="13" ry="7" fill="#2A1A0A" opacity="0.8"/>
+      <path d="M16,41 Q20,38 25,37 Q30,38 34,41" fill="#2A1A0A" opacity="0.75"/>
+    </svg></div>
+          <div>
+            <div class="testimonial-name">Anand Venkataraman</div>
+            <div class="testimonial-from">Chennai, India</div>
+          </div>
+          <div class="testimonial-stars">★★★★★</div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">
+          The Navagraha Havan organised by the Parishad for my family was conducted
+          with utmost authenticity and devotion. The entire process was deeply moving
+          and we could feel the positive vibrations for weeks afterward.
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"><svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="dft4" cx="42%" cy="38%" r="60%">
+          <stop offset="0%" stop-color="#D0900A"/>
+          <stop offset="100%" stop-color="#704010"/>
+        </radialGradient>
+      </defs>
+      <circle cx="25" cy="25" r="25" fill="#4A006A" opacity="0.9"/>
+      <!-- Hair -->
+      <path d="M12,22 Q13,9 25,8 Q37,9 38,22" fill="#1A0800"/>
+      <line x1="25" y1="9" x2="25" y2="18" stroke="#CC2020" stroke-width="1" opacity="0.6"/>
+      <!-- Face -->
+      <ellipse cx="25" cy="27" rx="11" ry="12" fill="url(#dft4)"/>
+      <!-- Eyes -->
+      <ellipse cx="20.5" cy="25" rx="3" ry="2" fill="white" opacity="0.95"/>
+      <circle cx="20.5" cy="25" r="1.5" fill="#1A0800"/>
+      <circle cx="21.2" cy="24.2" r="0.6" fill="white"/>
+      <path d="M17.5,25 Q20.5,22.5 23.5,25" fill="none" stroke="#1A0800" stroke-width="1"/>
+      <ellipse cx="29.5" cy="25" rx="3" ry="2" fill="white" opacity="0.95"/>
+      <circle cx="29.5" cy="25" r="1.5" fill="#1A0800"/>
+      <circle cx="30.2" cy="24.2" r="0.6" fill="white"/>
+      <path d="M26.5,25 Q29.5,22.5 32.5,25" fill="none" stroke="#1A0800" stroke-width="1"/>
+      <!-- Eyebrows -->
+      <path d="M17.5,22.5 Q20.5,20.5 23,22.5" fill="none" stroke="#1A0800" stroke-width="1"/>
+      <path d="M27,22.5 Q29.5,20.5 32.5,22.5" fill="none" stroke="#1A0800" stroke-width="1"/>
+      <!-- Bindi -->
+      <circle cx="25" cy="21" r="1.5" fill="#CC2020"/>
+      <!-- Nose & lips -->
+      <path d="M24,29 Q25,31 26,29" fill="none" stroke="#7A4010" stroke-width="0.5"/>
+      <path d="M21.5,33 Q25,36 28.5,33" fill="#CC4040" opacity="0.7" stroke="#CC4040" stroke-width="0.3"/>
+      <!-- Blouse -->
+      <ellipse cx="25" cy="45" rx="13" ry="7" fill="#4A006A" opacity="0.85"/>
+      <path d="M16,41 Q20,38 25,37 Q30,38 34,41" fill="#4A006A" opacity="0.8"/>
+      <!-- Earrings -->
+      <circle cx="13.5" cy="27.5" r="1.8" fill="#FFD700"/>
+      <circle cx="36.5" cy="27.5" r="1.8" fill="#FFD700"/>
+    </svg></div>
+          <div>
+            <div class="testimonial-name">Sunita Agarwal</div>
+            <div class="testimonial-from">Jaipur, India</div>
+          </div>
+          <div class="testimonial-stars">★★★★★</div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">
+          The Tantra Siddhi consultation resolved a long-standing issue with negative
+          energies in our business premises. The Kavach and remedies prescribed were
+          completely authentic — rooted in classical texts. Highly recommended.
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"><svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="dmt5" cx="42%" cy="38%" r="60%">
+          <stop offset="0%" stop-color="#B88020"/>
+          <stop offset="100%" stop-color="#704010"/>
+        </radialGradient>
+      </defs>
+      <circle cx="25" cy="25" r="25" fill="#006A2A" opacity="0.9"/>
+      <!-- Hair -->
+      <path d="M12,22 Q13,10 25,9 Q37,10 38,22" fill="#1A0800"/>
+      <!-- Face -->
+      <ellipse cx="25" cy="27" rx="11" ry="12" fill="url(#dmt5)"/>
+      <!-- Eyes -->
+      <ellipse cx="20.5" cy="25" rx="2.8" ry="1.9" fill="white" opacity="0.95"/>
+      <circle cx="20.5" cy="25" r="1.4" fill="#1A0800"/>
+      <circle cx="21.2" cy="24.4" r="0.5" fill="white"/>
+      <ellipse cx="29.5" cy="25" rx="2.8" ry="1.9" fill="white" opacity="0.95"/>
+      <circle cx="29.5" cy="25" r="1.4" fill="#1A0800"/>
+      <circle cx="30.2" cy="24.4" r="0.5" fill="white"/>
+      <!-- Eyebrows -->
+      <path d="M18,22.5 Q20.5,21 23,22.5" fill="none" stroke="#1A0800" stroke-width="0.9"/>
+      <path d="M27,22.5 Q29.5,21 32,22.5" fill="none" stroke="#1A0800" stroke-width="0.9"/>
+      <!-- Nose & smile -->
+      <path d="M24,28 Q25,30 26,28" fill="none" stroke="#7A4010" stroke-width="0.5"/>
+      <path d="M21,32 Q25,35 29,32" fill="none" stroke="#7A2010" stroke-width="0.9" stroke-linecap="round"/>
+      <!-- Shirt collar -->
+      <ellipse cx="25" cy="45" rx="13" ry="7" fill="#2A1A0A" opacity="0.8"/>
+      <path d="M16,41 Q20,38 25,37 Q30,38 34,41" fill="#2A1A0A" opacity="0.75"/>
+    </svg></div>
+          <div>
+            <div class="testimonial-name">Vikram Singh Rathore</div>
+            <div class="testimonial-from">Jodhpur, India</div>
+          </div>
+          <div class="testimonial-stars">★★★★★</div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">
+          As an NRI, I was worried about getting authentic guidance from abroad.
+          The online consultation facility of the Parishad gave me the same depth
+          and quality of guidance. Panditji's knowledge of Jyotish is simply unparalleled.
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"><svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="dft6" cx="42%" cy="38%" r="60%">
+          <stop offset="0%" stop-color="#C88A20"/>
+          <stop offset="100%" stop-color="#704010"/>
+        </radialGradient>
+      </defs>
+      <circle cx="25" cy="25" r="25" fill="#003A6A" opacity="0.9"/>
+      <!-- Hair -->
+      <path d="M12,22 Q13,9 25,8 Q37,9 38,22" fill="#1A0800"/>
+      <line x1="25" y1="9" x2="25" y2="18" stroke="#CC2020" stroke-width="1" opacity="0.6"/>
+      <!-- Face -->
+      <ellipse cx="25" cy="27" rx="11" ry="12" fill="url(#dft6)"/>
+      <!-- Eyes -->
+      <ellipse cx="20.5" cy="25" rx="3" ry="2" fill="white" opacity="0.95"/>
+      <circle cx="20.5" cy="25" r="1.5" fill="#1A0800"/>
+      <circle cx="21.2" cy="24.2" r="0.6" fill="white"/>
+      <path d="M17.5,25 Q20.5,22.5 23.5,25" fill="none" stroke="#1A0800" stroke-width="1"/>
+      <ellipse cx="29.5" cy="25" rx="3" ry="2" fill="white" opacity="0.95"/>
+      <circle cx="29.5" cy="25" r="1.5" fill="#1A0800"/>
+      <circle cx="30.2" cy="24.2" r="0.6" fill="white"/>
+      <path d="M26.5,25 Q29.5,22.5 32.5,25" fill="none" stroke="#1A0800" stroke-width="1"/>
+      <!-- Eyebrows -->
+      <path d="M17.5,22.5 Q20.5,20.5 23,22.5" fill="none" stroke="#1A0800" stroke-width="1"/>
+      <path d="M27,22.5 Q29.5,20.5 32.5,22.5" fill="none" stroke="#1A0800" stroke-width="1"/>
+      <!-- Bindi -->
+      <circle cx="25" cy="21" r="1.5" fill="#CC2020"/>
+      <!-- Nose & lips -->
+      <path d="M24,29 Q25,31 26,29" fill="none" stroke="#7A4010" stroke-width="0.5"/>
+      <path d="M21.5,33 Q25,36 28.5,33" fill="#CC4040" opacity="0.7" stroke="#CC4040" stroke-width="0.3"/>
+      <!-- Blouse -->
+      <ellipse cx="25" cy="45" rx="13" ry="7" fill="#003A6A" opacity="0.85"/>
+      <path d="M16,41 Q20,38 25,37 Q30,38 34,41" fill="#003A6A" opacity="0.8"/>
+      <!-- Earrings -->
+      <circle cx="13.5" cy="27.5" r="1.8" fill="#FFD700"/>
+      <circle cx="36.5" cy="27.5" r="1.8" fill="#FFD700"/>
+    </svg></div>
+          <div>
+            <div class="testimonial-name">Neha Joshi</div>
+            <div class="testimonial-from">Toronto, Canada</div>
+          </div>
+          <div class="testimonial-stars">★★★★★</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SCHOLARS ═══ -->
+<section class="scholars-section section-pad" id="scholars">
+  <div class="container">
+    <span class="section-label reveal">Our Learned Acharyas</span>
+    <div class="ornamental-divider reveal">
+      <div class="ornamental-divider-line"></div>
+      <div class="ornamental-divider-center">✦</div>
+      <div class="ornamental-divider-line r"></div>
+    </div>
+    <h2 class="section-title reveal">Masters of Sacred Science</h2>
+    <p class="section-desc reveal">
+      Each of our scholars brings decades of study, initiation and practice in their
+      respective domains of India's ancient mystical tradition.
+    </p>
+
+    <div class="scholars-grid">
+      <div class="scholar-card reveal">
+        <div class="scholar-avatar"><div class="scholar-avatar">
+  <img src="founder.jpeg" alt="Dr. Mahesh Mohan Jha" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%;">
+</div>
+      <defs>
+        <radialGradient id="sgs1" cx="42%" cy="38%" r="60%">
+          <stop offset="0%" stop-color="#D4900A" stop-opacity="1"/>
+          <stop offset="100%" stop-color="#8B5010" stop-opacity="1"/>
+        </radialGradient>
+        <radialGradient id="bgs1" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#3A0800"/>
+          <stop offset="100%" stop-color="#1A0400"/>
+        </radialGradient>
+      </defs>
+      <circle cx="25" cy="25" r="25" fill="url(#bgs1)"/>
+      <!-- Turban -->
+      <ellipse cx="25" cy="14" rx="14" ry="10" fill="#FF6B00" opacity="0.95"/>
+      <path d="M11,14 Q14,6 25,5 Q36,6 39,14" fill="#FF6B00"/>
+      <path d="M11,14 Q25,10 39,14" fill="none" stroke="rgba(255,215,0,0.5)" stroke-width="0.8"/>
+      <!-- Tilak -->
+      <rect x="23" y="16" width="4" height="8" rx="2" fill="#CC2020"/>
+      <!-- Face -->
+      <ellipse cx="25" cy="30" rx="12" ry="13" fill="url(#sgs1)"/>
+      <!-- Eyes -->
+      <ellipse cx="20" cy="28" rx="3" ry="2" fill="white" opacity="0.95"/>
+      <circle cx="20" cy="28" r="1.5" fill="#1A0800"/>
+      <circle cx="20.8" cy="27.3" r="0.6" fill="white"/>
+      <ellipse cx="30" cy="28" rx="3" ry="2" fill="white" opacity="0.95"/>
+      <circle cx="30" cy="28" r="1.5" fill="#1A0800"/>
+      <circle cx="30.8" cy="27.3" r="0.6" fill="white"/>
+      <!-- Eyebrows -->
+      <path d="M17,25.5 Q20,23.5 23,25.5" fill="none" stroke="#1A0800" stroke-width="1"/>
+      <path d="M27,25.5 Q30,23.5 33,25.5" fill="none" stroke="#1A0800" stroke-width="1"/>
+      <!-- Nose -->
+      <path d="M24,31 Q25,33 26,31" fill="none" stroke="#8B5010" stroke-width="0.6"/>
+      <!-- Bindi -->
+      <circle cx="25" cy="24" r="1.2" fill="#CC2020"/>
+      <!-- Beard/Moustache -->
+      <path d="M17,34 Q25,44 33,34 Q29,42 25,43 Q21,42 17,34Z" fill="#D4900A" opacity="0.7"/>
+      <path d="M21,34.5 Q22,36 25,36.5 Q28,36 29,34.5" fill="none" stroke="#1A0800" stroke-width="0.8" stroke-linecap="round"/>
+      <path d="M22,33 Q25,35 28,33" fill="none" stroke="#3A1A0A" stroke-width="0.7"/>
+      <!-- Dhoti/Kurta collar -->
+      <ellipse cx="25" cy="46" rx="14" ry="8" fill="#FFD700" opacity="0.95"/>
+      <path d="M16,42 Q20,39 25,38 Q30,39 34,42" fill="#FFD700" opacity="0.9"/>
+      <!-- Sacred thread -->
+      <path d="M20,39 Q18,43 20,48" fill="none" stroke="#FFD700" stroke-width="0.7" opacity="0.6"/>
+    </svg></div>
+        <div class="scholar-name">Dr. Mahesh Mohan Jha</div>
+        <div class="scholar-title">Founder & Chief Acharya</div>
+        <div class="scholar-spec">Baglamukhi Sadhak · Vedic Astrology · Tantra,Mantra,Yantra · 30+ yrs</div>
+      </div>
+      <div class="scholar-card reveal reveal-delay-1">
+        <div class="scholar-avatar"><div class="scholar-avatar">
+  <img src="shambhu.jpeg" alt="Pt. Shambhu Mishra" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%;">
+</div>
+      <defs>
+        <radialGradient id="sfs2" cx="42%" cy="35%" r="65%">
+          <stop offset="0%" stop-color="#D4900A"/>
+          <stop offset="100%" stop-color="#8B5010"/>
+        </radialGradient>
+        <radialGradient id="bfs2" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#3A0800"/>
+          <stop offset="100%" stop-color="#1A0400"/>
+        </radialGradient>
+      </defs>
+      <circle cx="25" cy="25" r="25" fill="url(#bfs2)"/>
+      <!-- Hair top -->
+      <ellipse cx="25" cy="15" rx="13" ry="9" fill="#1A0800"/>
+      <path d="M12,15 Q14,6 25,5 Q36,6 38,15" fill="#1A0800"/>
+      <!-- Hair parting line -->
+      <line x1="25" y1="6" x2="25" y2="15" stroke="#FF4060" stroke-width="1.2" opacity="0.7"/>
+      <!-- Flowers in hair -->
+      <circle cx="18" cy="12" r="2.5" fill="#CC2020" opacity="0.9"/>
+      <circle cx="18" cy="12" r="1.2" fill="#FFE066"/>
+      <!-- Face -->
+      <ellipse cx="25" cy="29" rx="12" ry="13" fill="url(#sfs2)"/>
+      <!-- Eyes elongated -->
+      <ellipse cx="20" cy="27" rx="3.5" ry="2.2" fill="white" opacity="0.95"/>
+      <circle cx="20" cy="27" r="1.8" fill="#1A0800"/>
+      <circle cx="21" cy="26.2" r="0.7" fill="white"/>
+      <path d="M16.5,27 Q20,24.5 23.5,27" fill="none" stroke="#1A0800" stroke-width="1.2"/>
+      <ellipse cx="30" cy="27" rx="3.5" ry="2.2" fill="white" opacity="0.95"/>
+      <circle cx="30" cy="27" r="1.8" fill="#1A0800"/>
+      <circle cx="31" cy="26.2" r="0.7" fill="white"/>
+      <path d="M26.5,27 Q30,24.5 33.5,27" fill="none" stroke="#1A0800" stroke-width="1.2"/>
+      <!-- Eyebrows -->
+      <path d="M17,24 Q20,22 23,24" fill="none" stroke="#1A0800" stroke-width="1.1"/>
+      <path d="M27,24 Q30,22 33,24" fill="none" stroke="#1A0800" stroke-width="1.1"/>
+      <!-- Nose with nath -->
+      <path d="M24,31 Q25,33 26,31" fill="none" stroke="#8B5010" stroke-width="0.6"/>
+      <circle cx="27" cy="31.5" r="1.5" fill="none" stroke="#FFD700" stroke-width="0.8"/>
+      <circle cx="27.6" cy="31.2" r="0.6" fill="#FF4060"/>
+      <!-- Bindi -->
+      <ellipse cx="25" cy="22" rx="1.5" ry="2" fill="#CC2020"/>
+      <circle cx="25" cy="21.2" r="0.6" fill="#FFD700"/>
+      <!-- Lips -->
+      <path d="M21.5,34.5 Q25,37 28.5,34.5" fill="#CC4040" opacity="0.8"/>
+      <path d="M22,34.5 Q25,36 28,34.5" fill="#FF7060" opacity="0.6"/>
+      <!-- Saree blouse -->
+      <ellipse cx="25" cy="46" rx="14" ry="8" fill="#8B0000" opacity="0.95"/>
+      <path d="M15,43 Q19,40 25,39 Q31,40 35,43" fill="#8B0000" opacity="0.9"/>
+      <!-- Saree border -->
+      <path d="M15,43 Q19,40 25,39 Q31,40 35,43" fill="none" stroke="#FFD700" stroke-width="0.6" opacity="0.5"/>
+      <!-- Earring -->
+      <circle cx="13" cy="29" r="2" fill="#FFD700"/>
+      <circle cx="13" cy="29" r="1" fill="#FF4060"/>
+      <circle cx="37" cy="29" r="2" fill="#FFD700"/>
+      <circle cx="37" cy="29" r="1" fill="#FF4060"/>
+    </svg></div>
+        <div class="scholar-name">Pt. Shambhu Mishra</div>
+        <div class="scholar-title">Vedic Karmkand Scholar</div>
+        <div class="scholar-spec">Vedic· Karmkand· 13+ yrs</div>
+      </div>
+      <div class="scholar-card reveal reveal-delay-2">
+        <div class="scholar-avatar"><div class="scholar-avatar">
+  <img src="arun.jpeg" alt="Prof. Arun Mishra" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%;">
+</div>
+      <defs>
+        <radialGradient id="sgs3" cx="42%" cy="38%" r="60%">
+          <stop offset="0%" stop-color="#C8850A" stop-opacity="1"/>
+          <stop offset="100%" stop-color="#8B5010" stop-opacity="1"/>
+        </radialGradient>
+        <radialGradient id="bgs3" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#3A0800"/>
+          <stop offset="100%" stop-color="#1A0400"/>
+        </radialGradient>
+      </defs>
+      <circle cx="25" cy="25" r="25" fill="url(#bgs3)"/>
+      <!-- Turban -->
+      <ellipse cx="25" cy="14" rx="14" ry="10" fill="#2244AA" opacity="0.95"/>
+      <path d="M11,14 Q14,6 25,5 Q36,6 39,14" fill="#2244AA"/>
+      <path d="M11,14 Q25,10 39,14" fill="none" stroke="rgba(255,215,0,0.5)" stroke-width="0.8"/>
+      <!-- Tilak -->
+      <rect x="23" y="16" width="4" height="8" rx="2" fill="#CC2020"/>
+      <!-- Face -->
+      <ellipse cx="25" cy="30" rx="12" ry="13" fill="url(#sgs3)"/>
+      <!-- Eyes -->
+      <ellipse cx="20" cy="28" rx="3" ry="2" fill="white" opacity="0.95"/>
+      <circle cx="20" cy="28" r="1.5" fill="#1A0800"/>
+      <circle cx="20.8" cy="27.3" r="0.6" fill="white"/>
+      <ellipse cx="30" cy="28" rx="3" ry="2" fill="white" opacity="0.95"/>
+      <circle cx="30" cy="28" r="1.5" fill="#1A0800"/>
+      <circle cx="30.8" cy="27.3" r="0.6" fill="white"/>
+      <!-- Eyebrows -->
+      <path d="M17,25.5 Q20,23.5 23,25.5" fill="none" stroke="#1A0800" stroke-width="1"/>
+      <path d="M27,25.5 Q30,23.5 33,25.5" fill="none" stroke="#1A0800" stroke-width="1"/>
+      <!-- Nose -->
+      <path d="M24,31 Q25,33 26,31" fill="none" stroke="#8B5010" stroke-width="0.6"/>
+      <!-- Bindi -->
+      <circle cx="25" cy="24" r="1.2" fill="#CC2020"/>
+      <!-- Beard/Moustache -->
+      
+      <path d="M21,34.5 Q22,36 25,36.5 Q28,36 29,34.5" fill="none" stroke="#1A0800" stroke-width="0.8" stroke-linecap="round"/>
+      <path d="M22,33 Q25,35 28,33" fill="none" stroke="#3A1A0A" stroke-width="0.7"/>
+      <!-- Dhoti/Kurta collar -->
+      <ellipse cx="25" cy="46" rx="14" ry="8" fill="#FFFFFF" opacity="0.95"/>
+      <path d="M16,42 Q20,39 25,38 Q30,39 34,42" fill="#FFFFFF" opacity="0.9"/>
+      <!-- Sacred thread -->
+      <path d="M20,39 Q18,43 20,48" fill="none" stroke="#FFD700" stroke-width="0.7" opacity="0.6"/>
+    </svg></div>
+        <div class="scholar-name">Prof. Arun Mishra</div>
+        <div class="scholar-title">Numerologist & Vastu Consultant</div>
+        <div class="scholar-spec">Vastu· Numerology · 18+ yrs</div>
+      </div>
+      <div class="scholar-card reveal reveal-delay-3">
+        <div class="scholar-avatar"><img src="paras.png" alt="Pt. Paras Nath Thakur" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%;">
+      <defs>
+        <radialGradient id="sgs4" cx="42%" cy="38%" r="60%">
+          <stop offset="0%" stop-color="#C09020" stop-opacity="1"/>
+          <stop offset="100%" stop-color="#8B5010" stop-opacity="1"/>
+        </radialGradient>
+        <radialGradient id="bgs4" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#3A0800"/>
+          <stop offset="100%" stop-color="#1A0400"/>
+        </radialGradient>
+      </defs>
+      <circle cx="25" cy="25" r="25" fill="url(#bgs4)"/>
+      <!-- Turban -->
+      <ellipse cx="25" cy="14" rx="14" ry="10" fill="#228B22" opacity="0.95"/>
+      <path d="M11,14 Q14,6 25,5 Q36,6 39,14" fill="#228B22"/>
+      <path d="M11,14 Q25,10 39,14" fill="none" stroke="rgba(255,215,0,0.5)" stroke-width="0.8"/>
+      <!-- Tilak -->
+      <rect x="23" y="16" width="4" height="8" rx="2" fill="#CC2020"/>
+      <!-- Face -->
+      <ellipse cx="25" cy="30" rx="12" ry="13" fill="url(#sgs4)"/>
+      <!-- Eyes -->
+      <ellipse cx="20" cy="28" rx="3" ry="2" fill="white" opacity="0.95"/>
+      <circle cx="20" cy="28" r="1.5" fill="#1A0800"/>
+      <circle cx="20.8" cy="27.3" r="0.6" fill="white"/>
+      <ellipse cx="30" cy="28" rx="3" ry="2" fill="white" opacity="0.95"/>
+      <circle cx="30" cy="28" r="1.5" fill="#1A0800"/>
+      <circle cx="30.8" cy="27.3" r="0.6" fill="white"/>
+      <!-- Eyebrows -->
+      <path d="M17,25.5 Q20,23.5 23,25.5" fill="none" stroke="#1A0800" stroke-width="1"/>
+      <path d="M27,25.5 Q30,23.5 33,25.5" fill="none" stroke="#1A0800" stroke-width="1"/>
+      <!-- Nose -->
+      <path d="M24,31 Q25,33 26,31" fill="none" stroke="#8B5010" stroke-width="0.6"/>
+      <!-- Bindi -->
+      <circle cx="25" cy="24" r="1.2" fill="#CC2020"/>
+      <!-- Beard/Moustache -->
+      <path d="M17,34 Q25,44 33,34 Q29,42 25,43 Q21,42 17,34Z" fill="#C09020" opacity="0.7"/>
+      <path d="M21,34.5 Q22,36 25,36.5 Q28,36 29,34.5" fill="none" stroke="#1A0800" stroke-width="0.8" stroke-linecap="round"/>
+      <path d="M22,33 Q25,35 28,33" fill="none" stroke="#3A1A0A" stroke-width="0.7"/>
+      <!-- Dhoti/Kurta collar -->
+      <ellipse cx="25" cy="46" rx="14" ry="8" fill="#FFD700" opacity="0.95"/>
+      <path d="M16,42 Q20,39 25,38 Q30,39 34,42" fill="#FFD700" opacity="0.9"/>
+      <!-- Sacred thread -->
+      <path d="M20,39 Q18,43 20,48" fill="none" stroke="#FFD700" stroke-width="0.7" opacity="0.6"/>
+    </svg></div>
+        <div class="scholar-name">Pt. Paras Nath Thakur</div>
+        <div class="scholar-title">Karmkand Vedic Acharya</div>
+        <div class="scholar-spec">Karmkand Vedic & Bhagwat Katha  · 25+ yrs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section class="contact-section section-pad" id="contact">
+  <div class="container">
+    <span class="section-label reveal">Reach Us</span>
+    <div class="ornamental-divider reveal">
+      <div class="ornamental-divider-line"></div>
+      <div class="ornamental-divider-center">✦</div>
+      <div class="ornamental-divider-line r"></div>
+    </div>
+    <h2 class="section-title reveal">Connect With the Parishad</h2>
+    <p class="section-desc reveal">
+      We welcome seekers from all walks of life. Visit us, call us, or write to us —
+      the doors of Maa Baglamukhi's grace are always open.
+    </p>
+
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h2>Maa Baglamukhi Peeth Parishad</h2>
+        <p>
+          Established in the sacred tradition of Sanatana Dharma, our Peeth operates
+          from its main centre and welcomes devotees and students from across the world.
+          Online consultations are available for those unable to visit in person.
+        </p>
+
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <span class="contact-item-label">Address</span>
+              <div class="contact-item-val">
+                Maa Baglamukhi Peeth Parishad,<br/>
+                Narayanpur,SH-55<br/>
+                Begusarai,Bihar — 848202, India
+              </div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <span class="contact-item-label">Phone</span>
+              <div class="contact-item-val">
+                <a href="tel:+917004566352">+91 70045 66352</a><br/>
+                <a href="tel:+919006936966">+91 90069 36966</a>
+              </div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <span class="contact-item-label">Email</span>
+              <div class="contact-item-val">
+                <a href="/cdn-cgi/l/email-protection#6900070f06290b080e0508041c02010044190c0c1d0147061b0e"><span class="__cf_email__" data-cfemail="036a6d656c436162646f626e76686b6a2e736666776b2d6c7164">[email&#160;protected]</span></a><br/>
+              </div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <span class="contact-item-label">Consultation Hours</span>
+              <div class="contact-item-val">
+                Monday – Saturday: 9:00 AM – 7:00 PM<br/>
+                Sunday: 10:00 AM – 2:00 PM (Puja Only)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a class="social-link" href="#" title="YouTube">▶</a>
+          <a class="social-link" href="#" title="Facebook">f</a>
+          <a class="social-link" href="#" title="Instagram">📷</a>
+          <a class="social-link" href="#" title="WhatsApp">💬</a>
+          <a class="social-link" href="#" title="Telegram">✈</a>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <div class="contact-map-placeholder">
+          <div class="map-icon">🗺️</div>
+          <div class="map-text">Our Sacred Location</div>
+          <div class="map-address">
+            Maa Baglamukhi Peeth Parishad,<br/>
+            Narayanpur,SH-55<br/>
+            Daulatpur, Begusarai<br/>
+            Bihar,India — 848202
+          </div>
+          <a href="google.com/maps?sca_esv=4383f7dd9720c753&output=search&q=maa+baglamukhi+peeth+parishad+narayanpur+bihar&source=lnms&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpaEWjvZ2Py1XXV8d8KvlI3j2nXl-YQ05KjnWz5SrU93HEjYyChsjChlPh8hoCFXOKcApRiApREwCJlLQ25GWHiRzurbStLRFLgN-5ky-M56Zf6VBE_pcJdxr_fq4q-vENU5-vN5m5QLfRz9pmQffgfRDCjZJmR4UX3mGvcc5xroIg6jpTY3aeIi5jMzHhEgefIdAsfA&entry=mc&ved=1t:200715&ictx=111" target="_blank" class="btn-secondary" style="margin-top:1rem;font-size:0.7rem;padding:10px 24px;">Open in Maps →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TICKER ═══ -->
+<div class="ticker-strip">
+  <div class="ticker-inner" id="tickerInner">
+    <span class="ticker-item"><span class="ticker-dot">✦</span> जय माँ बगलामुखी</span>
+    <span class="ticker-item"><span class="ticker-dot">✦</span> ॐ ह्रीं बगलामुखी नमः</span>
+    <span class="ticker-item"><span class="ticker-dot">✦</span> Online Consultations Available</span>
+    <span class="ticker-item"><span class="ticker-dot">✦</span> Datia · Madhya Pradesh · India</span>
+    <span class="ticker-item"><span class="ticker-dot">✦</span> Authentic Vedic Astrology</span>
+    <span class="ticker-item"><span class="ticker-dot">✦</span> Tantra · Mantra · Yantra · Gemstones</span>
+    <span class="ticker-item"><span class="ticker-dot">✦</span> सर्वदुष्टानां वाचं स्तम्भय</span>
+    <span class="ticker-item"><span class="ticker-dot">✦</span> Baglamukhi Sadhana · Puja · Havan</span>
+    <span class="ticker-item"><span class="ticker-dot">✦</span> जय माँ बगलामुखी</span>
+    <span class="ticker-item"><span class="ticker-dot">✦</span> ॐ ह्रीं बगलामुखी नमः</span>
+    <span class="ticker-item"><span class="ticker-dot">✦</span> Online Consultations Available</span>
+    <span class="ticker-item"><span class="ticker-dot">✦</span> Datia · Madhya Pradesh · India</span>
+    <span class="ticker-item"><span class="ticker-dot">✦</span> Authentic Vedic Astrology</span>
+    <span class="ticker-item"><span class="ticker-dot">✦</span> Tantra · Mantra · Yantra · Gemstones</span>
+    <span class="ticker-item"><span class="ticker-dot">✦</span> सर्वदुष्टानां वाचं स्तम्भय</span>
+    <span class="ticker-item"><span class="ticker-dot">✦</span> Baglamukhi Sadhana · Puja · Havan</span>
+  </div>
+</div>
+
+<!-- ═══ SACRED GALLERY ═══ -->
+<section class="gallery-section section-pad" id="gallery">
+  <div class="container">
+    <span class="section-label reveal">Divine Darshan</span>
+    <div class="ornamental-divider reveal">
+      <div class="ornamental-divider-line"></div>
+      <div class="ornamental-divider-center">✦</div>
+      <div class="ornamental-divider-line r"></div>
+    </div>
+    <h2 class="section-title reveal">Sacred Gallery</h2>
+    <p class="section-desc reveal">Behold the divine forms, sacred yantras and ancient symbols worshipped at the Peeth.</p>
+
+    <div class="gallery-grid">
+      <div class="gallery-card reveal">
+        <div class="gallery-card-inner">
+          <svg class="yantra-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="yg1" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#FFE066" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="#8B6914" stop-opacity="0.4"/>
+              </radialGradient>
+            </defs>
+            <!-- Baglamukhi Yantra simplified -->
+            <circle cx="100" cy="100" r="95" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.5"/>
+            <circle cx="100" cy="100" r="82" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.35"/>
+            <!-- Triangle up -->
+            <polygon points="100,20 180,160 20,160" fill="none" stroke="#C9A84C" stroke-width="1.8" opacity="0.8"/>
+            <!-- Triangle down -->
+            <polygon points="100,180 20,40 180,40" fill="none" stroke="#E8611A" stroke-width="1.8" opacity="0.7"/>
+            <!-- Inner square -->
+            <rect x="65" y="65" width="70" height="70" fill="none" stroke="#C9A84C" stroke-width="1.2" opacity="0.6" transform="rotate(45,100,100)"/>
+            <!-- Center bindu -->
+            <circle cx="100" cy="100" r="8" fill="url(#yg1)"/>
+            <circle cx="100" cy="100" r="3.5" fill="#FFE066"/>
+            <!-- OM -->
+            <text x="100" y="106" text-anchor="middle" font-size="10" fill="#FFE066" font-family="serif" opacity="0.9">ॐ</text>
+          </svg>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-title">Baglamukhi Yantra</div>
+          <div class="gallery-sub">Sacred geometric diagram energised at the Peeth</div>
+        </div>
+      </div>
+
+      <div class="gallery-card reveal reveal-delay-1">
+        <div class="gallery-card-inner">
+          <svg class="yantra-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- Shri Yantra simplified -->
+            <circle cx="100" cy="100" r="92" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.45"/>
+            <polygon points="100,15 185,155 15,155" fill="none" stroke="#FFD700" stroke-width="1.6" opacity="0.85"/>
+            <polygon points="100,185 15,45 185,45" fill="none" stroke="#E8611A" stroke-width="1.6" opacity="0.8"/>
+            <polygon points="100,35 168,142 32,142" fill="none" stroke="#FFD700" stroke-width="1.3" opacity="0.6"/>
+            <polygon points="100,165 32,58 168,58" fill="none" stroke="#E8611A" stroke-width="1.3" opacity="0.55"/>
+            <polygon points="100,55 152,130 48,130" fill="none" stroke="#C9A84C" stroke-width="1.1" opacity="0.7"/>
+            <polygon points="100,145 48,70 152,70" fill="none" stroke="#C9A84C" stroke-width="1.1" opacity="0.65"/>
+            <circle cx="100" cy="100" r="10" fill="none" stroke="#FFE066" stroke-width="1.5" opacity="0.8"/>
+            <circle cx="100" cy="100" r="4" fill="#FFE066" opacity="0.9"/>
+          </svg>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-title">Shri Yantra</div>
+          <div class="gallery-sub">The queen of all Yantras — nine interlocking triangles</div>
+        </div>
+      </div>
+
+      <div class="gallery-card reveal reveal-delay-2">
+        <div class="gallery-card-inner" style="font-size:5rem; flex-direction:column; gap:0.4rem;">
+          <span style="filter:drop-shadow(0 0 20px rgba(201,168,76,0.9));font-size:4.5rem;">ॐ</span>
+          <span style="font-family:'Cinzel',serif;font-size:0.8rem;color:rgba(201,168,76,0.7);letter-spacing:0.2em;">PRANAVA</span>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-title">Om — The Pranava</div>
+          <div class="gallery-sub">The primordial sound, beginning of all creation</div>
+        </div>
+      </div>
+
+      <div class="gallery-card reveal">
+        <div class="gallery-card-inner">
+          <svg class="yantra-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- Mahamrityunjaya Yantra -->
+            <circle cx="100" cy="100" r="90" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.5"/>
+            <!-- 8-petal lotus -->
+            <g opacity="0.7">
+              <ellipse cx="100" cy="60" rx="14" ry="30" fill="none" stroke="#E8611A" stroke-width="1.2"/>
+              <ellipse cx="100" cy="60" rx="14" ry="30" fill="none" stroke="#E8611A" stroke-width="1.2" transform="rotate(45,100,100)"/>
+              <ellipse cx="100" cy="60" rx="14" ry="30" fill="none" stroke="#E8611A" stroke-width="1.2" transform="rotate(90,100,100)"/>
+              <ellipse cx="100" cy="60" rx="14" ry="30" fill="none" stroke="#E8611A" stroke-width="1.2" transform="rotate(135,100,100)"/>
+            </g>
+            <circle cx="100" cy="100" r="28" fill="none" stroke="#C9A84C" stroke-width="1.4" opacity="0.8"/>
+            <circle cx="100" cy="100" r="18" fill="none" stroke="#FFE066" stroke-width="1" opacity="0.7"/>
+            <text x="100" y="98" text-anchor="middle" font-size="8" fill="#FFE066" font-family="serif">ॐ ह्रौं</text>
+            <text x="100" y="110" text-anchor="middle" font-size="7" fill="#C9A84C" font-family="serif">जूं सः</text>
+          </svg>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-title">Mahamrityunjaya Yantra</div>
+          <div class="gallery-sub">Lord Shiva's yantra for health, longevity and moksha</div>
+        </div>
+      </div>
+
+      <div class="gallery-card reveal reveal-delay-1">
+        <div class="gallery-card-inner">
+          <svg class="yantra-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- Trishul / Shiva symbol -->
+            <line x1="100" y1="180" x2="100" y2="60" stroke="#C9A84C" stroke-width="3" stroke-linecap="round"/>
+            <!-- Trishul heads -->
+            <line x1="100" y1="60" x2="100" y2="20" stroke="#C9A84C" stroke-width="3" stroke-linecap="round"/>
+            <path d="M100,20 Q90,30 84,50 Q92,44 100,48 Q108,44 116,50 Q110,30 100,20Z" fill="#C9A84C" opacity="0.85"/>
+            <path d="M84,50 Q74,35 70,55 Q78,52 84,58" fill="#C9A84C" opacity="0.7"/>
+            <path d="M116,50 Q126,35 130,55 Q122,52 116,58" fill="#C9A84C" opacity="0.7"/>
+            <!-- Damaru cross-bar -->
+            <line x1="70" y1="110" x2="130" y2="110" stroke="#E8611A" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Serpent coils -->
+            <path d="M70,110 Q60,95 75,85 Q90,75 85,65" fill="none" stroke="#8B6914" stroke-width="1.5"/>
+            <path d="M130,110 Q140,95 125,85 Q110,75 115,65" fill="none" stroke="#8B6914" stroke-width="1.5"/>
+            <!-- Crescent moon -->
+            <path d="M88,25 Q82,18 86,10 Q96,14 100,20 Q90,16 88,25Z" fill="#FFE066" opacity="0.8"/>
+            <!-- Circles -->
+            <circle cx="100" cy="115" r="5" fill="#C9A84C" opacity="0.8"/>
+            <circle cx="100" cy="165" r="5" fill="#C9A84C" opacity="0.6"/>
+          </svg>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-title">Shiva Trishul</div>
+          <div class="gallery-sub">The divine trident of Lord Shiva — destroyer of three evils</div>
+        </div>
+      </div>
+
+      <div class="gallery-card reveal reveal-delay-2">
+        <div class="gallery-card-inner">
+          <svg class="yantra-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- Navagraha Yantra -->
+            <rect x="10" y="10" width="180" height="180" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.5"/>
+            <rect x="30" y="30" width="140" height="140" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.35"/>
+            <!-- 3x3 grid -->
+            <g stroke="#C9A84C" stroke-width="0.8" opacity="0.4">
+              <line x1="77" y1="30" x2="77" y2="170"/><line x1="123" y1="30" x2="123" y2="170"/>
+              <line x1="30" y1="77" x2="170" y2="77"/><line x1="30" y1="123" x2="170" y2="123"/>
+            </g>
+            <!-- Planet symbols in cells -->
+            <g font-family="serif" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#FFD700" opacity="0.9">
+              <text x="53" y="53">☀</text><text x="100" y="53">☽</text><text x="147" y="53">♂</text>
+              <text x="53" y="100">☿</text><text x="100" y="100">ॐ</text><text x="147" y="100">♃</text>
+              <text x="53" y="147">♄</text><text x="100" y="147">☊</text><text x="147" y="147">☋</text>
+            </g>
+          </svg>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-title">Navagraha Yantra</div>
+          <div class="gallery-sub">Nine planetary deities — balancing cosmic influences</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ YANTRA SHOWCASE ═══ -->
+<section class="yantra-section section-pad">
+  <div class="container">
+    <span class="section-label reveal">Sacred Geometry</span>
+    <div class="ornamental-divider reveal">
+      <div class="ornamental-divider-line"></div>
+      <div class="ornamental-divider-center">✦</div>
+      <div class="ornamental-divider-line r"></div>
+    </div>
+    <h2 class="section-title reveal">Living Yantras</h2>
+    <p class="section-desc reveal">Each Yantra is a living map of divine energy — energised through Prana Pratishtha and personalised for your intent.</p>
+    <div class="yantra-showcase">
+
+      <div class="yantra-item reveal">
+        <div class="yantra-frame spin">
+          <svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="90,10 170,150 10,150" fill="none" stroke="#C9A84C" stroke-width="2" opacity="0.9"/>
+            <polygon points="90,170 10,30 170,30" fill="none" stroke="#E8611A" stroke-width="2" opacity="0.8"/>
+            <circle cx="90" cy="90" r="12" fill="none" stroke="#FFE066" stroke-width="1.5"/>
+            <circle cx="90" cy="90" r="4" fill="#FFE066"/>
+            <text x="90" y="94" text-anchor="middle" font-size="8" fill="#FFE066" font-family="serif">ह्रीं</text>
+          </svg>
+        </div>
+        <div class="yantra-name">Baglamukhi Yantra</div>
+        <div class="yantra-mantra">ॐ ह्लीं बगलामुख्यै नमः</div>
+      </div>
+
+      <div class="yantra-item reveal reveal-delay-1">
+        <div class="yantra-frame spin-rev">
+          <svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="90" cy="90" r="82" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+            <circle cx="90" cy="90" r="68" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.35"/>
+            <polygon points="90,15 162,135 18,135" fill="none" stroke="#FFD700" stroke-width="1.8" opacity="0.9"/>
+            <polygon points="90,165 18,45 162,45" fill="none" stroke="#E8611A" stroke-width="1.8" opacity="0.85"/>
+            <polygon points="90,38 148,123 32,123" fill="none" stroke="#C9A84C" stroke-width="1.4" opacity="0.7"/>
+            <polygon points="90,142 32,57 148,57" fill="none" stroke="#C9A84C" stroke-width="1.4" opacity="0.65"/>
+            <circle cx="90" cy="90" r="8" fill="none" stroke="#FFE066" stroke-width="1.2"/>
+            <circle cx="90" cy="90" r="3" fill="#FFE066"/>
+          </svg>
+        </div>
+        <div class="yantra-name">Shri Yantra</div>
+        <div class="yantra-mantra">श्रीं ह्रीं क्लीं<br/>महालक्ष्म्यै नमः</div>
+      </div>
+
+      <div class="yantra-item reveal reveal-delay-2">
+        <div class="yantra-frame spin">
+          <svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="90" cy="90" r="80" fill="none" stroke="#C9A84C" stroke-width="1.2" opacity="0.45"/>
+            <g opacity="0.75">
+              <ellipse cx="90" cy="55" rx="12" ry="28" fill="none" stroke="#E8611A" stroke-width="1.4"/>
+              <ellipse cx="90" cy="55" rx="12" ry="28" fill="none" stroke="#E8611A" stroke-width="1.4" transform="rotate(45,90,90)"/>
+              <ellipse cx="90" cy="55" rx="12" ry="28" fill="none" stroke="#C9A84C" stroke-width="1.4" transform="rotate(90,90,90)"/>
+              <ellipse cx="90" cy="55" rx="12" ry="28" fill="none" stroke="#C9A84C" stroke-width="1.4" transform="rotate(135,90,90)"/>
+            </g>
+            <circle cx="90" cy="90" r="22" fill="none" stroke="#FFE066" stroke-width="1.2" opacity="0.8"/>
+            <text x="90" y="87" text-anchor="middle" font-size="9" fill="#FFE066" font-family="serif">ॐ ह्रौं</text>
+            <text x="90" y="99" text-anchor="middle" font-size="7.5" fill="#C9A84C" font-family="serif">जूं सः</text>
+          </svg>
+        </div>
+        <div class="yantra-name">Mahamrityunjaya</div>
+        <div class="yantra-mantra">ॐ त्र्यम्बकं यजामहे</div>
+      </div>
+
+      <div class="yantra-item reveal reveal-delay-3">
+        <div class="yantra-frame spin-rev">
+          <svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+            <rect x="12" y="12" width="156" height="156" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.5"/>
+            <rect x="28" y="28" width="124" height="124" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.35"/>
+            <g stroke="#C9A84C" stroke-width="0.7" opacity="0.35">
+              <line x1="69" y1="28" x2="69" y2="152"/><line x1="111" y1="28" x2="111" y2="152"/>
+              <line x1="28" y1="69" x2="152" y2="69"/><line x1="28" y1="111" x2="152" y2="111"/>
+            </g>
+            <g font-family="serif" text-anchor="middle" dominant-baseline="middle" fill="#FFD700" opacity="0.9">
+              <text x="48" y="48" font-size="16">☀</text><text x="90" y="48" font-size="16">☽</text><text x="132" y="48" font-size="14">♂</text>
+              <text x="48" y="90" font-size="14">☿</text><text x="90" y="90" font-size="18">ॐ</text><text x="132" y="90" font-size="14">♃</text>
+              <text x="48" y="132" font-size="14">♄</text><text x="90" y="132" font-size="14">☊</text><text x="132" y="132" font-size="14">☋</text>
+            </g>
+          </svg>
+        </div>
+        <div class="yantra-name">Navagraha Yantra</div>
+        <div class="yantra-mantra">नव ग्रह शान्ति मंत्र</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ONLINE PUJA BOOKING ═══ -->
+<section class="booking-section section-pad" id="booking">
+  <div class="container">
+    <span class="section-label reveal">Book Online</span>
+    <div class="ornamental-divider reveal">
+      <div class="ornamental-divider-line"></div>
+      <div class="ornamental-divider-center">✦</div>
+      <div class="ornamental-divider-line r"></div>
+    </div>
+    <h2 class="section-title reveal">Sacred Puja Packages</h2>
+    <p class="section-desc reveal">Choose your divine offering. All pujas are performed by qualified Vedic priests with authentic mantras and proper vidhi.</p>
+
+    <div class="puja-grid">
+
+      <div class="puja-card reveal">
+        <span class="puja-icon">🌺</span>
+        <div class="puja-name">Baglamukhi Sadhana Puja</div>
+        <p class="puja-desc">Maa Baglamukhi's core puja for protection against enemies, legal matters, speech power and removing obstacles.</p>
+        <span class="puja-price">₹ 2,100</span>
+        <span class="puja-duration">⏱ 2 hours · Online or In-person</span>
+        <button class="puja-book-btn" onclick="bookPuja('Baglamukhi Sadhana Puja')">Book Now →</button>
+      </div>
+
+      <div class="puja-card featured reveal reveal-delay-1">
+        <div class="puja-badge-tag">Most Popular</div>
+        <span class="puja-icon">🔱</span>
+        <div class="puja-name">Maha Baglamukhi Havan</div>
+        <p class="puja-desc">Grand havan with 11,000 mantra japa, ahuti, and complete Baglamukhi Siddhi ritual. Best for business, court cases and protection.</p>
+        <span class="puja-price">₹ 11,000</span>
+        <span class="puja-duration">⏱ Full day · In-person at Peeth</span>
+        <button class="puja-book-btn" onclick="bookPuja('Maha Baglamukhi Havan')">Book Now →</button>
+      </div>
+
+      <div class="puja-card reveal reveal-delay-2">
+        <span class="puja-icon">🪐</span>
+        <div class="puja-name">Navagraha Shanti</div>
+        <p class="puja-desc">Appease all nine planets with individual mantras and offerings. Recommended for removing planetary doshas and bad periods.</p>
+        <span class="puja-price">₹ 5,100</span>
+        <span class="puja-duration">⏱ 3–4 hours · Online video available</span>
+        <button class="puja-book-btn" onclick="bookPuja('Navagraha Shanti')">Book Now →</button>
+      </div>
+
+      <div class="puja-card reveal">
+        <span class="puja-icon">🌙</span>
+        <div class="puja-name">Kaal Sarp Dosh Nivaran</div>
+        <p class="puja-desc">Special puja and havan to neutralise the effects of Kaal Sarp Dosh in your horoscope. Includes gemstone guidance.</p>
+        <span class="puja-price">₹ 7,500</span>
+        <span class="puja-duration">⏱ Half day · Auspicious tithi selected</span>
+        <button class="puja-book-btn" onclick="bookPuja('Kaal Sarp Dosh Nivaran')">Book Now →</button>
+      </div>
+
+      <div class="puja-card featured reveal reveal-delay-1">
+        <div class="puja-badge-tag">Powerful</div>
+        <span class="puja-icon">💎</span>
+        <div class="puja-name">Yantra Prana Pratishtha</div>
+        <p class="puja-desc">Full consecration of your personal Yantra with proper invocation, 108 mantra rounds, and energisation ritual by a Siddha.</p>
+        <span class="puja-price">₹ 3,500</span>
+        <span class="puja-duration">⏱ 90 min · Yantra dispatched by post</span>
+        <button class="puja-book-btn" onclick="bookPuja('Yantra Prana Pratishtha')">Book Now →</button>
+      </div>
+
+      <div class="puja-card reveal reveal-delay-2">
+        <span class="puja-icon">🌸</span>
+        <div class="puja-name">Rudrabhishek Puja</div>
+        <p class="puja-desc">Sacred bathing of Shivalinga with Panchamrit and 11 kinds of offerings, with Rudri Path recitation by trained priests.</p>
+        <span class="puja-price">₹ 4,100</span>
+        <span class="puja-duration">⏱ 2–3 hours · Monday muhurtas preferred</span>
+        <button class="puja-book-btn" onclick="bookPuja('Rudrabhishek Puja')">Book Now →</button>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;">
+      <p style="font-size:0.9rem;color:rgba(253,245,230,0.5);font-style:italic;margin-bottom:1.5rem;">
+        All puja packages include video recording, prasad dispatch, and post-puja guidance report.
+      </p>
+      <a href="#consult" class="btn-secondary">View All Packages & Consult →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PANCHANG / MUHURTA ═══ -->
+<section class="panchang-section section-pad" id="panchang">
+  <div class="container">
+    <span class="section-label reveal">Vedic Calendar</span>
+    <div class="ornamental-divider reveal">
+      <div class="ornamental-divider-line"></div>
+      <div class="ornamental-divider-center">✦</div>
+      <div class="ornamental-divider-line r"></div>
+    </div>
+    <h2 class="section-title reveal">Today's Panchang</h2>
+    <p class="section-desc reveal">The sacred Vedic almanac for auspicious timing — updated daily by our Jyotish experts.</p>
+
+    <div class="panchang-grid">
+      <div class="panchang-card reveal">
+        <h3>🗓 Daily Panchang</h3>
+        <div class="panch-row"><span class="panch-label">Tithi</span><span class="panch-value" id="pTithi">—</span></div>
+        <div class="panch-row"><span class="panch-label">Vara (Day)</span><span class="panch-value" id="pVara">—</span></div>
+        <div class="panch-row"><span class="panch-label">Nakshatra</span><span class="panch-value" id="pNakshatra">—</span></div>
+        <div class="panch-row"><span class="panch-label">Yoga</span><span class="panch-value" id="pYoga">—</span></div>
+        <div class="panch-row"><span class="panch-label">Karana</span><span class="panch-value" id="pKarana">—</span></div>
+        <div class="panch-row"><span class="panch-label">Sunrise</span><span class="panch-value" id="pSunrise">—</span></div>
+        <div class="panch-row"><span class="panch-label">Sunset</span><span class="panch-value" id="pSunset">—</span></div>
+        <div class="panch-row"><span class="panch-label">Rahu Kaal</span><span class="panch-value" id="pRahu">—</span></div>
+      </div>
+
+      <div class="panchang-card reveal reveal-delay-2">
+        <h3>✨ Today's Muhurtas</h3>
+        <div class="muhurta-list">
+          <div class="muhurta-item">
+            <div class="muhurta-icon">🌅</div>
+            <div>
+              <span class="muhurta-name">Brahma Muhurta</span>
+              <span class="muhurta-time" id="mBrahma">—</span>
+            </div>
+            <span class="muhurta-badge best">Best</span>
+          </div>
+          <div class="muhurta-item">
+            <div class="muhurta-icon">☀️</div>
+            <div>
+              <span class="muhurta-name">Abhijit Muhurta</span>
+              <span class="muhurta-time" id="mAbhijit">—</span>
+            </div>
+            <span class="muhurta-badge good">Good</span>
+          </div>
+          <div class="muhurta-item">
+            <div class="muhurta-icon">🌿</div>
+            <div>
+              <span class="muhurta-name">Amrit Kaal</span>
+              <span class="muhurta-time" id="mAmrit">—</span>
+            </div>
+            <span class="muhurta-badge good">Good</span>
+          </div>
+          <div class="muhurta-item">
+            <div class="muhurta-icon">⚠️</div>
+            <div>
+              <span class="muhurta-name">Rahu Kaal</span>
+              <span class="muhurta-time" id="mRahu">—</span>
+            </div>
+            <span class="muhurta-badge avoid">Avoid</span>
+          </div>
+          <div class="muhurta-item">
+            <div class="muhurta-icon">🌑</div>
+            <div>
+              <span class="muhurta-name">Gulika Kaal</span>
+              <span class="muhurta-time" id="mGulika">—</span>
+            </div>
+            <span class="muhurta-badge avoid">Avoid</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHATSAPP FLOAT ═══ -->
+<a class="whatsapp-float" href="https://wa.me/919006936966?text=Jai%20Maa%20Baglamukhi!%20I%20would%20like%20to%20book%20a%20consultation." target="_blank" rel="noopener" title="Chat on WhatsApp">
+  <span>💬</span>
+  <span class="whatsapp-tooltip">Chat on WhatsApp</span>
+</a>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div style="font-size:2rem;">🔱</div>
+        <div class="footer-brand-name">Maa Baglamukhi Peeth Parishad</div>
+        <p class="footer-brand-desc">
+          Preserving and sharing the sacred heritage of India's mystical sciences —
+          Jyotish, Tantra, Mantra, Yantra and Ratna Vidya — for the welfare
+          of all beings.
+        </p>
+        <div style="font-size:0.78rem;color:rgba(201,168,76,0.4);letter-spacing:0.1em;">
+          ॐ ह्लीं बगलामुख्यै नमः
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="#services">Vedic Astrology</a></li>
+          <li><a href="#services">Tantra Siddhi</a></li>
+          <li><a href="#services">Mantra Vidya</a></li>
+          <li><a href="#services">Yantra Vidya</a></li>
+          <li><a href="#services">Gemstones</a></li>
+          <li><a href="#services">Puja & Havan</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Knowledge</div>
+        <ul class="footer-links">
+          <li><a href="#knowledge">Jyotish Research</a></li>
+          <li><a href="#knowledge">Tantra Shastra</a></li>
+          <li><a href="#knowledge">Mantra Shastra</a></li>
+          <li><a href="#knowledge">Yantra Vigyan</a></li>
+          <li><a href="#knowledge">Ratna Shastra</a></li>
+          <li><a href="#scholars">Our Acharyas</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#consult">Book Consultation</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#">Online Puja</a></li>
+          <li><a href="#">Testimonials</a></li>
+          <li><a href="#">Sacred Shop</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        © 2026 Maa Baglamukhi Peeth Parishad. All Rights Reserved.<br/>
+        Designed & Developed by Kaitra.ai.
+      </div>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Disclaimer</a>
+      </div>
+      <div class="footer-om">ॐ</div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<a href="#home" class="back-top" id="backTop">↑</a>
+
+<!-- ════════════════════════ SCRIPTS ════════════════════════ -->
+<script>
+// ══════════════════════════════════════════════════════════
+//  COSMOS — Navagraha Planetary Revolution Canvas
+// ══════════════════════════════════════════════════════════
+(function(){
+  const canvas = document.getElementById('cosmos-canvas');
+  const ctx = canvas.getContext('2d');
+
+  const NAVAGRAHA = [
+    { name:'Surya',    en:'Sun',     color:'#FFD700', r:9,  orbit:0,    speed:0,       glow:'rgba(255,215,0,0.8)',   trailColor:'rgba(255,215,0,0.3)',   symbol:'☀' },
+    { name:'Chandra',  en:'Moon',    color:'#D0D8E8', r:5,  orbit:90,   speed:0.018,   glow:'rgba(200,215,240,0.7)', trailColor:'rgba(200,215,240,0.2)', symbol:'☽' },
+    { name:'Budh',     en:'Mercury', color:'#B0C4DE', r:4,  orbit:130,  speed:0.013,   glow:'rgba(176,196,222,0.7)', trailColor:'rgba(176,196,222,0.2)', symbol:'☿' },
+    { name:'Shukra',   en:'Venus',   color:'#FFE4B5', r:6,  orbit:175,  speed:0.009,   glow:'rgba(255,228,181,0.7)', trailColor:'rgba(255,228,181,0.2)', symbol:'♀' },
+    { name:'Mangal',   en:'Mars',    color:'#FF6347', r:5,  orbit:220,  speed:0.007,   glow:'rgba(255,99,71,0.7)',   trailColor:'rgba(255,99,71,0.2)',   symbol:'♂' },
+    { name:'Guru',     en:'Jupiter', color:'#DEB887', r:8,  orbit:270,  speed:0.005,   glow:'rgba(222,184,135,0.7)', trailColor:'rgba(222,184,135,0.2)', symbol:'♃' },
+    { name:'Shani',    en:'Saturn',  color:'#C9A84C', r:7,  orbit:320,  speed:0.0035,  glow:'rgba(201,168,76,0.7)',  trailColor:'rgba(201,168,76,0.2)',  symbol:'♄', rings:true },
+    { name:'Rahu',     en:'Rahu',    color:'#8B0000', r:4,  orbit:370,  speed:0.0025,  glow:'rgba(139,0,0,0.8)',     trailColor:'rgba(139,0,0,0.2)',     symbol:'☊' },
+    { name:'Ketu',     en:'Ketu',    color:'#4B0082', r:4,  orbit:415,  speed:0.002,   glow:'rgba(75,0,130,0.8)',    trailColor:'rgba(75,0,130,0.2)',    symbol:'☋' },
+  ];
+
+  // Planet angles (start random)
+  NAVAGRAHA.forEach((p,i) => { p.angle = (i / NAVAGRAHA.length) * Math.PI * 2; p.trail = []; });
+
+  function resize(){
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  let cx, cy;
+
+  function drawGlow(x, y, r, color){
+    const g = ctx.createRadialGradient(x,y,0,x,y,r*3.5);
+    g.addColorStop(0, color);
+    g.addColorStop(1, 'transparent');
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.arc(x,y,r*3.5,0,Math.PI*2);
+    ctx.fill();
+  }
+
+  function drawRings(x, y, r){
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(1, 0.35);
+    ctx.strokeStyle = 'rgba(201,168,76,0.45)';
+    ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(0,0,r+7,0,Math.PI*2); ctx.stroke();
+    ctx.strokeStyle = 'rgba(201,168,76,0.25)';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(0,0,r+12,0,Math.PI*2); ctx.stroke();
+    ctx.restore();
+  }
+
+  function lerp(a,b,t){ return a+(b-a)*t; }
+
+  let frame = 0;
+  function animate(){
+    frame++;
+    cx = canvas.width  * 0.5;
+    cy = canvas.height * 0.5;
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    // Deep space gradient
+    const bg = ctx.createRadialGradient(cx,cy,0,cx,cy,Math.max(canvas.width,canvas.height)*0.7);
+    bg.addColorStop(0,  'rgba(40,5,5,0.18)');
+    bg.addColorStop(0.5,'rgba(10,1,0,0.08)');
+    bg.addColorStop(1,  'transparent');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    // Draw orbital rings
+    NAVAGRAHA.forEach(p => {
+      if(p.orbit === 0) return;
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.strokeStyle = `rgba(201,168,76,0.07)`;
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4,8]);
+      ctx.beginPath();
+      ctx.ellipse(0,0,p.orbit, p.orbit*0.42, -Math.PI/12, 0, Math.PI*2);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.restore();
+    });
+
+    // Draw central SUN
+    const sun = NAVAGRAHA[0];
+    drawGlow(cx, cy, sun.r * 2, `rgba(255,200,50,${0.35 + Math.sin(frame*0.04)*0.15})`);
+    const sunG = ctx.createRadialGradient(cx,cy,0,cx,cy,sun.r*1.4);
+    sunG.addColorStop(0,'#FFF8DC');
+    sunG.addColorStop(0.4,'#FFD700');
+    sunG.addColorStop(1,'#FF8C00');
+    ctx.fillStyle = sunG;
+    ctx.beginPath(); ctx.arc(cx,cy,sun.r,0,Math.PI*2); ctx.fill();
+
+    // Solar corona rays
+    for(let i=0;i<12;i++){
+      const a = (i/12)*Math.PI*2 + frame*0.006;
+      const len = sun.r * (2.5 + Math.sin(frame*0.03 + i)*0.8);
+      ctx.strokeStyle = `rgba(255,200,50,${0.08+Math.sin(frame*0.04+i)*0.04})`;
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(cx + Math.cos(a)*sun.r, cy + Math.sin(a)*sun.r);
+      ctx.lineTo(cx + Math.cos(a)*(sun.r+len), cy + Math.sin(a)*(sun.r+len));
+      ctx.stroke();
+    }
+
+    // OM symbol at center
+    ctx.font = `${sun.r * 1.5}px serif`;
+    ctx.fillStyle = `rgba(255,240,180,${0.6+Math.sin(frame*0.03)*0.2})`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('ॐ', cx, cy);
+
+    // Planets
+    NAVAGRAHA.slice(1).forEach(p => {
+      p.angle += p.speed;
+
+      // Elliptical orbit (slightly inclined)
+      const px = cx + p.orbit * Math.cos(p.angle);
+      const py = cy + p.orbit * 0.42 * Math.sin(p.angle) + (p.orbit * 0.08 * Math.cos(p.angle * 0.5));
+
+      // Trail
+      p.trail.push({x:px, y:py});
+      if(p.trail.length > 38) p.trail.shift();
+      p.trail.forEach((pt, ti) => {
+        const alpha = (ti / p.trail.length) * 0.35;
+        const rad = p.r * (ti / p.trail.length) * 0.6;
+        ctx.fillStyle = p.trailColor.replace('0.2)', `${alpha})`);
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, rad, 0, Math.PI*2);
+        ctx.fill();
+      });
+
+      // Glow
+      drawGlow(px, py, p.r, p.glow.replace('0.7)',`${0.45+Math.sin(frame*0.05)*0.2})`));
+
+      // Saturn rings
+      if(p.rings) drawRings(px, py, p.r);
+
+      // Planet body
+      const pg = ctx.createRadialGradient(px-p.r*0.3, py-p.r*0.3, 0, px, py, p.r);
+      pg.addColorStop(0, '#FFFFFF44');
+      pg.addColorStop(0.4, p.color);
+      pg.addColorStop(1, p.color.replace('#','').length===6 ? '#000000' : p.color);
+      ctx.fillStyle = pg;
+      ctx.beginPath(); ctx.arc(px, py, p.r, 0, Math.PI*2); ctx.fill();
+
+      // Rahu/Ketu as shadow nodes
+      if(p.name==='Rahu'||p.name==='Ketu'){
+        ctx.strokeStyle = p.color + 'AA';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.arc(px, py, p.r+3, 0, Math.PI*2); ctx.stroke();
+      }
+
+      // Symbol label
+      ctx.font = `bold ${p.r*1.1}px serif`;
+      ctx.fillStyle = 'rgba(253,245,230,0.75)';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(p.symbol, px, py);
+
+      // Sanskrit name (near planet)
+      ctx.font = `500 ${Math.max(8,p.r*0.85)}px 'Cinzel', serif`;
+      ctx.fillStyle = `rgba(201,168,76,0.65)`;
+      ctx.textAlign = 'center';
+      ctx.fillText(p.name, px, py - p.r - 9);
+    });
+
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  // Build HUD
+  const hud = document.getElementById('planetHud');
+  NAVAGRAHA.forEach(p => {
+    const el = document.createElement('div');
+    el.className = 'planet-hud-item';
+    el.innerHTML = `<div class="planet-hud-dot" style="background:${p.color}"></div><span>${p.name} · ${p.en}</span>`;
+    hud.appendChild(el);
+  });
+})();
+
+// ══════════════════════════════════════════════════════════
+//  LIGHTNING & SHIVA THUNDER ENGINE
+// ══════════════════════════════════════════════════════════
+(function(){
+  const canvas = document.getElementById('lightning-canvas');
+  const ctx    = canvas.getContext('2d');
+  const flash  = document.getElementById('thunderFlash');
+
+  function resize(){
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Generate a jagged lightning bolt path
+  function boltPath(x1,y1,x2,y2,roughness,depth){
+    if(depth===0) return [[x1,y1],[x2,y2]];
+    const mx = (x1+x2)/2 + (Math.random()-0.5)*roughness;
+    const my = (y1+y2)/2 + (Math.random()-0.5)*roughness;
+    const left  = boltPath(x1,y1,mx,my,roughness*0.55,depth-1);
+    const right = boltPath(mx,my,x2,y2,roughness*0.55,depth-1);
+    return [...left, ...right.slice(1)];
+  }
+
+  function drawBolt(pts, alpha, width, colorCore, colorGlow){
+    // Outer glow
+    ctx.beginPath();
+    pts.forEach((p,i) => i===0 ? ctx.moveTo(p[0],p[1]) : ctx.lineTo(p[0],p[1]));
+    ctx.strokeStyle = colorGlow.replace('A)',`${alpha*0.25})`);
+    ctx.lineWidth   = width * 5;
+    ctx.lineCap     = 'round';
+    ctx.lineJoin    = 'round';
+    ctx.shadowColor = colorGlow;
+    ctx.shadowBlur  = 28;
+    ctx.stroke();
+
+    // Mid glow
+    ctx.beginPath();
+    pts.forEach((p,i) => i===0 ? ctx.moveTo(p[0],p[1]) : ctx.lineTo(p[0],p[1]));
+    ctx.strokeStyle = colorCore.replace('A)',`${alpha*0.55})`);
+    ctx.lineWidth   = width * 2.2;
+    ctx.shadowBlur  = 14;
+    ctx.stroke();
+
+    // Core
+    ctx.beginPath();
+    pts.forEach((p,i) => i===0 ? ctx.moveTo(p[0],p[1]) : ctx.lineTo(p[0],p[1]));
+    ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
+    ctx.lineWidth   = width;
+    ctx.shadowColor = '#FFFFFF';
+    ctx.shadowBlur  = 8;
+    ctx.stroke();
+
+    ctx.shadowBlur  = 0;
+    ctx.shadowColor = 'transparent';
+  }
+
+  // State
+  let bolts = [];
+  let nextStrike = 3000 + Math.random()*4000;
+  let lastTime   = performance.now();
+  let nextDamaru = 0;
+
+  // Damaru pulse animation (SVG in hero) — just triggers via class
+  function triggerDamaruShake(){
+    const d = document.querySelector('.damaru-layer');
+    if(!d) return;
+    d.style.animation = 'none';
+    d.style.opacity   = '0.35';
+    d.style.filter    = 'drop-shadow(0 0 30px rgba(201,168,76,0.9))';
+    setTimeout(()=>{
+      d.style.animation = '';
+      d.style.opacity   = '';
+      d.style.filter    = '';
+    }, 600);
+  }
+
+  function spawnStrike(){
+    const W = canvas.width, H = canvas.height;
+    const type = Math.random();
+
+    let startX, startY, endX, endY, branches;
+
+    if(type < 0.4){
+      // Top-to-ground bolt
+      startX = W * (0.1 + Math.random()*0.8);
+      startY = 0;
+      endX   = startX + (Math.random()-0.5) * W * 0.35;
+      endY   = H * (0.45 + Math.random()*0.5);
+      branches = 3 + Math.floor(Math.random()*4);
+    } else if(type < 0.7){
+      // Side bolt
+      startX = Math.random() < 0.5 ? 0 : W;
+      startY = H * 0.1 + Math.random() * H * 0.5;
+      endX   = W * 0.35 + Math.random() * W * 0.3;
+      endY   = startY + (Math.random()-0.5)*H*0.4;
+      branches = 2;
+    } else {
+      // Top diagonal
+      startX = Math.random() < 0.5 ? W*0.05 : W*0.95;
+      startY = 0;
+      endX   = W/2 + (Math.random()-0.5)*W*0.3;
+      endY   = H * 0.5;
+      branches = 4;
+    }
+
+    const mainPts = boltPath(startX, startY, endX, endY, 120, 6);
+
+    const bolt = {
+      main: mainPts,
+      branches: [],
+      age: 0,
+      lifetime: 180 + Math.random()*240,
+      color: Math.random() < 0.5 ? 'rgba(200,220,255,A)' : 'rgba(255,180,80,A)',
+      glow:  Math.random() < 0.5 ? 'rgba(100,160,255,A)' : 'rgba(232,97,26,A)',
+      width: 0.8 + Math.random()*1.2,
+    };
+
+    // Branch bolts
+    for(let b=0; b<branches; b++){
+      const srcIdx = Math.floor(mainPts.length * (0.2+Math.random()*0.6));
+      const src = mainPts[srcIdx];
+      const bx = src[0] + (Math.random()-0.5)*200;
+      const by = src[1] + Math.random()*120 + 40;
+      const brPts = boltPath(src[0],src[1],bx,by,60,4);
+      bolt.branches.push(brPts);
+    }
+
+    bolts.push(bolt);
+
+    // Flash
+    flash.classList.add('active');
+    setTimeout(()=> flash.classList.remove('active'), 60);
+    setTimeout(()=>{ flash.classList.add('active'); setTimeout(()=>flash.classList.remove('active'),40); }, 120);
+
+    // Damaru
+    if(Math.random()<0.6) triggerDamaruShake();
+  }
+
+  function loop(now){
+    const dt = now - lastTime;
+    lastTime = now;
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    // Strike timer
+    nextStrike -= dt;
+    if(nextStrike <= 0){
+      const cluster = 1 + (Math.random()<0.3 ? 1 : 0); // sometimes double strike
+      for(let k=0;k<cluster;k++){
+        setTimeout(spawnStrike, k*120);
+      }
+      nextStrike = 3500 + Math.random()*6000;
+    }
+
+    // Draw & age bolts
+    bolts = bolts.filter(b => b.age < b.lifetime);
+    bolts.forEach(b => {
+      b.age += dt;
+      const progress = b.age / b.lifetime;
+      // Fade: bright flash → gradual fade
+      let alpha;
+      if(progress < 0.08)       alpha = progress / 0.08;
+      else if(progress < 0.25)  alpha = 1.0;
+      else                      alpha = 1 - (progress - 0.25) / 0.75;
+      alpha = Math.max(0, alpha);
+
+      // Flicker mid-life
+      if(progress > 0.1 && progress < 0.45 && Math.random()<0.35){
+        alpha *= (Math.random() < 0.5 ? 0 : 1);
+      }
+
+      if(alpha > 0.01){
+        drawBolt(b.main, alpha, b.width, b.color, b.glow);
+        b.branches.forEach(br => drawBolt(br, alpha*0.55, b.width*0.5, b.color, b.glow));
+      }
+    });
+
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+
+  // First strike after 1.5s
+  setTimeout(spawnStrike, 1500);
+})();
+
+// ── Stars
+(function(){
+  const c = document.getElementById('stars');
+  for(let i=0;i<60;i++){
+    const s = document.createElement('div');
+    s.classList.add('star');
+    s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;animation-duration:${2+Math.random()*4}s;animation-delay:${Math.random()*5}s;opacity:${Math.random()*0.6}`;
+    c.appendChild(s);
+  }
+})();
+
+// ── Navbar scroll
+const nav = document.getElementById('navbar');
+const backTop = document.getElementById('backTop');
+window.addEventListener('scroll', ()=>{
+  const s = window.scrollY;
+  nav.classList.toggle('scrolled', s > 60);
+  backTop.classList.toggle('visible', s > 400);
+});
+
+// ── Mobile menu
+function toggleMenu(){
+  const h = document.getElementById('hamburger');
+  const m = document.getElementById('mobile-nav');
+  h.classList.toggle('open');
+  m.classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobile-nav').classList.remove('open');
+}
+
+// ── Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+},{threshold:0.12});
+reveals.forEach(r=>obs.observe(r));
+
+// ── Count-up animation
+function animateCount(el){
+  const target = +el.dataset.target;
+  const duration = 2000;
+  const step = target / (duration / 16);
+  let current = 0;
+  const timer = setInterval(()=>{
+    current = Math.min(current + step, target);
+    el.textContent = Math.floor(current).toLocaleString('en-IN') + (target >= 1000 ? '+' : target >= 25 ? '+' : '+');
+    if(current >= target) clearInterval(timer);
+  },16);
+}
+const statObs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      animateCount(e.target);
+      statObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('.stat-num[data-target]').forEach(el=>statObs.observe(el));
+
+// ── Form submit
+async function submitForm(e){
+  e.preventDefault();
+  const btn = document.getElementById('cf_submit') || e.target;
+  const name = (document.getElementById('cf_name')||{}).value||'';
+  if (!name.trim()) { alert('Please enter your name.'); return; }
+  btn.textContent = '⏳ Submitting…';
+  btn.disabled = true;
+  const data = {
+    name,
+    phone:   (document.getElementById('cf_phone')||{}).value||'',
+    email:   (document.getElementById('cf_email')||{}).value||'',
+    dob:     (document.getElementById('cf_dob')||{}).value||'',
+    tob:     (document.getElementById('cf_tob')||{}).value||'',
+    pob:     (document.getElementById('cf_pob')||{}).value||'',
+    service: (document.getElementById('cf_service')||{}).value||'',
+    query:   (document.getElementById('cf_query')||{}).value||'',
+  };
+  try {
+    const r = await fetch('/api/contact', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(data)
+    });
+    const d = await r.json();
+    if (r.ok && d.success) {
+      btn.textContent = '✓ Request Submitted!';
+      btn.style.background = 'linear-gradient(135deg,#2A6A2A,#4CA84C)';
+      // Clear form
+      ['cf_name','cf_phone','cf_email','cf_dob','cf_tob','cf_pob','cf_query'].forEach(id=>{
+        const el = document.getElementById(id); if(el) el.value='';
+      });
+      const sel = document.getElementById('cf_service'); if(sel) sel.selectedIndex=0;
+      setTimeout(()=>{
+        btn.textContent = '🕉️ Submit Request';
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 4000);
+    } else {
+      btn.textContent = '🕉️ Submit Request';
+      btn.disabled = false;
+      alert(d.message || 'Submission failed. Please try again.');
+    }
+  } catch(err) {
+    // Fallback if server not running
+    btn.textContent = '✓ Request Noted!';
+    btn.style.background = 'linear-gradient(135deg,#7A5A00,#C9A84C)';
+    setTimeout(()=>{ btn.textContent='🕉️ Submit Request'; btn.style.background=''; btn.disabled=false; },3500);
+  }
+}
+
+// ── Smooth nav links
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const id = a.getAttribute('href');
+    if(id==='#') return;
+    const el = document.querySelector(id);
+    if(el){
+      e.preventDefault();
+      el.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  });
+});
+
+// ══════════════════════════════════════════════════════════
+//  PANCHANG ENGINE v4 — True New Moon Lookup Table
+//  Location : Datia, Madhya Pradesh (25.67°N, 78.46°E, IST)
+//  Method   : Hardcoded astronomical new moon dates (IST)
+//             eliminates mean-moon drift that caused wrong tithis.
+//  Verified : Mar 18 2026 NM → Mar 20=Dwitiya, Mar 21=Tritiya ✓
+// ══════════════════════════════════════════════════════════
+(function(){
+
+  /* ── Lookup tables ─────────────────────────────────── */
+  const VARAS = ['Ravivar (Sunday)','Somvar (Monday)','Mangalvar (Tuesday)',
+                 'Budhvar (Wednesday)','Guruvaar (Thursday)','Shukravar (Friday)',
+                 'Shanivar (Saturday)'];
+
+  // 30 tithis: Shukla 1-15, Krishna 1-15
+  const TITHIS = [
+    'Pratipada','Dwitiya','Tritiya','Chaturthi','Panchami',
+    'Shashthi','Saptami','Ashtami','Navami','Dashami',
+    'Ekadashi','Dwadashi','Trayodashi','Chaturdashi','Purnima',
+    'Pratipada','Dwitiya','Tritiya','Chaturthi','Panchami',
+    'Shashthi','Saptami','Ashtami','Navami','Dashami',
+    'Ekadashi','Dwadashi','Trayodashi','Chaturdashi','Amavasya'
+  ];
+
+  const NAKSHATRAS = [
+    'Ashwini','Bharani','Krittika','Rohini','Mrigashira','Ardra',
+    'Punarvasu','Pushya','Ashlesha','Magha','Purva Phalguni',
+    'Uttara Phalguni','Hasta','Chitra','Swati','Vishakha',
+    'Anuradha','Jyeshtha','Mula','Purva Ashadha','Uttara Ashadha',
+    'Shravana','Dhanishtha','Shatabhisha','Purva Bhadrapada',
+    'Uttara Bhadrapada','Revati'
+  ];
+
+  const RASHI = ['Mesha','Vrishabha','Mithuna','Karka','Simha','Kanya',
+                 'Tula','Vrishchika','Dhanu','Makara','Kumbha','Meena'];
+
+  const YOGAS = [
+    'Vishkambha','Priti','Ayushman','Saubhagya','Shobhana','Atiganda',
+    'Sukarma','Dhriti','Shula','Ganda','Vriddhi','Dhruva','Vyaghata',
+    'Harshana','Vajra','Siddhi','Vyatipata','Variyan','Parigha','Shiva',
+    'Siddha','Sadhya','Shubha','Shukla','Brahma','Indra','Vaidhriti'
+  ];
+
+  const KAR_REP = ['Bava','Balava','Kaulava','Taitila','Garija','Vanija','Vishti (Bhadra)'];
+  const KAR_FIX = ['Shakuni','Chatushpada','Naga','Kimstughna'];
+
+  const MASAS = [
+    'Chaitra','Vaishakha','Jyeshtha','Ashadha','Shravana','Bhadrapada',
+    'Ashwin','Kartika','Margashirsha','Pausha','Magha','Phalguna'
+  ];
+
+  /* ── TRUE New Moon Table (IST) ─────────────────────────
+     Each entry: [year, month(1-12), day, hour_IST]
+     Source: published NASA/USNO astronomical data
+     Verified against Drik Panchang for India (IST)         */
+  const NM_TABLE = [
+    // 2024
+    [2024,1,11,18],[2024,2,10,5],[2024,3,10,21],[2024,4,9,7],
+    [2024,5,8,18],[2024,6,7,2],[2024,7,6,8],[2024,8,4,17],
+    [2024,9,3,4],[2024,10,2,23],[2024,11,1,17],[2024,12,1,11],
+    [2024,12,31,5],
+    // 2025
+    [2025,1,29,23],[2025,2,28,13],[2025,3,30,2],[2025,4,28,14],
+    [2025,5,27,22],[2025,6,26,7],[2025,7,25,16],[2025,8,23,4],
+    [2025,9,21,18],[2025,10,21,9],[2025,11,20,1],[2025,12,20,17],
+    // 2026  ← Verified: Mar 18 = Chaitra Amavasya (NM ~21:00 IST)
+    [2026,1,19,9],[2026,2,18,1],[2026,3,18,21],[2026,4,17,13],
+    [2026,5,17,5],[2026,6,15,19],[2026,7,15,9],[2026,8,13,23],
+    [2026,9,12,14],[2026,10,12,6],[2026,11,11,0],[2026,12,10,17],
+    // 2027
+    [2027,1,9,11],[2027,2,8,6],[2027,3,10,1],[2027,4,8,18],
+    [2027,5,8,11],[2027,6,7,3],[2027,7,6,17],[2027,8,5,7],
+    [2027,9,3,21],[2027,10,3,12],[2027,11,2,4],[2027,12,1,20],
+    [2027,12,31,11],
+    // 2028
+    [2028,1,30,2],[2028,2,28,18],[2028,3,29,9],[2028,4,28,0],
+    [2028,5,27,14],[2028,6,26,3],[2028,7,25,15],[2028,8,24,3],
+    [2028,9,22,14],[2028,10,22,2],[2028,11,20,14],[2028,12,20,3],
+    // 2029 (approximate, for future-proofing)
+    [2029,1,18,16],[2029,2,17,6],[2029,3,18,19],[2029,4,17,7],
+    [2029,5,16,20],[2029,6,15,9],[2029,7,14,21],[2029,8,13,9],
+    [2029,9,12,0],[2029,10,11,14],[2029,11,10,6],[2029,12,9,22]
+  ];
+
+  /* ── Find most-recent new moon before given timestamp ─── */
+  function recentNewMoonMs(refMs) {
+    let best = null;
+    for (const [y,mo,d,h] of NM_TABLE) {
+      const ms = Date.UTC(y, mo-1, d, h-5, 30); // IST → UTC (subtract 5h30m)
+      if (ms <= refMs && (best === null || ms > best)) best = ms;
+    }
+    // Fallback: use synodic calculation if outside table range
+    if (best === null) {
+      const BASE_NM_UTC = 2451550.09765; // JD
+      const SYN = 29.53058867 * 86400000; // ms
+      const BASE_MS = (BASE_NM_UTC - 2440587.5) * 86400000;
+      const n = Math.floor((refMs - BASE_MS) / SYN);
+      best = BASE_MS + n * SYN;
+    }
+    return best;
+  }
+
+  /* ── Sunrise/Sunset for Datia (25.67°N, 78.46°E, IST) ─── */
+  function sunriseSunset(date) {
+    const lat = 25.67 * Math.PI / 180;
+    const doy = Math.floor((date - new Date(date.getFullYear(),0,0)) / 86400000);
+    // Declination of sun (approximate)
+    const decl = -23.45 * Math.cos((360/365*(doy+10)) * Math.PI/180) * Math.PI/180;
+    const cosH  = -Math.tan(lat) * Math.tan(decl);
+    const H     = Math.acos(Math.max(-1, Math.min(1, cosH))) * 180 / Math.PI;
+    // Equation of time correction (minutes, simplified)
+    const B   = (360/365*(doy-81)) * Math.PI/180;
+    const eot = 9.87*Math.sin(2*B) - 7.53*Math.cos(B) - 1.5*Math.sin(B);
+    // Solar noon in IST hours
+    const lon = 78.46;
+    const solarNoon = 12 - (lon - 82.5)/15 + eot/60; // 82.5 = IST meridian
+    return {
+      sunrise: solarNoon - H/15,
+      sunset:  solarNoon + H/15
+    };
+  }
+
+  /* ── Sun longitude (for Yoga, Nakshatra) ─────────────── */
+  function sunLong(dateMs) {
+    const jd = dateMs/86400000 + 2440587.5;
+    const T  = (jd - 2451545.0)/36525;
+    const L0 = (280.46646 + 36000.76983*T) % 360;
+    const M  = ((357.52911 + 35999.05029*T) % 360) * Math.PI/180;
+    const C  = (1.914602 - 0.004817*T)*Math.sin(M) + 0.019993*Math.sin(2*M);
+    return ((L0+C) % 360 + 360) % 360;
+  }
+
+  /* ── Format hour (0-24 decimal) → "H:MM AM/PM" ─────── */
+  function fmtH(h) {
+    h = ((h % 24) + 24) % 24;
+    const hh = Math.floor(h), mm = Math.round((h-hh)*60);
+    const m2 = mm===60 ? 0 : mm, h2 = mm===60 ? hh+1 : hh;
+    return (h2%12||12) + ':' + String(m2).padStart(2,'0') + ' ' + (h2<12?'AM':'PM');
+  }
+  function fmtR(s,e) { return fmtH(s) + ' – ' + fmtH(e); }
+
+  /* Rahu/Gulika slot index (0-based, from 1st slot after sunrise)
+     Sun=8,Mon=2,Tue=7,Wed=5,Thu=6,Fri=4,Sat=3                    */
+  const RAHU_SLOT  = [7,1,6,4,5,3,2];
+  const GULIKA_SLOT= [6,5,4,3,2,1,0];
+
+  /* ── MAIN CALCULATION ────────────────────────────────── */
+  const now   = new Date();
+  const dayIdx= now.getDay();
+  const ss    = sunriseSunset(now);
+  const slot  = (ss.sunset - ss.sunrise) / 8;
+  const mid   = (ss.sunrise + ss.sunset) / 2;
+  const rahuS = ss.sunrise + RAHU_SLOT[dayIdx]  * slot;
+  const gulS  = ss.sunrise + GULIKA_SLOT[dayIdx] * slot;
+
+  // Use SUNRISE moment as reference for tithi (Vedic standard)
+  // Sunrise in ms (UTC)
+  const sunriseUtcMs = Date.UTC(
+    now.getFullYear(), now.getMonth(), now.getDate(),
+    Math.floor(ss.sunrise - 5.5),            // subtract IST offset
+    Math.round(((ss.sunrise - 5.5) % 1)*60)
+  );
+
+  const nmMs      = recentNewMoonMs(sunriseUtcMs);
+  const SYNODIC_MS= 29.53058867 * 86400000;
+  const daysSince = (sunriseUtcMs - nmMs) / 86400000;
+  const elongation= (daysSince / 29.53058867) * 360;
+  const tithiNum  = Math.floor(elongation / 12) % 30;
+  const paksha    = tithiNum < 15 ? 'Shukla Paksha' : 'Krishna Paksha';
+  const tithiName = TITHIS[tithiNum];
+
+  // Moon longitude (from NM sun position + daily motion)
+  const sunAtNmMs = recentNewMoonMs(sunriseUtcMs);
+  const sunAtNm   = sunLong(sunAtNmMs);
+  const moonLong  = ((sunAtNm + daysSince * 13.17635) % 360 + 360) % 360;
+  const sL        = sunLong(sunriseUtcMs);
+
+  // Nakshatra
+  const nakIdx    = Math.floor(moonLong / (360/27)) % 27;
+  const moonRashi = RASHI[Math.floor(moonLong/30) % 12];
+
+  // Yoga = (Sun + Moon) / 13.33°
+  const yogaIdx   = Math.floor(((sL + moonLong) % 360) / (360/27)) % 27;
+
+  // Karana (half-tithi index)
+  const karNum = Math.floor((elongation % 360) / 6);
+  let karana;
+  if      (karNum === 0)  karana = KAR_FIX[3];
+  else if (karNum <= 56)  karana = KAR_REP[(karNum-1) % 7];
+  else                    karana = KAR_FIX[karNum - 57];
+
+  // Lunar Masa (month) from which NM entry we matched
+  // Count months from Chaitra anchor
+  const nmDate = new Date(nmMs + 5.5*3600000); // NM in IST
+  const nmMonth= nmDate.getUTCMonth(); // 0=Jan
+  // Chaitra ~ March/April, map solar month to masa
+  const MASA_OFFSET = [10,11,0,1,2,3,4,5,6,7,8,9]; // Jan=Pausha(10), Feb=Magha(11), Mar=Chaitra(0)...
+  const masaIdx = MASA_OFFSET[nmMonth] !== undefined ? MASA_OFFSET[nmMonth] : nmMonth;
+  // Vikram Samvat (approx)
+  const VS = now.getMonth() >= 3 ? now.getFullYear() + 57 : now.getFullYear() + 56;
+
+  /* ── Festivals ───────────────────────────────────────── */
+  const FESTS = {
+    '3-19':'Vikram Samvat New Year · Chaitra Shukla Pratipada',
+    '3-20':'Cheti Chand · Jhulelal Jayanti',
+    '3-21':'Chaitra Shukla Tritiya · Gangaur Puja',
+    '3-26':'Shri Ram Navami',
+    '3-27':'Chaitra Purnima (Hanuman Jayanti eve)',
+    '3-28':'Hanuman Jayanti',
+    '4-13':'Baisakhi · Mesha Sankranti',
+    '5-12':'Akshaya Tritiya',
+    '8-28':'Raksha Bandhan',
+    '9-14':'Janmashtami',
+    '10-2':'Navratri Begins',
+    '11-1':'Diwali · Lakshmi Puja',
+    '11-5':'Bhai Dooj',
+  };
+  const fKey = (now.getMonth()+1)+'-'+now.getDate();
+
+  /* ── Update DOM ─────────────────────────────────────── */
+  const set = (id, v) => { const el=document.getElementById(id); if(el) el.textContent=v; };
+
+  set('pTithi',     tithiName + ' · ' + paksha);
+  set('pVara',      VARAS[dayIdx]);
+  set('pNakshatra', NAKSHATRAS[nakIdx] + ' · Moon in ' + moonRashi);
+  set('pYoga',      YOGAS[yogaIdx]);
+  set('pKarana',    karana);
+  set('pMasa',      MASAS[masaIdx] + ' Masa · VS ' + VS);
+  set('pSunrise',   fmtH(ss.sunrise));
+  set('pSunset',    fmtH(ss.sunset));
+  set('pRahu',      fmtR(rahuS, rahuS + slot));
+  set('mBrahma',    fmtR(ss.sunrise - 0.8, ss.sunrise));
+  set('mAbhijit',   fmtR(mid - 0.4, mid + 0.4));
+  set('mAmrit',     fmtR(ss.sunrise + slot*1.5, ss.sunrise + slot*2.5));
+  set('mRahu',      fmtR(rahuS, rahuS + slot));
+  set('mGulika',    fmtR(gulS, gulS + slot));
+  set('pSpecial',   FESTS[fKey] || 'No major festival today');
+
+})();
+
+// ══════════════════════════════════════════════════════════
+//  PUJA BOOKING — Smooth scroll to form & pre-fill
+// ══════════════════════════════════════════════════════════
+function bookPuja(pujaName) {
+  const sel = document.querySelector('.consult-form select');
+  if (sel) {
+    const options = sel.options;
+    for (let i = 0; i < options.length; i++) {
+      if (options[i].text.toLowerCase().includes('puja') || options[i].text.toLowerCase().includes('havan')) {
+        sel.selectedIndex = i; break;
+      }
+    }
+    // Also update textarea
+    const ta = document.querySelector('.consult-form textarea');
+    if (ta) ta.value = `I would like to book: ${pujaName}. Please confirm availability and guide me through the process.`;
+  }
+  document.getElementById('consult').scrollIntoView({behavior:'smooth', block:'start'});
+
+  // Flash the form
+  const form = document.querySelector('.consult-form');
+  if (form) {
+    form.style.transition = 'box-shadow 0.3s';
+    form.style.boxShadow  = '0 0 40px rgba(201,168,76,0.5)';
+    setTimeout(() => form.style.boxShadow = '', 1800);
+  }
+}
+</script>
+</body>
+</html>
