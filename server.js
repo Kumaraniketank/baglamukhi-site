@@ -19,7 +19,6 @@
 const http   = require('http');
 const fs     = require('fs');
 const path   = require('path');
-const url    = require('url');
 const crypto = require('crypto');
 
 // ── MongoDB ───────────────────────────────────────────────
@@ -62,8 +61,12 @@ async function connectDB() {
   }
   try {
     const client = new MongoClient(MONGO_URI, {
-      serverSelectionTimeoutMS: 10000,
-      connectTimeoutMS:         10000,
+      serverSelectionTimeoutMS: 15000,
+      connectTimeoutMS:         15000,
+      socketTimeoutMS:          30000,
+      tls:                      true,
+      tlsAllowInvalidCertificates: false,
+      tlsAllowInvalidHostnames:    false,
     });
     await client.connect();
     db             = client.db('baglamukhi');
@@ -191,9 +194,11 @@ function cleanAll(docs) { return (docs || []).map(clean); }
 //  ROUTER
 // ════════════════════════════════════════════════════════
 async function router(req, res) {
-  const parsed   = url.parse(req.url, true);
-  let   pathname = (parsed.pathname || '/').replace(/\/{2,}/g,'/');
-  if (pathname.length > 1 && pathname.endsWith('/')) pathname = pathname.slice(0,-1);
+  // WHATWG URL API — modern replacement for url.parse()
+  const reqUrl   = new URL(req.url, `http://localhost`);
+  let   pathname = reqUrl.pathname.replace(/\/{2,}/g, '/');
+  if (pathname.length > 1 && pathname.endsWith('/')) pathname = pathname.slice(0, -1);
+  const query    = reqUrl.searchParams;   // use query.get('key') instead of parsed.query.key
   const method   = req.method.toUpperCase();
 
   // CORS preflight
@@ -274,10 +279,10 @@ async function router(req, res) {
 
   // GET /api/blogs — public list
   if (pathname === '/api/blogs' && method === 'GET') {
-    const page   = Math.max(1, parseInt(parsed.query.page)  || 1);
-    const limit  = Math.min(50, parseInt(parsed.query.limit) || 10);
-    const tag    = parsed.query.tag      || '';
-    const q      = (parsed.query.q       || '').trim();
+    const page   = Math.max(1, parseInt(query.get('page'))  || 1);
+    const limit  = Math.min(50, parseInt(query.get('limit')) || 10);
+    const tag    = query.get('tag')      || '';
+    const q      = (query.get('q')       || '').trim();
     const filter = { status: 'published' };
     if (tag) filter.tags = tag;
     if (q)   filter.$or  = [
@@ -455,7 +460,7 @@ async function router(req, res) {
   // ── Export / Backup ───────────────────────────────────
   if (pathname === '/api/export' && method === 'GET') {
     if (!isAdmin(req)) return json(res, 401, { message: 'Unauthorized' });
-    const type = parsed.query.type || 'all';
+    const type = query.get('type') || 'all';
     const data = { exportedAt: new Date().toISOString() };
     if (type==='blogs'   ||type==='all') data.blogs      = cleanAll(await blogs_col.find({}).toArray());
     if (type==='contacts'||type==='all') data.contacts   = cleanAll(await contacts_col.find({}).toArray());
