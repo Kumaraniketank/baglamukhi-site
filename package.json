@@ -5,10 +5,11 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev":   "node --watch server.js"
+    "dev": "node --watch server.js"
   },
   "dependencies": {
-    "mongodb": "^6.5.0"
+    "dotenv": "^17.3.1",
+    "mongodb": "^6.21.0"
   },
   "engines": {
     "node": ">=18.0.0"

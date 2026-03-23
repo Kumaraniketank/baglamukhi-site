@@ -15,6 +15,12 @@
  */
 
 'use strict';
+// Load .env file for local development
+require('fs').existsSync('.env') && require('fs').readFileSync('.env','utf8')
+  .split('\n').forEach(line => {
+    const [k,...v] = line.split('=');
+    if(k && v.length) process.env[k.trim()] = v.join('=').trim();
+  });
 
 const http   = require('http');
 const fs     = require('fs');
@@ -60,14 +66,23 @@ async function connectDB() {
     process.exit(1);
   }
   try {
-    const client = new MongoClient(MONGO_URI, {
-      serverSelectionTimeoutMS: 15000,
-      connectTimeoutMS:         15000,
-      socketTimeoutMS:          30000,
-      tls:                      true,
-      tlsAllowInvalidCertificates: false,
-      tlsAllowInvalidHostnames:    false,
-    });
+    // const client = new MongoClient(MONGO_URI, {
+    //   serverSelectionTimeoutMS: 15000,
+    //   connectTimeoutMS:         15000,
+    //   socketTimeoutMS:          30000,
+    //   tls:                      true,
+    //   tlsAllowInvalidCertificates: false,
+    //   tlsAllowInvalidHostnames:    false,
+    // });
+  const client = new MongoClient(MONGO_URI, {
+  serverSelectionTimeoutMS: 15000,
+  connectTimeoutMS:         15000,
+  socketTimeoutMS:          30000,
+  tls:                      true,
+  tlsAllowInvalidCertificates: false,
+  tlsAllowInvalidHostnames:    false,
+  family: 4,   // Force IPv4
+});
     await client.connect();
     db             = client.db('baglamukhi');
     blogs_col      = db.collection('blogs');
