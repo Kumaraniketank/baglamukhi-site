@@ -2942,7 +2942,7 @@
             <div>
               <span class="contact-item-label">Email</span>
               <div class="contact-item-val">
-                <a href="/cdn-cgi/l/email-protection#402d21282533282d2f28212e2a282100272d21292c6e232f2d"><span class="__cf_email__" data-cfemail="036a6d656c436162646f626e76686b6a2e736666776b2d6c7164"><span class="__cf_email__" data-cfemail="284549404d5b404547404946424049684f45494144064b4745">[email&#160;protected]</span></span></a><br/>
+                <a href="mailto:maheshmohanjha@gmail.com"><span class="__cf_email__" data-cfemail="036a6d656c436162646f626e76686b6a2e736666776b2d6c7164">maheshmohanjha@gmail.com</span></a><br/>
               </div>
             </div>
           </div>
@@ -2977,7 +2977,7 @@
             Daulatpur, Begusarai<br/>
             Bihar,India — 848202
           </div>
-          <a href="https://www.google.com/maps?q=maa+baglamukhi+peeth+parishad+narayanpur+bihar" target="_blank" class="btn-secondary" style="margin-top:1rem;font-size:0.7rem;padding:10px 24px;">Open in Maps →</a>
+          <a href="https://google.com/maps?sca_esv=4383f7dd9720c753&output=search&q=maa+baglamukhi+peeth+parishad+narayanpur+bihar&source=lnms&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpaEWjvZ2Py1XXV8d8KvlI3j2nXl-YQ05KjnWz5SrU93HEjYyChsjChlPh8hoCFXOKcApRiApREwCJlLQ25GWHiRzurbStLRFLgN-5ky-M56Zf6VBE_pcJdxr_fq4q-vENU5-vN5m5QLfRz9pmQffgfRDCjZJmR4UX3mGvcc5xroIg6jpTY3aeIi5jMzHhEgefIdAsfA&entry=mc&ved=1t:200715&ictx=111" target="_blank" class="btn-secondary" style="margin-top:1rem;font-size:0.7rem;padding:10px 24px;">Open in Maps →</a>
         </div>
       </div>
     </div>
@@ -3480,7 +3480,7 @@
 <a href="#home" class="back-top" id="backTop">↑</a>
 
 <!-- ════════════════════════ SCRIPTS ════════════════════════ -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ══════════════════════════════════════════════════════════
 //  COSMOS — Navagraha Planetary Revolution Canvas
 // ══════════════════════════════════════════════════════════
@@ -4239,4 +4239,13 @@ function bookPuja(pujaName) {
   document.getElementById('consult').scrollIntoView({behavior:'smooth', block:'start'});
 
   // Flash the form
-  const for
+  const form = document.querySelector('.consult-form');
+  if (form) {
+    form.style.transition = 'box-shadow 0.3s';
+    form.style.boxShadow  = '0 0 40px rgba(201,168,76,0.5)';
+    setTimeout(() => form.style.boxShadow = '', 1800);
+  }
+}
+</script>
+</body>
+</html>
