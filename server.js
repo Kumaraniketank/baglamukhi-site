@@ -209,18 +209,32 @@ function cleanAll(docs) { return (docs || []).map(clean); }
 //  ROUTER
 // ════════════════════════════════════════════════════════
 async function router(req, res) {
-  // WHATWG URL API — modern replacement for url.parse()
-  const reqUrl   = new URL(req.url, `http://localhost`);
-  let   pathname = reqUrl.pathname.replace(/\/{2,}/g, '/');
+  // Robust URL parsing — works on all Node.js versions and hosts
+  const rawUrl  = req.url || '/';
+  const qMark   = rawUrl.indexOf('?');
+  let   pathname = qMark === -1 ? rawUrl : rawUrl.slice(0, qMark);
+  try { pathname = decodeURIComponent(pathname); } catch(e) {}
+  pathname = pathname.replace(/\/+/g, '/');
   if (pathname.length > 1 && pathname.endsWith('/')) pathname = pathname.slice(0, -1);
-  const query    = reqUrl.searchParams;   // use query.get('key') instead of parsed.query.key
-  const method   = req.method.toUpperCase();
+  if (!pathname) pathname = '/';
+
+  // Query string parsing
+  const queryStr = qMark === -1 ? '' : rawUrl.slice(qMark + 1);
+  const query = { get: (k) => {
+    const pair = queryStr.split('&').find(p => p.split('=')[0] === k);
+    return pair ? decodeURIComponent(pair.split('=').slice(1).join('=')) : null;
+  }};
+
+  const method = req.method.toUpperCase();
 
   // CORS preflight
   if (method === 'OPTIONS') { res.writeHead(204, CORS); return res.end(); }
 
-  // ── Static files ──────────────────────────────────────
-  if (method === 'GET' && !pathname.startsWith('/api/')) {
+  // ── API routes — check FIRST before static files ──────
+  if (pathname.startsWith('/api')) {
+    // handled below
+  } else if (method === 'GET') {
+    // ── Static files ────────────────────────────────────
     if (pathname === '/')       return serveFile(res, path.join(PUBLIC,'index.html'));
     if (pathname === '/blog')   return serveFile(res, path.join(PUBLIC,'blog.html'));
     if (pathname === '/admin')  return serveFile(res, path.join(PUBLIC,'admin.html'));
