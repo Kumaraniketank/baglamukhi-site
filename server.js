@@ -233,32 +233,11 @@ async function router(req, res) {
   if (method === 'OPTIONS') { res.writeHead(204, CORS); return res.end(); }
 
   // ── API routes — check FIRST before static files ──────
-  if (pathname.startsWith('/api')) {
-  // handled below
-} 
+  // ── Static + special routes ──
+if (!pathname.startsWith('/api') && method === 'GET') {
 
-// ✅ FIX: force correct robots.txt
-if (pathname === '/robots.txt' && method === 'GET') {
-  const file = path.join(PUBLIC, 'robots.txt');
-  if (fs.existsSync(file)) {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    return res.end(fs.readFileSync(file));
-  }
-}
-
-// ✅ FIX: force correct sitemap.xml
-if (pathname === '/sitemap.xml' && method === 'GET') {
-  const file = path.join(PUBLIC, 'sitemap.xml');
-  if (fs.existsSync(file)) {
-    res.writeHead(200, { 'Content-Type': 'application/xml' });
-    return res.end(fs.readFileSync(file));
-  }
-}
-
-else if (method === 'GET') {
-
-  // ✅ STRICT robots.txt (handles all cases)
-  if (pathname === '/robots.txt') {
+  // robots.txt
+  if (pathname.startsWith('/robots.txt')) {
     const file = path.join(PUBLIC, 'robots.txt');
     if (fs.existsSync(file)) {
       res.writeHead(200, { 'Content-Type': 'text/plain' });
@@ -266,8 +245,8 @@ else if (method === 'GET') {
     }
   }
 
-  // ✅ STRICT sitemap.xml
-  if (pathname === '/sitemap.xml') {
+  // sitemap.xml
+  if (pathname.startsWith('/sitemap.xml')) {
     const file = path.join(PUBLIC, 'sitemap.xml');
     if (fs.existsSync(file)) {
       res.writeHead(200, { 'Content-Type': 'application/xml' });
@@ -275,19 +254,16 @@ else if (method === 'GET') {
     }
   }
 
-  // Normal pages
   if (pathname === '/')       return serveFile(res, path.join(PUBLIC,'index.html'));
   if (pathname === '/blog')   return serveFile(res, path.join(PUBLIC,'blog.html'));
   if (pathname === '/admin')  return serveFile(res, path.join(PUBLIC,'admin.html'));
   if (pathname.startsWith('/blog/')) return serveFile(res, path.join(PUBLIC,'post.html'));
 
-  // Static files
   const sp = path.join(PUBLIC, pathname);
   if (fs.existsSync(sp) && fs.statSync(sp).isFile()) {
     return serveFile(res, sp);
   }
 
-  // ❌ IMPORTANT: DO NOT fallback for robots/sitemap
   return serveFile(res, path.join(PUBLIC,'index.html'));
 }
 
