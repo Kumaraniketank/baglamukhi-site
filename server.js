@@ -185,6 +185,8 @@ function serveFile(res, filepath) {
   const MIME = {
     '.html':'text/html; charset=utf-8', '.css':'text/css',
     '.js':'application/javascript',     '.json':'application/json',
+    '.xml':'application/xml', 
+    '.txt':'text/plain',     
     '.png':'image/png', '.jpg':'image/jpeg', '.jpeg':'image/jpeg',
     '.svg':'image/svg+xml', '.ico':'image/x-icon',
     '.webp':'image/webp', '.gif':'image/gif',
