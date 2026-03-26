@@ -13,7 +13,7 @@
  *     e.g.  openssl rand -hex 32
  * ═══════════════════════════════════════════════════════════
  */
-app.use(express.static('public'));
+
 'use strict';
 // Load .env file for local development
 require('fs').existsSync('.env') && require('fs').readFileSync('.env','utf8')
