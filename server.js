@@ -256,15 +256,40 @@ if (pathname === '/sitemap.xml' && method === 'GET') {
 }
 
 else if (method === 'GET') {
-    // ── Static files ────────────────────────────────────
-    if (pathname === '/')       return serveFile(res, path.join(PUBLIC,'index.html'));
-    if (pathname === '/blog')   return serveFile(res, path.join(PUBLIC,'blog.html'));
-    if (pathname === '/admin')  return serveFile(res, path.join(PUBLIC,'admin.html'));
-    if (pathname.startsWith('/blog/')) return serveFile(res, path.join(PUBLIC,'post.html'));
-    const sp = path.join(PUBLIC, pathname);
-    if (fs.existsSync(sp) && fs.statSync(sp).isFile()) return serveFile(res, sp);
-    return serveFile(res, path.join(PUBLIC,'index.html'));
+
+  // ✅ STRICT robots.txt (handles all cases)
+  if (pathname === '/robots.txt') {
+    const file = path.join(PUBLIC, 'robots.txt');
+    if (fs.existsSync(file)) {
+      res.writeHead(200, { 'Content-Type': 'text/plain' });
+      return res.end(fs.readFileSync(file));
+    }
   }
+
+  // ✅ STRICT sitemap.xml
+  if (pathname === '/sitemap.xml') {
+    const file = path.join(PUBLIC, 'sitemap.xml');
+    if (fs.existsSync(file)) {
+      res.writeHead(200, { 'Content-Type': 'application/xml' });
+      return res.end(fs.readFileSync(file));
+    }
+  }
+
+  // Normal pages
+  if (pathname === '/')       return serveFile(res, path.join(PUBLIC,'index.html'));
+  if (pathname === '/blog')   return serveFile(res, path.join(PUBLIC,'blog.html'));
+  if (pathname === '/admin')  return serveFile(res, path.join(PUBLIC,'admin.html'));
+  if (pathname.startsWith('/blog/')) return serveFile(res, path.join(PUBLIC,'post.html'));
+
+  // Static files
+  const sp = path.join(PUBLIC, pathname);
+  if (fs.existsSync(sp) && fs.statSync(sp).isFile()) {
+    return serveFile(res, sp);
+  }
+
+  // ❌ IMPORTANT: DO NOT fallback for robots/sitemap
+  return serveFile(res, path.join(PUBLIC,'index.html'));
+}
 
   // ════════════════════════════════════════════════════
   //  API ROUTES
