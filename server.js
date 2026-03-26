@@ -234,8 +234,28 @@ async function router(req, res) {
 
   // ── API routes — check FIRST before static files ──────
   if (pathname.startsWith('/api')) {
-    // handled below
-  } else if (method === 'GET') {
+  // handled below
+} 
+
+// ✅ FIX: force correct robots.txt
+if (pathname === '/robots.txt' && method === 'GET') {
+  const file = path.join(PUBLIC, 'robots.txt');
+  if (fs.existsSync(file)) {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    return res.end(fs.readFileSync(file));
+  }
+}
+
+// ✅ FIX: force correct sitemap.xml
+if (pathname === '/sitemap.xml' && method === 'GET') {
+  const file = path.join(PUBLIC, 'sitemap.xml');
+  if (fs.existsSync(file)) {
+    res.writeHead(200, { 'Content-Type': 'application/xml' });
+    return res.end(fs.readFileSync(file));
+  }
+}
+
+else if (method === 'GET') {
     // ── Static files ────────────────────────────────────
     if (pathname === '/')       return serveFile(res, path.join(PUBLIC,'index.html'));
     if (pathname === '/blog')   return serveFile(res, path.join(PUBLIC,'blog.html'));
